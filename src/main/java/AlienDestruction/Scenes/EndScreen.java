@@ -1,4 +1,4 @@
-package AlienDestruction;
+package AlienDestruction.Scenes;
 
 import AlienDestruction.App;
 import com.github.hanyaeger.api.AnchorPoint;
@@ -10,7 +10,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 
-public class Endscreen extends StaticScene implements YaegerScene{
+public class EndScreen extends StaticScene implements YaegerScene{
 
     private App app;
 

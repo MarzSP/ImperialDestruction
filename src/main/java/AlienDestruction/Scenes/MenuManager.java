@@ -1,4 +1,4 @@
-package AlienDestruction;
+package AlienDestruction.Scenes;
 
 
 import com.github.hanyaeger.api.AnchorPoint;

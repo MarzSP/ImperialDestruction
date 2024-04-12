@@ -1,5 +1,7 @@
-package AlienDestruction;
+package AlienDestruction.Scenes;
 
+import AlienDestruction.App;
+import AlienDestruction.Buttons.StartButton;
 import com.github.hanyaeger.api.AnchorPoint;
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.entities.impl.TextEntity;
@@ -29,7 +31,7 @@ public class StartScreen extends MenuManager {
         startmenuText.setFill(Color.ANTIQUEWHITE);
         startmenuText.setFont(Font.font("Roboto", FontWeight.SEMI_BOLD, 60));
         addEntity(startmenuText);
-       int scene = 0;
+       //int scene = 0;
 
         var startButton = new StartButton(new Coordinate2D(getWidth() / 2, getHeight() / 2));
         addEntity(startButton);

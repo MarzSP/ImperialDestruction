@@ -1,5 +1,7 @@
-package AlienDestruction;
+package AlienDestruction.Buttons;
 
+import AlienDestruction.App;
+import AlienDestruction.Buttons.Button;
 import com.github.hanyaeger.api.AnchorPoint;
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.userinput.MouseButtonPressedListener;

@@ -1,4 +1,4 @@
-package AlienDestruction;
+package AlienDestruction.Buttons;
 
 
 import com.github.hanyaeger.api.Coordinate2D;
@@ -13,7 +13,6 @@ import javafx.scene.text.FontWeight;
 
 public abstract class Button extends TextEntity implements MouseButtonPressedListener, MouseExitListener, MouseEnterListener {
 
-    //private final int scene;
 
     public Button(final Coordinate2D initialLocation, final String text) {
         super(initialLocation, text);
