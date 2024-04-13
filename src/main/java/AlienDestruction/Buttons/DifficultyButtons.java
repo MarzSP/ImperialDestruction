@@ -17,7 +17,7 @@ public class DifficultyButtons extends Button {
         setFont(Font.font("Impact", FontWeight.SEMI_BOLD, 40));
         setAnchorPoint(AnchorPoint.CENTER_LEFT);
     }
-    
+
     @Override
     public void onMouseButtonPressed(MouseButton button, Coordinate2D coordinate2D) {
         // Kunnen we invullen zodra er levels zijn
