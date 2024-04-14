@@ -16,7 +16,7 @@ public class StartButton extends Button implements MouseButtonPressedListener {
     public StartButton (App app, Coordinate2D initialLocation) {
         super(initialLocation, "Start Game!");
         this.app = app;
-        setFill(Color.DARKBLUE);
+        setFill(Color.CADETBLUE);
         setFont(Font.font("Impact", FontWeight.SEMI_BOLD, 60));
         setAnchorPoint(AnchorPoint.CENTER_CENTER);
     }
