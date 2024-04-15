@@ -1,6 +1,7 @@
 package AlienDestruction.Scenes;
 
 import AlienDestruction.App;
+import AlienDestruction.Buttons.MenuButton;
 import AlienDestruction.Entities.EnemyOne;
 import AlienDestruction.Entities.EnemyTwo;
 import AlienDestruction.Entities.Player;
@@ -31,12 +32,8 @@ import javafx.scene.text.FontWeight;
 
         @Override
         public void setupEntities() {
-            var gameScreenText = new TextEntity(
-                    new Coordinate2D(60, 15), ": ");
-            gameScreenText.setAnchorPoint(AnchorPoint.TOP_CENTER);
-            gameScreenText.setFill(Color.ANTIQUEWHITE);
-            gameScreenText.setFont(Font.font("Roboto", FontWeight.SEMI_BOLD, 30));
-            addEntity(gameScreenText);
+            MenuButton menuButton = new MenuButton(app, new Coordinate2D(800, 10));
+            addEntity(menuButton);
 
             var playerSprite = new Player(new Coordinate2D(getWidth() / 2, 550), new App());
             addEntity(playerSprite);
