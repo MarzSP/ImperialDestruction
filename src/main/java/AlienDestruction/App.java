@@ -12,8 +12,9 @@ import com.github.hanyaeger.api.YaegerGame;
 public class App extends YaegerGame {
 
     public static void main(String[] args ) {
+        System.out.println("Hallo hub start");
         launch(args);
-        System.out.println("Hallo hub");
+        System.out.println("Hallo hub end");
     }
 
     @Override
@@ -27,9 +28,9 @@ public class App extends YaegerGame {
 
     addScene(0, new StartScreen(this));
     addScene(1, new GameScreen(this));
-    addScene(2, new EndScreen());
+    addScene(2, new EndScreen(this));
     addScene(3, new GameMenu());
-    //setActiveScene(0);
+    //setActiveScene(2);
     }
 
     public class SceneIds {

@@ -1,11 +1,16 @@
 package AlienDestruction.Scenes;
 
 import AlienDestruction.App;
+import AlienDestruction.Entities.EnemyOne;
+import AlienDestruction.Entities.EnemyTwo;
 import AlienDestruction.Entities.Player;
 import com.github.hanyaeger.api.AnchorPoint;
 import com.github.hanyaeger.api.Coordinate2D;
+import com.github.hanyaeger.api.entities.Newtonian;
+import com.github.hanyaeger.api.entities.SceneBorderTouchingWatcher;
 import com.github.hanyaeger.api.entities.impl.TextEntity;
 import com.github.hanyaeger.api.scenes.DynamicScene;
+import com.github.hanyaeger.api.userinput.KeyListener;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
@@ -21,21 +26,29 @@ import javafx.scene.text.FontWeight;
         @Override
         public void setupScene() {
             setBackgroundImage("backgrounds/universe2.jpg");
-            //setBackgroundColor(Color.BLACK);
         }
 
 
         @Override
         public void setupEntities() {
             var gameScreenText = new TextEntity(
-                    new Coordinate2D(getWidth() / 2, getHeight() / 4));
+                    new Coordinate2D(60, 15), ": ");
             gameScreenText.setAnchorPoint(AnchorPoint.TOP_CENTER);
             gameScreenText.setFill(Color.ANTIQUEWHITE);
-            gameScreenText.setFont(Font.font("Roboto", FontWeight.SEMI_BOLD, 60));
+            gameScreenText.setFont(Font.font("Roboto", FontWeight.SEMI_BOLD, 30));
             addEntity(gameScreenText);
 
             var playerSprite = new Player(new Coordinate2D(getWidth() / 2, 550), new App());
             addEntity(playerSprite);
+
+            var playerLives = new PlayerLives(new Coordinate2D(20,20));
+            addEntity(playerLives);
+
+            var enemySpriteOne = new EnemyOne(new Coordinate2D(40, -40), new App());
+            addEntity(enemySpriteOne);
+
+            var enemySpriteTwo = new EnemyTwo(new Coordinate2D(140, -40), new App());
+            addEntity(enemySpriteTwo);
 
         }
     }

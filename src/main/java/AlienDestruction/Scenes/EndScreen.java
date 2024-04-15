@@ -14,6 +14,10 @@ public class EndScreen extends StaticScene implements YaegerScene{
 
     private App app;
 
+    public EndScreen(App app) {
+        this.app = app;
+    }
+
     @Override
     public void setupScene() {
         setBackgroundColor(Color.BLACK);

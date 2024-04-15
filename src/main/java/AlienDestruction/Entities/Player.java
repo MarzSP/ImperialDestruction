@@ -1,8 +1,11 @@
 package AlienDestruction.Entities;
 
 import AlienDestruction.App;
+import AlienDestruction.Scenes.LivesText;
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.Size;
+import com.github.hanyaeger.api.entities.Collided;
+import com.github.hanyaeger.api.entities.Collider;
 import com.github.hanyaeger.api.entities.Newtonian;
 import com.github.hanyaeger.api.entities.SceneBorderTouchingWatcher;
 import com.github.hanyaeger.api.entities.impl.DynamicSpriteEntity;
@@ -11,19 +14,31 @@ import com.github.hanyaeger.api.scenes.SceneBorder;
 import com.github.hanyaeger.api.userinput.KeyListener;
 import javafx.scene.input.KeyCode;
 
+import java.util.List;
+import java.util.Random;
 import java.util.Set;
 
-public class Player extends DynamicSpriteEntity implements  KeyListener, SceneBorderTouchingWatcher, Newtonian {
-
+//public class Player extends DynamicSpriteEntity implements  KeyListener, SceneBorderTouchingWatcher, Newtonian {
+public class Player extends GameEntities implements Collided {
     private App app;
 
+   // private LivesText livesText;
+    public int lives = 1;
+
+    public int getLives() {
+        return lives;
+    }
+
+
     public Player(Coordinate2D location, App app) {
-        super("sprites/yWingV1.png", location, new Size(55,100));
+        super("sprites/xWingV1.png", location, new Size(55,100));
+
+//        livesText = livesText;
+//        livesText.setLivesText(lives);
 
         setGravityConstant(0.070);
         setFrictionConstant(0.00);
     }
-
 
     @Override
     public void onPressedKeysChange(Set<KeyCode> pressedKeys){
@@ -33,7 +48,6 @@ public class Player extends DynamicSpriteEntity implements  KeyListener, SceneBo
             setMotion(5,80d);           // Right + slightly down (simulate speed reduction)
         } else if(pressedKeys.contains(KeyCode.W)){
             setMotion(3,180d);          // Up
-            soundEngine();
             checkMaxHeight();
         } else if(pressedKeys.contains(KeyCode.E)){
             setMotion(3,125d);          // Up + right
@@ -65,6 +79,13 @@ public class Player extends DynamicSpriteEntity implements  KeyListener, SceneBo
                 break;
         }
     }
+    @Override
+    public void onCollision(List<Collider> collidingObject) {
+        setAnchorLocation(new Coordinate2D((getSceneWidth() - getWidth()) / 2, 550));
+        lives = lives - 1;
+        checkLives();
+        System.out.println(lives);
+    }
 
     // When [W] Booster check for maximum boost
     public void checkMaxHeight() {
@@ -73,9 +94,10 @@ public class Player extends DynamicSpriteEntity implements  KeyListener, SceneBo
         }
     }
 
-    public void soundEngine() {
-        var xWingEngine = new SoundClip("audio/xwingengine.mp3");
-        xWingEngine.play();
+    public void checkLives(){
+        if(lives < 0) {
+            app.setActiveScene(App.SceneIds.EndScreen);
+        }
     }
 
     public void soundLaser() {
