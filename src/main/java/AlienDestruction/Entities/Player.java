@@ -1,29 +1,24 @@
 package AlienDestruction.Entities;
 
 import AlienDestruction.App;
-import AlienDestruction.Scenes.LivesText;
+import AlienDestruction.Scenes.GameScreen;
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.Size;
 import com.github.hanyaeger.api.entities.Collided;
 import com.github.hanyaeger.api.entities.Collider;
-import com.github.hanyaeger.api.entities.Newtonian;
-import com.github.hanyaeger.api.entities.SceneBorderTouchingWatcher;
-import com.github.hanyaeger.api.entities.impl.DynamicSpriteEntity;
 import com.github.hanyaeger.api.media.SoundClip;
 import com.github.hanyaeger.api.scenes.SceneBorder;
-import com.github.hanyaeger.api.userinput.KeyListener;
 import javafx.scene.input.KeyCode;
 
 import java.util.List;
-import java.util.Random;
 import java.util.Set;
 
 //public class Player extends DynamicSpriteEntity implements  KeyListener, SceneBorderTouchingWatcher, Newtonian {
 public class Player extends GameEntities implements Collided {
     private App app;
 
-   // private LivesText livesText;
-    public int lives = 1;
+    //private LivesText livesText;
+    public int lives = 3;
 
     public int getLives() {
         return lives;
@@ -32,9 +27,6 @@ public class Player extends GameEntities implements Collided {
 
     public Player(Coordinate2D location, App app) {
         super("sprites/xWingV1.png", location, new Size(55,100));
-
-//        livesText = livesText;
-//        livesText.setLivesText(lives);
 
         setGravityConstant(0.070);
         setFrictionConstant(0.00);
@@ -102,6 +94,10 @@ public class Player extends GameEntities implements Collided {
 
     public void soundLaser() {
         var xWingLaser = new SoundClip("audio/xwinglaser.mp3");
+        //var laserRedSprite = new Laser(new Coordinate2D(getLocationInScene().getX(), getLocationInScene().getY()), new App());
+
         xWingLaser.play();
     }
+
+
 }

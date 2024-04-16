@@ -4,24 +4,18 @@ import AlienDestruction.App;
 import AlienDestruction.Buttons.MenuButton;
 import AlienDestruction.Entities.EnemyOne;
 import AlienDestruction.Entities.EnemyTwo;
+//import AlienDestruction.Weapons.Laser;
 import AlienDestruction.Entities.Player;
-import com.github.hanyaeger.api.AnchorPoint;
 import com.github.hanyaeger.api.Coordinate2D;
-import com.github.hanyaeger.api.entities.Newtonian;
-import com.github.hanyaeger.api.entities.SceneBorderTouchingWatcher;
-import com.github.hanyaeger.api.entities.impl.TextEntity;
 import com.github.hanyaeger.api.scenes.DynamicScene;
-import com.github.hanyaeger.api.userinput.KeyListener;
-import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
 
-    public class GameScreen extends DynamicScene {
+public class GameScreen extends DynamicScene {
 
         private App app;
 
         public GameScreen(App app) {
             this.app = app;
+
         }
 
         @Override
@@ -47,5 +41,9 @@ import javafx.scene.text.FontWeight;
             var enemySpriteTwo = new EnemyTwo(new Coordinate2D(140, -40), new App());
             addEntity(enemySpriteTwo);
 
+//            var laserRedSprite = new Laser(new Coordinate2D(500, 600));
+//            addEntity(laserRedSprite);
         }
+
+
     }
