@@ -19,7 +19,7 @@ import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 
 public abstract class MenuManager extends StaticScene implements YaegerScene {
-   // extends StaticScene implements YaegerScene
+
 
     public void setupScene() {
 
