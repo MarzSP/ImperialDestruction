@@ -4,23 +4,27 @@ import AlienDestruction.App;
 import AlienDestruction.Buttons.MenuButton;
 import AlienDestruction.Entities.EnemyOne;
 import AlienDestruction.Entities.EnemyTwo;
-//import AlienDestruction.Weapons.Laser;
 import AlienDestruction.Entities.Player;
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.scenes.DynamicScene;
 
-public class GameScreen extends DynamicScene {
+
+
+
+    public class GameScreen extends DynamicScene {
 
         private App app;
 
-        public GameScreen(App app) {
+        public GameScreen (App app) {
             this.app = app;
-
         }
 
         @Override
         public void setupScene() {
             setBackgroundImage("backgrounds/universe2.jpg");
+          //  menuBar = new Menubar(getWidth(), 30, "black");
+            //getRootPane().addChild(menubar);
+
         }
 
 
@@ -41,9 +45,5 @@ public class GameScreen extends DynamicScene {
             var enemySpriteTwo = new EnemyTwo(new Coordinate2D(140, -40), new App());
             addEntity(enemySpriteTwo);
 
-//            var laserRedSprite = new Laser(new Coordinate2D(500, 600));
-//            addEntity(laserRedSprite);
         }
-
-
     }

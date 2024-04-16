@@ -2,27 +2,32 @@ package AlienDestruction.Scenes;
 
 import AlienDestruction.App;
 import AlienDestruction.Buttons.DifficultyButtons;
+//import AlienDestruction.Buttons.MusicButton;
 import AlienDestruction.Buttons.StartButton;
 import com.github.hanyaeger.api.AnchorPoint;
 import com.github.hanyaeger.api.Coordinate2D;
+import com.github.hanyaeger.api.entities.impl.SpriteEntity;
 import com.github.hanyaeger.api.entities.impl.TextEntity;
+import com.github.hanyaeger.api.media.SoundClip;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 
 public class StartScreen extends MenuManager {
 
-    private final App app; // referentie naar app class
-
-
+    private final App app;
     public StartScreen(App app) {
         this.app = app;
     }
 
     public void setupScene() {
-        setBackgroundAudio("audio/swmaintheme.mp3");
         setBackgroundImage("backgrounds/universe1.jpg");
 
+       // SoundClip musicClip = new SoundClip("audio/swmaintheme.mp3", SoundClip.INDEFINITE);
+        //MusicButton musicButton = new MusicButton(app, "music_on.png", "music_off.png", musicClip);
+       // musicButton.setAnchorLocation(new Coordinate2D(getWidth() - 50, 20));;
+
+       // addEntity(musicButton);
     }
 
     @Override
@@ -53,6 +58,7 @@ public class StartScreen extends MenuManager {
         addEntity(easyButton);
         addEntity(mediumButton);
         addEntity(hardButton);
+
     }
     }
 
