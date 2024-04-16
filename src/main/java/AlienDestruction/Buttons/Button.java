@@ -21,7 +21,7 @@ public abstract class Button extends TextEntity implements MouseButtonPressedLis
 
     @Override
     public void onMouseEntered() {
-        setFill(Color.LIGHTGOLDENRODYELLOW);
+        setFill(Color.RED);
         setCursor(Cursor.DEFAULT);
     }
 
