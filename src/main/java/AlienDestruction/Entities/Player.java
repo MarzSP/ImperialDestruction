@@ -33,7 +33,7 @@ public class Player extends DynamicSpriteEntity implements KeyListener, SceneBor
 
 
     public Player(Coordinate2D location) {
-        super("sprites/xWingV1.png", location, new Size(55,100));
+        super("sprites/xWingV1.png", location, new Size(80,80));
 
         setGravityConstant(0.070);
         setFrictionConstant(0.00);
@@ -55,12 +55,16 @@ public class Player extends DynamicSpriteEntity implements KeyListener, SceneBor
             setMotion(3,235d);          // Up + left
             checkMaxHeight();
         } else if(pressedKeys.contains(KeyCode.SPACE)) {
-            shootable.shoot(new LaserBeam(new Coordinate2D(this.getLocationInScene())));
+            double x = getLocationInScene().getX();
+            double y = getLocationInScene().getY();
+            shootable.shoot(new LaserBeam(new Coordinate2D(x + 5, y)));     // Todo: 5 & 70 dynamisch aanpassen aan size sprite + pos
+            shootable.shoot(new LaserBeam(new Coordinate2D(x + 70, y)));
             soundLaser();                              // Fire Laser
         } else if(pressedKeys.isEmpty()){
             setSpeed(1);
         }
     }
+
 
     @Override
     public void notifyBoundaryTouching(SceneBorder border){

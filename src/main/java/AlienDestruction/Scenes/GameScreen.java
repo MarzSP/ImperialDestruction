@@ -44,11 +44,11 @@ import com.github.hanyaeger.api.scenes.DynamicScene;
             MenuButton menuButton = new MenuButton(app, new Coordinate2D(800, 10));
             addEntity(menuButton);
 
-            var playerSprite = new Player(new Coordinate2D(getWidth() / 2, 550));
-            addEntity(playerSprite);
+//            var playerSprite = new Player(new Coordinate2D(getWidth() / 2, 550));
+//            addEntity(playerSprite);
 
-//            var playerLives = new PlayerLives(new Coordinate2D(20,20));
-//            addEntity(playerLives);
+            var playerLives = new PlayerLives(new Coordinate2D(20,20));
+            addEntity(playerLives);
 
             var enemySpriteOne = new EnemyOne(new Coordinate2D(40, -40), new App());
             addEntity(enemySpriteOne);

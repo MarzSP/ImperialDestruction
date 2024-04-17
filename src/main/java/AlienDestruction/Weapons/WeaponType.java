@@ -10,7 +10,6 @@ import java.util.List;
 
 public abstract class WeaponType extends DynamicSpriteEntity implements Collider, Collided {
 
-
     protected WeaponType(String resource, Coordinate2D initialLocation, Size size) {
         super(resource, initialLocation, size );
     }
