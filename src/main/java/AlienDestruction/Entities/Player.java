@@ -2,20 +2,27 @@ package AlienDestruction.Entities;
 
 import AlienDestruction.App;
 import AlienDestruction.Scenes.GameScreen;
+import AlienDestruction.Weapons.IShootable;
+import AlienDestruction.Weapons.LaserBeam;
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.Size;
 import com.github.hanyaeger.api.entities.Collided;
 import com.github.hanyaeger.api.entities.Collider;
+import com.github.hanyaeger.api.entities.Newtonian;
+import com.github.hanyaeger.api.entities.SceneBorderTouchingWatcher;
+import com.github.hanyaeger.api.entities.impl.DynamicSpriteEntity;
 import com.github.hanyaeger.api.media.SoundClip;
 import com.github.hanyaeger.api.scenes.SceneBorder;
+import com.github.hanyaeger.api.userinput.KeyListener;
 import javafx.scene.input.KeyCode;
 
 import java.util.List;
 import java.util.Set;
 
 //public class Player extends DynamicSpriteEntity implements  KeyListener, SceneBorderTouchingWatcher, Newtonian {
-public class Player extends GameEntities implements Collided {
+public class Player extends DynamicSpriteEntity implements KeyListener, SceneBorderTouchingWatcher, Newtonian, Collided{
     private App app;
+    private IShootable shootable;
 
     //private LivesText livesText;
     public int lives = 3;
@@ -25,7 +32,7 @@ public class Player extends GameEntities implements Collided {
     }
 
 
-    public Player(Coordinate2D location, App app) {
+    public Player(Coordinate2D location) {
         super("sprites/xWingV1.png", location, new Size(55,100));
 
         setGravityConstant(0.070);
@@ -48,6 +55,7 @@ public class Player extends GameEntities implements Collided {
             setMotion(3,235d);          // Up + left
             checkMaxHeight();
         } else if(pressedKeys.contains(KeyCode.SPACE)) {
+            shootable.shoot(new LaserBeam(new Coordinate2D(this.getLocationInScene())));
             soundLaser();                              // Fire Laser
         } else if(pressedKeys.isEmpty()){
             setSpeed(1);
@@ -97,6 +105,10 @@ public class Player extends GameEntities implements Collided {
         //var laserRedSprite = new Laser(new Coordinate2D(getLocationInScene().getX(), getLocationInScene().getY()), new App());
 
         xWingLaser.play();
+    }
+
+    public void setWeapon(IShootable weapon){
+        this.shootable = weapon;
     }
 
 
