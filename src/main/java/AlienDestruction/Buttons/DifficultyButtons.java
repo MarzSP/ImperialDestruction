@@ -11,7 +11,7 @@ import javafx.scene.text.FontWeight;
 //Difficulty level choice Easy Medium Hard
 public class DifficultyButtons extends Button {
     private static final String[] DIFFICULTIES = {"Easy", "Medium", "Hard"};
-    public DifficultyButtons (App app, Coordinate2D initialLocation, int difficultyIndex) {
+    public DifficultyButtons (Coordinate2D initialLocation, int difficultyIndex) {
         super(initialLocation, DIFFICULTIES[difficultyIndex]);
         setFill(Color.GOLD);
         setFont(Font.font("Impact", FontWeight.SEMI_BOLD, 40));

@@ -5,7 +5,7 @@ import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.Size;
 
 public class EnemyTwo extends GameEntities{
-    public EnemyTwo(Coordinate2D location, App app) {
+    public EnemyTwo(Coordinate2D location) {
         super("sprites/tieIntercepterV1.png", location, new Size(80,80));
 
         setPoints(80);

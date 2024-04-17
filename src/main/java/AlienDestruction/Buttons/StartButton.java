@@ -11,7 +11,9 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 
 public class StartButton extends Button implements MouseButtonPressedListener {
-    private App app;
+
+    protected App app;
+
 
     public StartButton (App app, Coordinate2D initialLocation) {
         super(initialLocation, "Start Game!");
@@ -26,6 +28,5 @@ public class StartButton extends Button implements MouseButtonPressedListener {
     @Override
     public void onMouseButtonPressed(MouseButton mousebutton, Coordinate2D coordinate2D){
         app.setActiveScene(App.SceneIds.GameScreen);
-
     }
 }

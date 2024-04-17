@@ -3,6 +3,7 @@ module AlienDestruction {
     exports AlienDestruction;
     exports AlienDestruction.Buttons;
     exports AlienDestruction.Scenes;
+    exports AlienDestruction.Entities.MenuBar;
 
     opens audio;
     opens backgrounds;

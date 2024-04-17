@@ -2,6 +2,7 @@ package AlienDestruction.Buttons;
 
 
 import com.github.hanyaeger.api.Coordinate2D;
+import com.github.hanyaeger.api.entities.impl.DynamicSpriteEntity;
 import com.github.hanyaeger.api.entities.impl.TextEntity;
 import com.github.hanyaeger.api.userinput.MouseButtonPressedListener;
 import com.github.hanyaeger.api.userinput.MouseEnterListener;
@@ -12,24 +13,11 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 
-public abstract class Button extends TextEntity implements MouseButtonPressedListener, MouseExitListener, MouseEnterListener {
-
+public abstract class SpriteButton extends DynamicSpriteEntity implements MouseButtonPressedListener {
     abstract public void onMouseButtonPressed(MouseButton button, Coordinate2D coordinate2D);
 
-    public Button(final Coordinate2D initialLocation, final String text) {
-        super(initialLocation, text);
-        setFont(Font.font("Roboto", FontWeight.SEMI_BOLD, 30));
+    public SpriteButton(final String resource, final Coordinate2D initialLocation) {
+        super(resource, initialLocation);
     }
 
-    @Override
-    public void onMouseEntered() {
-        setFill(Color.RED);
-        setCursor(Cursor.DEFAULT);
-    }
-
-    @Override
-    public void onMouseExited() {
-        setFill(Color.GOLD);
-        setCursor(Cursor.DEFAULT);
-    }
 }
