@@ -13,10 +13,8 @@ import javafx.scene.text.FontWeight;
 
 public class EndScreen extends StaticScene implements YaegerScene{
 
-    private App app;
+    public EndScreen() {
 
-    public EndScreen(App app) {
-        this.app = app;
     }
 
     @Override

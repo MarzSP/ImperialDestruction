@@ -33,7 +33,7 @@ public class App extends YaegerGame {
 
     addScene(0, new StartScreen(this));
     addScene(1, new GameScreen(this));
-    addScene(2, new EndScreen(this));
+    addScene(2, new EndScreen());
     addScene(3, new GameMenu());
     //setActiveScene(2);
     }
@@ -43,20 +43,6 @@ public class App extends YaegerGame {
         public static final int GameScreen = 1;
         public static final int EndScreen = 2;
         public static final int GameMenu = 3;
-    }
-
-    public static class LivesText extends TextEntity {
-        public LivesText(Coordinate2D initialLocation) {
-            super(initialLocation);
-
-            setFont(Font.font("Roboto", FontWeight.NORMAL, 30));
-            setFill(Color.ANTIQUEWHITE);
-        }
-
-        public void setLivesText(int lives) {
-
-            setText(": " + lives);
-        }
     }
 
 }
