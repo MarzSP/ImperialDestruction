@@ -44,8 +44,7 @@ public class GameScreen extends DynamicScene implements EntitySpawnerContainer {
         var enemySpriteTwo = new EnemyTwo(new Coordinate2D(140, -40));
         addEntity(enemySpriteTwo);
 
-        var playerLivesText = new PlayerLivesText(new Coordinate2D(60, 20));
-        //var player = new Player(playerLivesText, new Coordinate2D(getWidth() / 2, 550));
+
 
         addEntity(player);
 
@@ -54,12 +53,18 @@ public class GameScreen extends DynamicScene implements EntitySpawnerContainer {
                 new Size(1000, 80)
         ));
 
+        var playerLivesText = new PlayerLivesText(new Coordinate2D(60, 20));
+        //var player = new Player(playerLivesText, new Coordinate2D(getWidth() / 2, 550));
+
         var playerLives = new PlayerLivesSprite(new Coordinate2D(20,20));
         var boost = new BoosterButton("sprites/booster.png", new Coordinate2D(90,20));
+
         player.setBooster(boost);
         addEntity(boost);
         addEntity(playerLives);
         addEntity(playerLivesText);
+
+
 
         MenuButton menuButton = new MenuButton(app, new Coordinate2D(930, 20));
         addEntity(menuButton);

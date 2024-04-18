@@ -24,10 +24,16 @@ public class Player extends DynamicSpriteEntity implements KeyListener, SceneBor
 // public class Player extends GameEntities implements Collided {
     private App app;
     private IShootable shootable;
-    public int lives;
+    private int lives;
+    private int score;
+
     private BoosterButton booster;
     public int getLives() {
         return lives;
+    }
+
+    public int getScore() {
+        return score;
     }
     public void setLives(int lives) {
         this.lives = lives;
