@@ -42,7 +42,7 @@ public class GameScreen extends DynamicScene {
 
         addEntity(new BlackRectangle(
                 new Coordinate2D(0, 0),
-                new Size(1000, 100)
+                new Size(1000, 80)
         ));
 
         var playerLives = new PlayerLivesSprite(new Coordinate2D(20,20));
@@ -52,7 +52,7 @@ public class GameScreen extends DynamicScene {
         addEntity(playerLives);
         addEntity(playerLivesText);
 
-        MenuButton menuButton = new MenuButton(app, new Coordinate2D(800, 10));
+        MenuButton menuButton = new MenuButton(app, new Coordinate2D(930, 20));
         addEntity(menuButton);
     }
 }
