@@ -2,11 +2,10 @@ package AlienDestruction.Scenes;
 
 import AlienDestruction.App;
 import AlienDestruction.Buttons.DifficultyButtons;
-//import AlienDestruction.Buttons.MusicButton;
+import AlienDestruction.Buttons.MusicButton;
 import AlienDestruction.Buttons.StartButton;
 import com.github.hanyaeger.api.AnchorPoint;
 import com.github.hanyaeger.api.Coordinate2D;
-import com.github.hanyaeger.api.entities.impl.SpriteEntity;
 import com.github.hanyaeger.api.entities.impl.TextEntity;
 import com.github.hanyaeger.api.media.SoundClip;
 import javafx.scene.paint.Color;
@@ -14,8 +13,8 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 
 public class StartScreen extends MenuManager {
+    protected final App app;
 
-    private final App app;
     public StartScreen(App app) {
         this.app = app;
     }
@@ -23,11 +22,9 @@ public class StartScreen extends MenuManager {
     public void setupScene() {
         setBackgroundImage("backgrounds/universe1.jpg");
 
-       // SoundClip musicClip = new SoundClip("audio/swmaintheme.mp3", SoundClip.INDEFINITE);
-        //MusicButton musicButton = new MusicButton(app, "music_on.png", "music_off.png", musicClip);
-       // musicButton.setAnchorLocation(new Coordinate2D(getWidth() - 50, 20));;
-
-       // addEntity(musicButton);
+        SoundClip musicClip = new SoundClip("audio/swmaintheme.mp3", SoundClip.INDEFINITE);
+        MusicButton musicButton = new MusicButton(new Coordinate2D(40, 40), musicClip);
+        addEntity(musicButton);
     }
 
     @Override
@@ -51,9 +48,9 @@ public class StartScreen extends MenuManager {
         Coordinate2D button2Location = new Coordinate2D(getWidth() * 1/2 - 35, getHeight() /2);
         Coordinate2D button3Location = new Coordinate2D(getWidth() * 2/3, getHeight() /2);
 
-        DifficultyButtons easyButton = new DifficultyButtons(app, button1Location, 0);
-        DifficultyButtons mediumButton = new DifficultyButtons(app, button2Location, 1);
-        DifficultyButtons hardButton = new DifficultyButtons(app, button3Location, 2);
+        DifficultyButtons easyButton = new DifficultyButtons(button1Location, 0);
+        DifficultyButtons mediumButton = new DifficultyButtons(button2Location, 1);
+        DifficultyButtons hardButton = new DifficultyButtons(button3Location, 2);
 
         addEntity(easyButton);
         addEntity(mediumButton);

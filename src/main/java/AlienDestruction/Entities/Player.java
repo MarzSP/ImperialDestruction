@@ -4,6 +4,9 @@ import AlienDestruction.App;
 import AlienDestruction.Scenes.GameScreen;
 import AlienDestruction.Weapons.IShootable;
 import AlienDestruction.Weapons.LaserBeam;
+import AlienDestruction.Buttons.BoosterButton;
+import AlienDestruction.Entities.MenuBar.PlayerLivesText;
+
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.Size;
 import com.github.hanyaeger.api.entities.Collided;
@@ -24,19 +27,38 @@ public class Player extends DynamicSpriteEntity implements KeyListener, SceneBor
     private App app;
     private IShootable shootable;
 
-    //private LivesText livesText;
-    public int lives = 3;
+    public int lives;
+    private BoosterButton booster;
 
     public int getLives() {
         return lives;
     }
 
+    public void setLives(int lives) {
+        this.lives = lives;
+        this.playerLivesText.setText(Integer.toString(lives));
+    }
 
-    public Player(Coordinate2D location) {
+
+
+    protected final PlayerLivesText playerLivesText;
+    public Player(PlayerLivesText playerLivesText, Coordinate2D location) {
         super("sprites/xWingV1.png", location, new Size(80,80));
 
+
+        this.playerLivesText = playerLivesText;
+        this.setLives(3);
         setGravityConstant(0.070);
         setFrictionConstant(0.00);
+    }
+
+    @Override
+    public void setMotion( double speed, final double direction) {
+        boolean boosterActive = booster.isActive();
+        if (boosterActive) {
+            speed *= 2;
+        }
+        super.setMotion(speed, direction);
     }
 
     @Override
@@ -116,4 +138,11 @@ public class Player extends DynamicSpriteEntity implements KeyListener, SceneBor
     }
 
 
+    public BoosterButton getBooster() {
+        return booster;
+    }
+
+    public void setBooster(BoosterButton booster) {
+        this.booster = booster;
+    }
 }

@@ -8,7 +8,7 @@ import com.github.hanyaeger.api.entities.Collider;
 
 public class EnemyOne extends GameEntities {
 
-    public EnemyOne(Coordinate2D location, App app) {
+    public EnemyOne(Coordinate2D location) {
 
         super("sprites/tieFighterV1.png", location, new Size(80,80));
 
