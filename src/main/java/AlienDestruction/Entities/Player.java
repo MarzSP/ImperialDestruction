@@ -1,31 +1,22 @@
 package AlienDestruction.Entities;
 
 import AlienDestruction.App;
-import AlienDestruction.Scenes.GameScreen;
-import AlienDestruction.Weapons.IShootable;
-import AlienDestruction.Weapons.LaserBeam;
 import AlienDestruction.Buttons.BoosterButton;
 import AlienDestruction.Entities.MenuBar.PlayerLivesText;
-
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.Size;
 import com.github.hanyaeger.api.entities.Collided;
 import com.github.hanyaeger.api.entities.Collider;
-import com.github.hanyaeger.api.entities.Newtonian;
-import com.github.hanyaeger.api.entities.SceneBorderTouchingWatcher;
-import com.github.hanyaeger.api.entities.impl.DynamicSpriteEntity;
 import com.github.hanyaeger.api.media.SoundClip;
 import com.github.hanyaeger.api.scenes.SceneBorder;
-import com.github.hanyaeger.api.userinput.KeyListener;
 import javafx.scene.input.KeyCode;
 
 import java.util.List;
 import java.util.Set;
 
 //public class Player extends DynamicSpriteEntity implements  KeyListener, SceneBorderTouchingWatcher, Newtonian {
-public class Player extends DynamicSpriteEntity implements KeyListener, SceneBorderTouchingWatcher, Newtonian, Collided{
+public class Player extends GameEntities implements Collided {
     private App app;
-    private IShootable shootable;
 
     public int lives;
     private BoosterButton booster;
@@ -40,11 +31,9 @@ public class Player extends DynamicSpriteEntity implements KeyListener, SceneBor
     }
 
 
-
     protected final PlayerLivesText playerLivesText;
     public Player(PlayerLivesText playerLivesText, Coordinate2D location) {
-        super("sprites/xWingV1.png", location, new Size(80,80));
-
+        super("sprites/xWingV1.png", location, new Size(55,100));
 
         this.playerLivesText = playerLivesText;
         this.setLives(3);
@@ -77,16 +66,11 @@ public class Player extends DynamicSpriteEntity implements KeyListener, SceneBor
             setMotion(3,235d);          // Up + left
             checkMaxHeight();
         } else if(pressedKeys.contains(KeyCode.SPACE)) {
-            double x = getLocationInScene().getX();
-            double y = getLocationInScene().getY();
-            shootable.shoot(new LaserBeam(new Coordinate2D(x + 5, y)));     // Todo: 5 & 70 dynamisch aanpassen aan size sprite + pos
-            shootable.shoot(new LaserBeam(new Coordinate2D(x + 70, y)));
             soundLaser();                              // Fire Laser
         } else if(pressedKeys.isEmpty()){
             setSpeed(1);
         }
     }
-
 
     @Override
     public void notifyBoundaryTouching(SceneBorder border){
@@ -131,10 +115,6 @@ public class Player extends DynamicSpriteEntity implements KeyListener, SceneBor
         //var laserRedSprite = new Laser(new Coordinate2D(getLocationInScene().getX(), getLocationInScene().getY()), new App());
 
         xWingLaser.play();
-    }
-
-    public void setWeapon(IShootable weapon){
-        this.shootable = weapon;
     }
 
 
