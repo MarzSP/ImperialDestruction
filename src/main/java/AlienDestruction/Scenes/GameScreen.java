@@ -42,7 +42,7 @@ public class GameScreen extends DynamicScene implements EntitySpawnerContainer {
 
     @Override
     public void setupEntities() {
-        player = new Player(new PlayerLivesText(new Coordinate2D(60, 20)),new Coordinate2D(getWidth() / 2, 550), app);
+        player = new Player(new Coordinate2D(getWidth() / 2, 550));
         player.setWeapon((IShootable) weaponTypeSpawner);
 
         var enemySpriteOne = new EnemyOne(new Coordinate2D(40, -40));
@@ -58,8 +58,8 @@ public class GameScreen extends DynamicScene implements EntitySpawnerContainer {
                 new Size(1000, 80)
         ));
 
-        var playerLivesText = new PlayerLivesText(new Coordinate2D(60, 20));
-        //var player = new Player(playerLivesText, new Coordinate2D(getWidth() / 2, 550));
+        var playerLivesText = new PlayerLivesText(new Coordinate2D(60, 20), player);
+
 
         var playerLives = new PlayerLivesSprite(new Coordinate2D(20,20));
         var boost = new BoosterButton("sprites/booster.png", new Coordinate2D(90,20));

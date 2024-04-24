@@ -2,7 +2,6 @@ package AlienDestruction.Entities;
 
 import AlienDestruction.App;
 import AlienDestruction.Buttons.BoosterButton;
-import AlienDestruction.MenuBar.PlayerLivesText;
 import AlienDestruction.Weapons.IShootable;
 import AlienDestruction.Weapons.LaserBeam;
 import com.github.hanyaeger.api.Coordinate2D;
@@ -37,14 +36,11 @@ public class Player extends DynamicSpriteEntity implements KeyListener, SceneBor
     }
     public void setLives(int lives) {
         this.lives = lives;
-        this.playerLivesText.setText(Integer.toString(lives));
+
     }
-    protected final PlayerLivesText playerLivesText;
-    public Player(PlayerLivesText playerLivesText, Coordinate2D location, App app) {
+
+    public Player(Coordinate2D location) {
         super("sprites/xWingV1.png", location, new Size(80,80));
-
-
-        this.playerLivesText = playerLivesText;
         this.app = app;
         this.setLives(1);
         setGravityConstant(0.070);
