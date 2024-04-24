@@ -11,8 +11,11 @@ import com.github.hanyaeger.api.media.SoundClip;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
-
-public class StartScreen extends MenuManager {
+/** Deze klasse is verantwoordelijk voor het openingsscherm, deze bevat:
+ * de "Imperial Destruction" titel, achtergrond afbeelding, muziek aan/uit knop, startknop
+ * knoppen voor Easy, Medium, en Hard moeilijkheidsgraad.
+**/
+ public class StartScreen extends MenuManager {
     protected final App app;
 
     public StartScreen(App app) {

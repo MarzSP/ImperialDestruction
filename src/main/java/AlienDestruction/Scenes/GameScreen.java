@@ -17,7 +17,10 @@ import com.github.hanyaeger.api.Size;
 import com.github.hanyaeger.api.entities.EntitySpawner;
 import com.github.hanyaeger.api.scenes.DynamicScene;
 
-
+/**
+ * De klasse GameScreen is een dynamisch scherm (extends DynamicScene) wat het speelveld maakt.
+ * GameScreen bevat een achtergrondafbeelding, speler, vijanden, menu balk met daarin: booster, levensmenu, en score.
+ */
 public class GameScreen extends DynamicScene implements EntitySpawnerContainer {
 
     protected App app;

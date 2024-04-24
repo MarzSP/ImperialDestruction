@@ -7,6 +7,9 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 
+/**
+ * De PlayAgainButton is een sub-klasse van Button. Deze knop wordt in het game-menu gebruikt om het spel opnieuw op te starten nadat het is afgelopen.
+ */
     public class PlayAgainButton extends Button {
         protected App app;
 
