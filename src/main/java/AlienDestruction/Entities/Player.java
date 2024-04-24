@@ -2,7 +2,7 @@ package AlienDestruction.Entities;
 
 import AlienDestruction.App;
 import AlienDestruction.Buttons.BoosterButton;
-import AlienDestruction.Entities.MenuBar.PlayerLivesText;
+import AlienDestruction.MenuBar.PlayerLivesText;
 import AlienDestruction.Weapons.IShootable;
 import AlienDestruction.Weapons.LaserBeam;
 import com.github.hanyaeger.api.Coordinate2D;
@@ -40,11 +40,13 @@ public class Player extends DynamicSpriteEntity implements KeyListener, SceneBor
         this.playerLivesText.setText(Integer.toString(lives));
     }
     protected final PlayerLivesText playerLivesText;
-    public Player(PlayerLivesText playerLivesText, Coordinate2D location) {
+    public Player(PlayerLivesText playerLivesText, Coordinate2D location, App app) {
         super("sprites/xWingV1.png", location, new Size(80,80));
 
+
         this.playerLivesText = playerLivesText;
-        this.setLives(3);
+        this.app = app;
+        this.setLives(1);
         setGravityConstant(0.070);
         setFrictionConstant(0.00);
     }
@@ -60,6 +62,9 @@ public class Player extends DynamicSpriteEntity implements KeyListener, SceneBor
 
     @Override
     public void onPressedKeysChange(Set<KeyCode> pressedKeys){
+        if(pressedKeys.contains(KeyCode.SPACE)) {
+            shoot();
+        }
         if(pressedKeys.contains(KeyCode.A)){
             setMotion(5,280d);          // Left + Slightly down (Simulate speed reduction)
         } else if(pressedKeys.contains(KeyCode.D)){
@@ -73,14 +78,6 @@ public class Player extends DynamicSpriteEntity implements KeyListener, SceneBor
         } else if(pressedKeys.contains(KeyCode.Q)){
             setMotion(3,235d);          // Up + left
             checkMaxHeight();
-        } else if(pressedKeys.contains(KeyCode.SPACE)) {
-            double x = getLocationInScene().getX();
-            double y = getLocationInScene().getY();
-            shootable.shoot(new LaserBeam(new Coordinate2D(x + 5, y))); // todo: dynamisch aanpassen aan size sprite / pos lasers on sprite
-            shootable.shoot(new LaserBeam(new Coordinate2D(x + 70, y)));
-            soundLaser();                              // Fire Laser
-        } else if(pressedKeys.isEmpty()){
-            setSpeed(1);
         }
     }
 
@@ -106,7 +103,6 @@ public class Player extends DynamicSpriteEntity implements KeyListener, SceneBor
         setAnchorLocation(new Coordinate2D((getSceneWidth() - getWidth()) / 2, 550));
         lives = lives - 1;
         checkLives();
-        System.out.println(lives);
     }
 
     // When [W] Booster check for maximum boost
@@ -117,9 +113,19 @@ public class Player extends DynamicSpriteEntity implements KeyListener, SceneBor
     }
 
     public void checkLives(){
+        System.out.println(lives);
         if(lives < 0) {
+            System.out.println("No lives left");
             app.setActiveScene(App.SceneIds.EndScreen);
         }
+    }
+
+    public void shoot(){
+        double x = getLocationInScene().getX();
+        double y = getLocationInScene().getY();
+        shootable.shoot(new LaserBeam(new Coordinate2D(x + 5, y))); // todo: dynamisch aanpassen aan size sprite / pos lasers on sprite
+        shootable.shoot(new LaserBeam(new Coordinate2D(x + 70, y)));//
+        soundLaser();                              // Fire Laser
     }
 
     public void soundLaser() {

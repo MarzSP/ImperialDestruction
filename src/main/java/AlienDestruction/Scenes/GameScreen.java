@@ -5,9 +5,9 @@ import AlienDestruction.Buttons.BoosterButton;
 import AlienDestruction.Buttons.MenuButton;
 import AlienDestruction.Entities.EnemyOne;
 import AlienDestruction.Entities.EnemyTwo;
-import AlienDestruction.Entities.MenuBar.BlackRectangle;
-import AlienDestruction.Entities.MenuBar.PlayerLivesText;
-import AlienDestruction.Entities.MenuBar.PlayerLivesSprite;
+import AlienDestruction.MenuBar.BlackRectangle;
+import AlienDestruction.MenuBar.PlayerLivesText;
+import AlienDestruction.MenuBar.PlayerLivesSprite;
 import AlienDestruction.Entities.Player;
 import AlienDestruction.Weapons.IShootable;
 import AlienDestruction.Weapons.LaserGun;
@@ -35,7 +35,7 @@ public class GameScreen extends DynamicScene implements EntitySpawnerContainer {
 
     @Override
     public void setupEntities() {
-        player = new Player(new PlayerLivesText(new Coordinate2D(60, 20)),new Coordinate2D(getWidth() / 2, 550));
+        player = new Player(new PlayerLivesText(new Coordinate2D(60, 20)),new Coordinate2D(getWidth() / 2, 550), app);
         player.setWeapon((IShootable) weaponTypeSpawner);
 
         var enemySpriteOne = new EnemyOne(new Coordinate2D(40, -40));
@@ -43,8 +43,6 @@ public class GameScreen extends DynamicScene implements EntitySpawnerContainer {
 
         var enemySpriteTwo = new EnemyTwo(new Coordinate2D(140, -40));
         addEntity(enemySpriteTwo);
-
-
 
         addEntity(player);
 

@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.Random;
 import java.util.Set;
 
-public class GameEntities extends DynamicSpriteEntity implements KeyListener, SceneBorderTouchingWatcher, Newtonian, Collided, Collider{
+public class GameEntities extends DynamicSpriteEntity implements SceneBorderTouchingWatcher, Newtonian, Collided, Collider{
 
     private int points;
     private int penaltyPoints;
@@ -49,12 +49,10 @@ public class GameEntities extends DynamicSpriteEntity implements KeyListener, Sc
     }
 
     @Override
-    public void onPressedKeysChange(Set<KeyCode> set) {
+    public void onCollision(List<Collider> list) { //List<Collider> list
 
     }
 
-    @Override
-    public void onCollision(List<Collider> list) {
 
-    }
 }
+ 
