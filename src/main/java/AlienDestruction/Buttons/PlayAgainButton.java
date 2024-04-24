@@ -19,7 +19,7 @@ import javafx.scene.text.FontWeight;
             setFill(Color.BLACK);
             setStrokeWidth(2);
             setStrokeColor(Color.GOLD);
-            setFont(Font.font("FUTURA BOLD", FontWeight.BOLD, 80));
+            setFont(Font.font("FUTURA BOLD", FontWeight.BOLD, 70));
             setAnchorPoint(AnchorPoint.CENTER_CENTER);
         }
 

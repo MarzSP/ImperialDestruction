@@ -20,8 +20,8 @@ public class MenuButton extends Button {
     public MenuButton(App app, Coordinate2D initialLocation) {
         super(initialLocation, "Menu");
         this.app = app;
-        setFill(Color.CADETBLUE);
-        setFont(Font.font("Impact", FontWeight.SEMI_BOLD, 25));
+        setFill(Color.GOLD);
+        setFont(Font.font("Roboto", FontWeight.BOLD, 20));
         setAnchorPoint(AnchorPoint.TOP_RIGHT);
     }
 

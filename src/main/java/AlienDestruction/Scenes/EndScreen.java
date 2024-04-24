@@ -34,10 +34,10 @@ public class EndScreen extends StaticScene implements YaegerScene{
     public void setupEntities() {
         var gameMenuText = new TextEntity(
                 new Coordinate2D(getWidth() / 2, getHeight() / 4),
-                "GAME OVER");
+                "GAME OVER!");
         gameMenuText.setAnchorPoint(AnchorPoint.TOP_CENTER);
         gameMenuText.setFill(Color.ANTIQUEWHITE);
-        gameMenuText.setFont(Font.font("Roboto", FontWeight.SEMI_BOLD, 60));
+        gameMenuText.setFont(Font.font("Roboto", FontWeight.SEMI_BOLD, 50));
         addEntity(gameMenuText);
 
         var scoreText = new TextEntity(

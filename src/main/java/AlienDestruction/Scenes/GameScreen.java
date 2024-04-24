@@ -15,7 +15,11 @@ import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.EntitySpawnerContainer;
 import com.github.hanyaeger.api.Size;
 import com.github.hanyaeger.api.entities.EntitySpawner;
+import com.github.hanyaeger.api.entities.impl.TextEntity;
 import com.github.hanyaeger.api.scenes.DynamicScene;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 
 /**
  * De klasse GameScreen is een dynamisch scherm (extends DynamicScene) wat het speelveld maakt.
@@ -65,9 +69,19 @@ public class GameScreen extends DynamicScene implements EntitySpawnerContainer {
         addEntity(playerLives);
         addEntity(playerLivesText);
 
+        // Add Level Text
+        var levelText = new TextEntity(new Coordinate2D(250, 20),  "Level:");
+        levelText.setFill(Color.GOLD);
+        levelText.setFont(Font.font("Roboto", FontWeight.BOLD, 20));
+        addEntity(levelText);
 
+        // Add Score Text
+        var scoreText = new TextEntity(new Coordinate2D(450, 20), "Score:");
+        scoreText.setFill(Color.GOLD);
+        scoreText.setFont(Font.font("Roboto", FontWeight.BOLD, 20));
+        addEntity(scoreText);
 
-        MenuButton menuButton = new MenuButton(app, new Coordinate2D(930, 20));
+        MenuButton menuButton = new MenuButton(app, new Coordinate2D(940, 20));
         addEntity(menuButton);
     }
 
