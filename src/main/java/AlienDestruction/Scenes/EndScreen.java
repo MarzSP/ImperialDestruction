@@ -45,7 +45,7 @@ public class EndScreen extends StaticScene implements YaegerScene{
         addEntity(scoreText);
 
         PlayAgainButton playButton;
-        playButton = new PlayAgainButton(new Coordinate2D(getWidth() / 2, getHeight() * 4/6));
+        playButton = new PlayAgainButton(new Coordinate2D(getWidth() / 2, getHeight() * 4/6), app);
         addEntity(playButton);
 
        var quitGameButton = new QuitGameButton(new Coordinate2D(getWidth() / 2, getHeight() * 5/6), "Quit Game");

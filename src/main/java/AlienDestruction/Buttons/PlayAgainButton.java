@@ -10,8 +10,9 @@ import javafx.scene.text.FontWeight;
     public class PlayAgainButton extends Button {
         protected App app;
 
-        public PlayAgainButton(Coordinate2D initialLocation) {
+        public PlayAgainButton(Coordinate2D initialLocation, App app) {
             super(initialLocation, "Play again!");
+            this.app = app;
             setFill(Color.BLACK);
             setStrokeWidth(2);
             setStrokeColor(Color.GOLD);
