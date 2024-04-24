@@ -1,6 +1,7 @@
 package AlienDestruction.Scenes;
 
 import AlienDestruction.App;
+import AlienDestruction.Buttons.PlayAgainButton;
 import AlienDestruction.Buttons.QuitGameButton;
 import com.github.hanyaeger.api.AnchorPoint;
 import com.github.hanyaeger.api.Coordinate2D;
@@ -34,6 +35,18 @@ public class EndScreen extends StaticScene implements YaegerScene{
         gameMenuText.setFill(Color.ANTIQUEWHITE);
         gameMenuText.setFont(Font.font("Roboto", FontWeight.SEMI_BOLD, 60));
         addEntity(gameMenuText);
+
+        var scoreText = new TextEntity(
+                new Coordinate2D(getWidth() / 2, getHeight() / 3),
+                "Score: "); // Zet hier na "Score: " + getScore();
+        scoreText.setAnchorPoint(AnchorPoint.TOP_CENTER);
+        scoreText.setFill(Color.ANTIQUEWHITE);
+        scoreText.setFont(Font.font("Roboto", FontWeight.SEMI_BOLD, 40));
+        addEntity(scoreText);
+
+        PlayAgainButton playButton;
+        playButton = new PlayAgainButton(new Coordinate2D(getWidth() / 2, getHeight() * 4/6));
+        addEntity(playButton);
 
        var quitGameButton = new QuitGameButton(new Coordinate2D(getWidth() / 2, getHeight() * 5/6), "Quit Game");
         addEntity(quitGameButton);
