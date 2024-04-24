@@ -33,7 +33,7 @@ public class App extends YaegerGame {
 
     addScene(0, new StartScreen(this));
     addScene(1, new GameScreen(this));
-    addScene(2, new EndScreen());
+    addScene(2, new EndScreen(this));
     addScene(3, new GameMenu());
     //setActiveScene(2);
     }

@@ -1,4 +1,4 @@
-package AlienDestruction.Entities.MenuBar;
+package AlienDestruction.MenuBar;
 
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.Size;
