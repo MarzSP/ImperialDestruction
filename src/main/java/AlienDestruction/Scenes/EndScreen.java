@@ -12,6 +12,10 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 
+/**
+ * Deze klasse EndScreen is een sub-klasse van StaticScene (niet MenuManager) en implementeert YaegerScene.
+ * Het toont het "GAME OVER" scherm. Deze bevat een achtergrond image, de tekst "Game Over", de score, de optie om opnieuw te spelen, en een 'Quit Game' button.
+ */
 public class EndScreen extends StaticScene implements YaegerScene{
 
     private App app;
@@ -30,10 +34,10 @@ public class EndScreen extends StaticScene implements YaegerScene{
     public void setupEntities() {
         var gameMenuText = new TextEntity(
                 new Coordinate2D(getWidth() / 2, getHeight() / 4),
-                "GAME OVER");
+                "GAME OVER!");
         gameMenuText.setAnchorPoint(AnchorPoint.TOP_CENTER);
         gameMenuText.setFill(Color.ANTIQUEWHITE);
-        gameMenuText.setFont(Font.font("Roboto", FontWeight.SEMI_BOLD, 60));
+        gameMenuText.setFont(Font.font("Roboto", FontWeight.SEMI_BOLD, 50));
         addEntity(gameMenuText);
 
         var scoreText = new TextEntity(

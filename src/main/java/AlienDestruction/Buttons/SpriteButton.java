@@ -13,6 +13,13 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 
+/**
+ * De SpriteButton klasse is een abstracte klasse die de basis vormt voor de knoppen met een afbeelding in plaats van tekst.
+ * Constructor voor de `SpriteButton` klasse:
+ * @param resource De locatie van de sprite afbeelding die voor de knop wordt gebruikt.
+ * @param initialLocation De initiële locatie van de knop op het scherm.
+ * Implements: MouseButtonPressedListener
+ */
 public abstract class SpriteButton extends DynamicSpriteEntity implements MouseButtonPressedListener {
     abstract public void onMouseButtonPressed(MouseButton button, Coordinate2D coordinate2D);
 
