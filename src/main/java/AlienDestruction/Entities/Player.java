@@ -27,6 +27,11 @@ public class Player extends DynamicSpriteEntity implements KeyListener, SceneBor
     private GameScreen gameScreen;
     private IShootable shootable;
     private int lives;
+
+    public GameScreen getGameScreen() {
+        return gameScreen;
+    }
+
     private int score;
     private boolean canShoot = true;
 
@@ -139,6 +144,14 @@ public class Player extends DynamicSpriteEntity implements KeyListener, SceneBor
         shootable.shoot(new LaserBeam(new Coordinate2D(x + 5, y))); // todo: dynamisch aanpassen aan size sprite / pos lasers on sprite
         shootable.shoot(new LaserBeam(new Coordinate2D(x + 70, y)));//
         soundLaser();                              // Fire Laser
+        score++;
+        updateScore();
+        System.out.println(score);
+    }
+
+    private void updateScore() {
+        TextEntity scoreText;
+        gameScreen.getScoreText().setText("Score: " + getScore());
     }
 
     public void soundLaser() {
