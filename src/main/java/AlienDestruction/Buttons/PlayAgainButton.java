@@ -1,5 +1,6 @@
 package AlienDestruction.Buttons;
 import AlienDestruction.App;
+import AlienDestruction.Helper;
 import com.github.hanyaeger.api.AnchorPoint;
 import com.github.hanyaeger.api.Coordinate2D;
 import javafx.scene.input.MouseButton;
@@ -27,7 +28,7 @@ import javafx.scene.text.FontWeight;
         @Override
         public void onMouseButtonPressed(MouseButton button, Coordinate2D coordinate2D) {
             if (button == MouseButton.PRIMARY) {
-                app.setActiveScene(App.SceneIds.StartScreen);
+                app.setActiveScene(Helper.SceneIds.StartScreen);
 }
         }
     }

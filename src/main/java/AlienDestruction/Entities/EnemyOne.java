@@ -11,10 +11,8 @@ public class EnemyOne extends GameEntities {
     public EnemyOne(Coordinate2D location) {
 
         super("sprites/tieFighterV1.png", location, new Size(80,80));
-
+        setMotion(3, 360d);
         setPoints(50);
         setPenaltyPoints(25);
-
-        setMotion(3, 360d);
     }
 }
