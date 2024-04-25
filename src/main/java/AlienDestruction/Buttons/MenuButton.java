@@ -1,6 +1,7 @@
 package AlienDestruction.Buttons;
 
 import AlienDestruction.App;
+import AlienDestruction.Helper;
 import AlienDestruction.Scenes.GameMenu;
 import com.github.hanyaeger.api.AnchorPoint;
 import com.github.hanyaeger.api.Coordinate2D;
@@ -27,7 +28,7 @@ public class MenuButton extends Button {
 
         @Override
         public void onMouseButtonPressed(MouseButton button, Coordinate2D coordinate2D) {
-            app.setActiveScene(App.SceneIds.GameMenu);
+            app.setActiveScene(Helper.SceneIds.GameMenu);
             }
     }
 

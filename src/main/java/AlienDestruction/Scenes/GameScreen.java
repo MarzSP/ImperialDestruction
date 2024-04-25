@@ -27,18 +27,16 @@ import javafx.scene.text.FontWeight;
  */
 public class GameScreen extends DynamicScene implements EntitySpawnerContainer {
 
-
     private TextEntity playerLivesText;
-    public TextEntity getPlayerLivesText() {
-        return playerLivesText;
-    }
     private TextEntity scoreText;
-    public TextEntity getScoreText() {return scoreText;}
-
-
     protected App app;
     private Player player;
     private final EntitySpawner weaponTypeSpawner;
+
+    public TextEntity getScoreText() {return scoreText;}
+    public TextEntity getPlayerLivesText() {
+        return playerLivesText;
+    }
     public GameScreen(App app) {
         this.app = app;
         this.weaponTypeSpawner = new LaserGun(10);
@@ -69,7 +67,6 @@ public class GameScreen extends DynamicScene implements EntitySpawnerContainer {
                 new Coordinate2D(0, 0),
                 new Size(1000, 80)
         ));
-
 
         var playerLives = new PlayerLivesSprite(new Coordinate2D(20,20));
         var boost = new BoosterButton("sprites/booster.png", new Coordinate2D(90,20));

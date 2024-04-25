@@ -2,6 +2,7 @@ package AlienDestruction.Buttons;
 
 import AlienDestruction.App;
 import AlienDestruction.Buttons.Button;
+import AlienDestruction.Helper;
 import com.github.hanyaeger.api.AnchorPoint;
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.userinput.MouseButtonPressedListener;
@@ -34,6 +35,6 @@ public class StartButton extends Button implements MouseButtonPressedListener {
 
     @Override
     public void onMouseButtonPressed(MouseButton mousebutton, Coordinate2D coordinate2D){
-        app.setActiveScene(App.SceneIds.GameScreen);
+        app.setActiveScene(Helper.SceneIds.GameScreen);
     }
 }

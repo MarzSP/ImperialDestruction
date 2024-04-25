@@ -38,11 +38,4 @@ public class App extends YaegerGame {
     //setActiveScene(2);
     }
 
-    public static class SceneIds {
-        public static final int StartScreen = 0;
-        public static final int GameScreen = 1;
-        public static final int EndScreen = 2;
-        public static final int GameMenu = 3;
-    }
-
 }

@@ -2,6 +2,7 @@ package AlienDestruction.Entities;
 
 import AlienDestruction.App;
 import AlienDestruction.Buttons.BoosterButton;
+import AlienDestruction.Helper;
 import AlienDestruction.Scenes.GameScreen;
 import AlienDestruction.Weapons.IShootable;
 import AlienDestruction.Weapons.LaserBeam;
@@ -72,21 +73,21 @@ public class Player extends DynamicSpriteEntity implements KeyListener, SceneBor
             shoot();
             canShoot = false;
         }
-        if(pressedKeys.contains(KeyCode.A)){
-            setMotion(5,280d);          // Left + Slightly down (Simulate speed reduction)
-        } else if(pressedKeys.contains(KeyCode.D)){
-            setMotion(5,80d);           // Right + slightly down (simulate speed reduction)
-        } else if(pressedKeys.contains(KeyCode.W)){
-            setMotion(3,180d);          // Up
+        if(pressedKeys.contains(Helper.KeyStroke.LEFT)){
+            setMotion(5,280d);
+        } else if(pressedKeys.contains(Helper.KeyStroke.RIGHT)){
+            setMotion(5,80d);
+        } else if(pressedKeys.contains(Helper.KeyStroke.BOOST)){
+            setMotion(3,180d);
             checkMaxHeight();
-        } else if(pressedKeys.contains(KeyCode.E)){
-            setMotion(3,125d);          // Up + right
+        } else if(pressedKeys.contains(Helper.KeyStroke.RIGHTBOOST)){
+            setMotion(3,125d);
             checkMaxHeight();
-        } else if(pressedKeys.contains(KeyCode.Q)){
-            setMotion(3,235d);          // Up + left
+        } else if(pressedKeys.contains(Helper.KeyStroke.LEFTBOOST)){
+            setMotion(3,235d);
             checkMaxHeight();
         }
-        if(!pressedKeys.contains(KeyCode.SPACE)) {
+        if(!pressedKeys.contains(Helper.KeyStroke.FIRE)) {
             canShoot = true;
         }
     }
@@ -149,7 +150,7 @@ public class Player extends DynamicSpriteEntity implements KeyListener, SceneBor
         System.out.println(lives);
         if(lives < 0) {
             System.out.println("No lives left");
-            app.setActiveScene(App.SceneIds.EndScreen);
+            app.setActiveScene(Helper.SceneIds.EndScreen);
         }
     }
 
