@@ -15,5 +15,5 @@ public class PowerUps extends DynamicSpriteEntity implements Collider {
     }
 
     }
-    //super("sprites/xWingV1.png", location, );
+
 
