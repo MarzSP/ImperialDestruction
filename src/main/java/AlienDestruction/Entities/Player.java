@@ -111,12 +111,27 @@ public class Player extends DynamicSpriteEntity implements KeyListener, SceneBor
     }
     @Override
     public void onCollision(List<Collider> collidingObject) {
-        setAnchorLocation(new Coordinate2D((getSceneWidth() - getWidth()) / 2, 550));
-        lives = lives - 1;
-        updateLives();
-        checkLives();
+        boolean powerUpCollision = false;
 
+        for (Collider collider : collidingObject) {
+            if (collider instanceof PowerUps) { // Controlleer subklasse powerups voor info
+                powerUpCollision = true;
+                lives = lives + 1;
+                updateLives();
+                checkLives();
+                ((PowerUps) collider).remove(); //verwijderd de sprite van het scherm
+                break;
+            }
+        } if(!powerUpCollision) {
+            setAnchorLocation(new Coordinate2D((getSceneWidth() - getWidth()) / 2, 550));
+            lives = lives - 1;
+            updateLives();
+            checkLives();
+
+        } updateLives();
+        checkLives();
     }
+
 
     private void updateLives() {
         TextEntity playerLivesText;
@@ -169,4 +184,5 @@ public class Player extends DynamicSpriteEntity implements KeyListener, SceneBor
     public void setBooster(BoosterButton booster) {
         this.booster = booster;
     }
+
 }
