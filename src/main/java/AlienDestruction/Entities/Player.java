@@ -25,6 +25,7 @@ public class Player extends DynamicSpriteEntity implements KeyListener, SceneBor
     private IShootable shootable;
     private int lives;
     private int score;
+    private boolean canShoot = true;
 
     private BoosterButton booster;
     public int getLives() {
@@ -58,8 +59,9 @@ public class Player extends DynamicSpriteEntity implements KeyListener, SceneBor
 
     @Override
     public void onPressedKeysChange(Set<KeyCode> pressedKeys){
-        if(pressedKeys.contains(KeyCode.SPACE)) {
+        if(pressedKeys.contains(KeyCode.SPACE) && canShoot) {
             shoot();
+            canShoot = false;
         }
         if(pressedKeys.contains(KeyCode.A)){
             setMotion(5,280d);          // Left + Slightly down (Simulate speed reduction)
@@ -75,7 +77,11 @@ public class Player extends DynamicSpriteEntity implements KeyListener, SceneBor
             setMotion(3,235d);          // Up + left
             checkMaxHeight();
         }
+        if(!pressedKeys.contains(KeyCode.SPACE)) {
+            canShoot = true;
+        }
     }
+
 
     @Override
     public void notifyBoundaryTouching(SceneBorder border){
