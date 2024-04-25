@@ -2,6 +2,7 @@ package AlienDestruction.Entities;
 
 import AlienDestruction.App;
 import AlienDestruction.Buttons.BoosterButton;
+import AlienDestruction.Scenes.GameScreen;
 import AlienDestruction.Weapons.IShootable;
 import AlienDestruction.Weapons.LaserBeam;
 import com.github.hanyaeger.api.Coordinate2D;
@@ -11,6 +12,7 @@ import com.github.hanyaeger.api.entities.Collider;
 import com.github.hanyaeger.api.entities.Newtonian;
 import com.github.hanyaeger.api.entities.SceneBorderTouchingWatcher;
 import com.github.hanyaeger.api.entities.impl.DynamicSpriteEntity;
+import com.github.hanyaeger.api.entities.impl.TextEntity;
 import com.github.hanyaeger.api.media.SoundClip;
 import com.github.hanyaeger.api.scenes.SceneBorder;
 import com.github.hanyaeger.api.userinput.KeyListener;
@@ -22,6 +24,7 @@ import java.util.Set;
 public class Player extends DynamicSpriteEntity implements KeyListener, SceneBorderTouchingWatcher, Newtonian, Collided {
 // public class Player extends GameEntities implements Collided {
     private App app;
+    private GameScreen gameScreen;
     private IShootable shootable;
     private int lives;
     private int score;
@@ -40,8 +43,9 @@ public class Player extends DynamicSpriteEntity implements KeyListener, SceneBor
 
     }
 
-    public Player(Coordinate2D location) {
+    public Player(Coordinate2D location, GameScreen gameScreen, App app) {
         super("sprites/xWingV1.png", location, new Size(80,80));
+        this.gameScreen = gameScreen;
         this.app = app;
         this.setLives(1);
         setGravityConstant(0.070);
@@ -104,7 +108,14 @@ public class Player extends DynamicSpriteEntity implements KeyListener, SceneBor
     public void onCollision(List<Collider> collidingObject) {
         setAnchorLocation(new Coordinate2D((getSceneWidth() - getWidth()) / 2, 550));
         lives = lives - 1;
+        updateLives();
         checkLives();
+
+    }
+
+    private void updateLives() {
+        TextEntity playerLivesText;
+        gameScreen.getPlayerLivesText().setText(": " + this.getLives());
     }
 
     // When [W] Booster check for maximum boost

@@ -6,7 +6,6 @@ import AlienDestruction.Buttons.MenuButton;
 import AlienDestruction.Entities.EnemyOne;
 import AlienDestruction.Entities.EnemyTwo;
 import AlienDestruction.MenuBar.BlackRectangle;
-import AlienDestruction.MenuBar.PlayerLivesText;
 import AlienDestruction.MenuBar.PlayerLivesSprite;
 import AlienDestruction.Entities.Player;
 import AlienDestruction.Weapons.IShootable;
@@ -27,6 +26,13 @@ import javafx.scene.text.FontWeight;
  */
 public class GameScreen extends DynamicScene implements EntitySpawnerContainer {
 
+
+    private TextEntity playerLivesText;
+    public TextEntity getPlayerLivesText() {
+        return playerLivesText;
+    }
+
+
     protected App app;
     private Player player;
     private final EntitySpawner weaponTypeSpawner;
@@ -42,7 +48,7 @@ public class GameScreen extends DynamicScene implements EntitySpawnerContainer {
 
     @Override
     public void setupEntities() {
-        player = new Player(new Coordinate2D(getWidth() / 2, 550));
+        player = new Player(new Coordinate2D(getWidth() / 2, 550), this, app);
         player.setWeapon((IShootable) weaponTypeSpawner);
 
         var enemySpriteOne = new EnemyOne(new Coordinate2D(40, -40));
@@ -58,8 +64,6 @@ public class GameScreen extends DynamicScene implements EntitySpawnerContainer {
                 new Size(1000, 80)
         ));
 
-        var playerLivesText = new PlayerLivesText(new Coordinate2D(60, 20), player);
-
 
         var playerLives = new PlayerLivesSprite(new Coordinate2D(20,20));
         var boost = new BoosterButton("sprites/booster.png", new Coordinate2D(90,20));
@@ -67,9 +71,15 @@ public class GameScreen extends DynamicScene implements EntitySpawnerContainer {
         player.setBooster(boost);
         addEntity(boost);
         addEntity(playerLives);
+
+        // Add Player lives text:
+        playerLivesText = new TextEntity(new Coordinate2D(80, 20), ": " + player.getLives());
+        playerLivesText.setFill(Color.GOLD);
+        playerLivesText.setFont(Font.font("Roboto", FontWeight.BOLD, 20));
         addEntity(playerLivesText);
 
-        // Add Level Text
+
+        // Add Level Text:
         var levelText = new TextEntity(new Coordinate2D(250, 20),  "Level:");
         levelText.setFill(Color.GOLD);
         levelText.setFont(Font.font("Roboto", FontWeight.BOLD, 20));
@@ -93,4 +103,5 @@ public class GameScreen extends DynamicScene implements EntitySpawnerContainer {
             weaponTypeSpawner.pause();
         }
     }
-}
+    }
+

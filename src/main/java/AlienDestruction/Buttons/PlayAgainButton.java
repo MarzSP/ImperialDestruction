@@ -9,7 +9,7 @@ import javafx.scene.text.FontWeight;
 
 /**
  * De PlayAgainButton is een sub-klasse van Button.
- * Deze knop wordt in het Eindscherm gebruikt om het spel opnieuw op te starten nadat het is afgelopen.
+ * Deze knop wordt in het Eindscherm gebruikt om het spel opnieuw op te starten nadat het spel is afgelopen.
  */
     public class PlayAgainButton extends Button {
         protected App app;
