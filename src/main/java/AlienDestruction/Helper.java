@@ -19,4 +19,21 @@ public class Helper {
         public static final KeyCode RIGHTBOOST = KeyCode.E;
         public static final KeyCode FIRE = KeyCode.SPACE;
     }
+
+    public static class Direction {
+        public static final double GOLEFT = 270;
+        public static final double GORIGHT = 90;
+        public static final double GOUP = 180;
+        public static final double DOWN = 0;
+        public static final double GOLEFTUP = 225;
+        public static final double GORIGHTUP = 135;
+        public static final double GOLEFTDOWN = 315;
+        public static final double GORIGHTDOWN = 45;
+    }
+
+    public static class Speed {
+        public static final double LOW = 1;
+        public static final double MEDIUM = 3;
+        public static final double HIGH = 5;
+    }
 }
