@@ -18,10 +18,4 @@ public class EnemyTwo extends GameEntities{
 
     }
 
-
-//    @Override
-//    public void onCollision(List<Collider> collidingObject) {
-//
-//        this.remove();
-//    }
 }

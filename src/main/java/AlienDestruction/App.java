@@ -17,9 +17,7 @@ import javafx.scene.text.FontWeight;
 public class App extends YaegerGame {
 
     public static void main(String[] args ) {
-        System.out.println("Test 16 april");
         launch(args);
-        System.out.println("Hallo hub end");
     }
 
     @Override
