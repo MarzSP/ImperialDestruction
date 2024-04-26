@@ -1,6 +1,7 @@
 package AlienDestruction.Entities;
 
 import AlienDestruction.App;
+import AlienDestruction.Helper;
 import AlienDestruction.Scenes.GameScreen;
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.Size;
@@ -11,7 +12,7 @@ public class EnemyOne extends GameEntities {
     public EnemyOne(Coordinate2D location) {
 
         super("sprites/tieFighterV1.png", location, new Size(80,80));
-        setMotion(3, 360d);
+        setMotion(Helper.Speed.MEDIUM, Helper.Direction.DOWN);
         setPoints(50);
         setPenaltyPoints(25);
     }
