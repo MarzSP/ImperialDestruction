@@ -55,7 +55,7 @@ public class GameScreen extends DynamicScene implements EntitySpawnerContainer {
         var enemySpriteOne = new EnemyOne(new Coordinate2D(40, -40));
         addEntity(enemySpriteOne);
 
-        var enemySpriteTwo = new EnemyTwo(new Coordinate2D(140, -40));
+        var enemySpriteTwo = new EnemyTwo(new Coordinate2D(240, -40));
         addEntity(enemySpriteTwo);
 
         var powerUp = new PowerUps(new Coordinate2D(180, -40));
