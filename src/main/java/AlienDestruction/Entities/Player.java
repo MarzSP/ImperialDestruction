@@ -44,6 +44,10 @@ public class Player extends DynamicSpriteEntity implements KeyListener, SceneBor
     public int getScore() {
         return score;
     }
+    public void setScore(int score) {
+        this.score = score;
+    }
+
     public void setLives(int lives) {
         this.lives = lives;
 

@@ -2,8 +2,12 @@ package AlienDestruction.Entities;
 
 import AlienDestruction.App;
 import AlienDestruction.Helper;
+import AlienDestruction.Weapons.LaserBeam;
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.Size;
+import com.github.hanyaeger.api.entities.Collider;
+
+import java.util.List;
 
 public class EnemyTwo extends GameEntities{
     public EnemyTwo(Coordinate2D location) {
@@ -12,7 +16,12 @@ public class EnemyTwo extends GameEntities{
         setPoints(80);
         setPenaltyPoints(40);
 
-
-
     }
+
+
+//    @Override
+//    public void onCollision(List<Collider> collidingObject) {
+//
+//        this.remove();
+//    }
 }
