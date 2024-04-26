@@ -17,7 +17,6 @@ public abstract class WeaponType extends DynamicSpriteEntity implements Collider
 
 
     @Override
-    public void onCollision(List<Collider> list) {
-
+    public void onCollision(List<Collider> collidingObject) {
     }
 }

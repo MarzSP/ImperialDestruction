@@ -28,15 +28,13 @@ public class Player extends DynamicSpriteEntity implements KeyListener, SceneBor
     private GameScreen gameScreen;
     private IShootable shootable;
     private int lives;
+    private int score;
+    private boolean canShoot = true;
+    private BoosterButton booster;
 
     public GameScreen getGameScreen() {
         return gameScreen;
     }
-
-    private int score;
-    private boolean canShoot = true;
-
-    private BoosterButton booster;
     public int getLives() {
         return lives;
     }
@@ -153,7 +151,6 @@ public class Player extends DynamicSpriteEntity implements KeyListener, SceneBor
     public void checkLives(){
         System.out.println(lives);
         if(lives < 0) {
-            System.out.println("No lives left");
             app.setActiveScene(Helper.SceneIds.EndScreen);
         }
     }
@@ -166,7 +163,6 @@ public class Player extends DynamicSpriteEntity implements KeyListener, SceneBor
         soundLaser();                              // Fire Laser
         score++;
         updateScore();
-        System.out.println(score);
     }
 
     private void updateScore() {

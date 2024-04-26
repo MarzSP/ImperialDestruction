@@ -1,6 +1,7 @@
 package AlienDestruction.Entities;
 
 import AlienDestruction.Weapons.LaserBeam;
+import AlienDestruction.Weapons.WeaponType;
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.Size;
 import com.github.hanyaeger.api.entities.Collided;
@@ -52,13 +53,11 @@ public class GameEntities extends DynamicSpriteEntity implements SceneBorderTouc
     public void onCollision(List<Collider> collidingObject) {
         for (Collider collider : collidingObject){
             if (collider instanceof LaserBeam){
-                this.remove();
+                this.remove();                      // remove Enemy / entity
+                ((WeaponType) collider).remove();   // remove Laser / Weapon
             }
         }
-
-        System.out.println("HIT door Laser");
     }
-
 
 }
  
