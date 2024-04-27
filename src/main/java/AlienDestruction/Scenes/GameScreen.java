@@ -6,6 +6,7 @@ import AlienDestruction.Buttons.MenuButton;
 import AlienDestruction.Entities.*;
 import AlienDestruction.MenuBar.BlackRectangle;
 import AlienDestruction.MenuBar.PlayerLivesSprite;
+import AlienDestruction.PowerUps.PowerUps;
 import AlienDestruction.Weapons.IShootable;
 import AlienDestruction.Weapons.LaserGun;
 import com.github.hanyaeger.api.Coordinate2D;
@@ -56,8 +57,8 @@ public class GameScreen extends DynamicScene implements EntitySpawnerContainer {
         var enemySpriteTwo = new EnemyTwo(new Coordinate2D(240, -40));
         addEntity(enemySpriteTwo);
 
-        var ObstacleSpriteOne = new ObstacleOne(new Coordinate2D(800, -40));
-        addEntity(ObstacleSpriteOne);
+        var obstacleSpriteOne = new ObstacleOne(new Coordinate2D(800, -40));
+        addEntity(obstacleSpriteOne);
 
         var powerUp = new PowerUps(new Coordinate2D(180, -40));
         addEntity(powerUp);

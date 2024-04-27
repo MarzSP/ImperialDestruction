@@ -32,7 +32,7 @@ public class Helper {
     }
 
     public static class Speed {
-        public static final double LOW = 1;
+        public static final double LOW = 1.5;
         public static final double MEDIUM = 3;
         public static final double HIGH = 5;
     }
