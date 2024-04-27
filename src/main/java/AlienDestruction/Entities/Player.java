@@ -3,6 +3,7 @@ package AlienDestruction.Entities;
 import AlienDestruction.App;
 import AlienDestruction.Buttons.BoosterButton;
 import AlienDestruction.Helper;
+import AlienDestruction.PowerUps.PowerUps;
 import AlienDestruction.Scenes.GameScreen;
 import AlienDestruction.Weapons.IShootable;
 import AlienDestruction.Weapons.LaserBeam;

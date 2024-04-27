@@ -25,23 +25,21 @@ public class GameEntities extends DynamicSpriteEntity implements SceneBorderTouc
         return points;
     }
 
-    public void setPoints(int points) {
-        this.points = points;
-    }
-
-    public int getPenaltyPoints() {
-        return penaltyPoints;
-    }
-
-    public void setPenaltyPoints(int penaltyPoints) {
-        this.penaltyPoints = penaltyPoints;
-    }
-
     protected GameEntities(String resource, Coordinate2D initialLocation, Size size) {
         super(resource, initialLocation);
 
         setGravityConstant(0.000);
         setFrictionConstant(0.00);
+    }
+
+    public void setPoints(int points) {
+        this.points = points;
+    }
+    public int getPenaltyPoints() {
+        return penaltyPoints;
+    }
+    public void setPenaltyPoints(int penaltyPoints) {
+        this.penaltyPoints = penaltyPoints;
     }
 
     @Override
