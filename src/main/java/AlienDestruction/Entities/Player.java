@@ -2,6 +2,9 @@ package AlienDestruction.Entities;
 
 import AlienDestruction.App;
 import AlienDestruction.Buttons.BoosterButton;
+import AlienDestruction.Entities.PowerUps.PowerUpLaser;
+import AlienDestruction.Entities.PowerUps.PowerUpLives;
+import AlienDestruction.Entities.PowerUps.PowerUpShip;
 import AlienDestruction.Helper;
 import AlienDestruction.Scenes.GameScreen;
 import AlienDestruction.Weapons.IShootable;
@@ -21,6 +24,7 @@ import javafx.scene.input.KeyCode;
 
 import java.util.List;
 import java.util.Set;
+import java.util.Timer;
 
 public class Player extends DynamicSpriteEntity implements KeyListener, SceneBorderTouchingWatcher, Newtonian, Collided {
 // public class Player extends GameEntities implements Collided {
@@ -31,6 +35,10 @@ public class Player extends DynamicSpriteEntity implements KeyListener, SceneBor
     private int score;
     private boolean canShoot = true;
     private BoosterButton booster;
+
+    private boolean laserPowerUpActive = false; // Boolean voor PowerUpLaser
+    private long laserPowerUpEndTime = 0; // int voor PowerUpLaser
+
 
     public GameScreen getGameScreen() {
         return gameScreen;
@@ -72,8 +80,13 @@ public class Player extends DynamicSpriteEntity implements KeyListener, SceneBor
     @Override
     public void onPressedKeysChange(Set<KeyCode> pressedKeys){
         if(pressedKeys.contains(KeyCode.SPACE) && canShoot) {
-            shoot();
-            canShoot = false;
+            if (laserPowerUpActive && System.currentTimeMillis() < laserPowerUpEndTime) {
+                shoot();
+            } else {
+
+                shoot();
+                canShoot = false;
+            }
         }
         if(pressedKeys.contains(Helper.KeyStroke.LEFT)){
             setMotion(Helper.Speed.MEDIUM,Helper.Direction.GOLEFT);
@@ -117,14 +130,21 @@ public class Player extends DynamicSpriteEntity implements KeyListener, SceneBor
         boolean powerUpCollision = false;
 
         for (Collider collider : collidingObject) {
-            if (collider instanceof PowerUps) { // Controlleer subklasse powerups voor info
+            if (collider instanceof PowerUpLives) { //PowerUpLives
                 powerUpCollision = true;
                 lives = lives + 1;
                 updateLives();
                 checkLives();
-                ((PowerUps) collider).remove(); //verwijderd de sprite van het scherm
+                ((PowerUpLives) collider).remove(); //verwijderd de sprite van het scherm
                 break;
             }
+            else if (collider instanceof PowerUpLaser) { //PowerUpLaserschot x2
+                powerUpCollision = true;
+                activateLaserPowerUp();
+                ((PowerUpLaser) collider).remove(); // verwijderd sprite uit het scherm
+                break;
+            }
+
         } if(!powerUpCollision) {
             setAnchorLocation(new Coordinate2D((getSceneWidth() - getWidth()) / 2, 550));
             lives = lives - 1;
@@ -134,7 +154,6 @@ public class Player extends DynamicSpriteEntity implements KeyListener, SceneBor
         } updateLives();
         checkLives();
     }
-
 
     private void updateLives() {
         TextEntity playerLivesText;
@@ -186,4 +205,8 @@ public class Player extends DynamicSpriteEntity implements KeyListener, SceneBor
         this.booster = booster;
     }
 
+    public void activateLaserPowerUp() {
+        laserPowerUpActive = true;
+        laserPowerUpEndTime = System.currentTimeMillis() + 10000; // 10 seconds
+    }
 }

@@ -4,6 +4,9 @@ import AlienDestruction.App;
 import AlienDestruction.Buttons.BoosterButton;
 import AlienDestruction.Buttons.MenuButton;
 import AlienDestruction.Entities.*;
+import AlienDestruction.Entities.PowerUps.PowerUpLaser;
+import AlienDestruction.Entities.PowerUps.PowerUpLives;
+import AlienDestruction.Entities.PowerUps.PowerUpShip;
 import AlienDestruction.MenuBar.BlackRectangle;
 import AlienDestruction.MenuBar.PlayerLivesSprite;
 import AlienDestruction.Weapons.IShootable;
@@ -30,6 +33,7 @@ public class GameScreen extends DynamicScene implements EntitySpawnerContainer {
     protected App app;
     private Player player;
     private final EntitySpawner weaponTypeSpawner;
+
 
     public TextEntity getScoreText() {return scoreText;}
     public TextEntity getPlayerLivesText() {
@@ -59,8 +63,14 @@ public class GameScreen extends DynamicScene implements EntitySpawnerContainer {
         var ObstacleSpriteOne = new ObstacleOne(new Coordinate2D(800, -40));
         addEntity(ObstacleSpriteOne);
 
-        var powerUp = new PowerUps(new Coordinate2D(180, -40));
-        addEntity(powerUp);
+        var powerUpLives = new PowerUpLives(new Coordinate2D(180, -40));
+        addEntity(powerUpLives);
+
+        var powerUpLaser = new PowerUpLaser(new Coordinate2D(360, -40));
+        addEntity(powerUpLaser);
+
+        var powerUpShip = new PowerUpShip(new Coordinate2D(300, -40));
+        addEntity(powerUpShip);
 
         addEntity(player);
 

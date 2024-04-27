@@ -17,7 +17,7 @@ import javafx.scene.text.FontWeight;
 public class App extends YaegerGame {
 
     public static void main(String[] args ) {
-        launch(args);
+        launch("--noSplash");
     }
 
     @Override
@@ -33,7 +33,7 @@ public class App extends YaegerGame {
     addScene(1, new GameScreen(this));
     addScene(2, new EndScreen(this));
     addScene(3, new GameMenu());
-    //setActiveScene(2);
+
     }
 
 }
