@@ -10,8 +10,11 @@ import com.github.hanyaeger.api.entities.Collider;
 import java.util.List;
 
 public class ObstacleTwo extends GameEntities{
-    public ObstacleTwo(Coordinate2D location) {
-        super("sprites/asteroidRectangleV1.png", location, new Size(140,100));
+
+    private Player player;
+    public ObstacleTwo(Coordinate2D location, Player player) {
+        super("sprites/asteroidRectangleV1.png", location, new Size(140,100), player);
+        this.player = player;
         setMotion(3, 360d);
     }
 
