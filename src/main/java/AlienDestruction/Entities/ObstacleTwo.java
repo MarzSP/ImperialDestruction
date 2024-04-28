@@ -11,7 +11,7 @@ import java.util.List;
 
 public class ObstacleTwo extends GameEntities{
     public ObstacleTwo(Coordinate2D location) {
-        super("sprites/asteroidRectangleV1.png", location, new Size(140,96));
+        super("sprites/asteroidRectangleV1.png", location, new Size(140,100));
         setMotion(3, 360d);
     }
 

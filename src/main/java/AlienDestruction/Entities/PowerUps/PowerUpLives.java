@@ -10,7 +10,7 @@ public class PowerUpLives extends PowerUps {
 
     public PowerUpLives (Coordinate2D initialLocation) {
         super("sprites/xWingPowerUp.png", initialLocation, new Size(40,40));
-        setMotion(Helper.Speed.HIGH, Helper.Direction.DOWN);
+        setMotion(Helper.Speed.LOW, Helper.Direction.DOWN);
     }
 
     }

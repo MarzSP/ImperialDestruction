@@ -9,7 +9,6 @@ import AlienDestruction.Entities.PowerUps.PowerUpLives;
 import AlienDestruction.Entities.PowerUps.PowerUpShip;
 import AlienDestruction.MenuBar.BlackRectangle;
 import AlienDestruction.MenuBar.PlayerLivesSprite;
-import AlienDestruction.PowerUps.PowerUps;
 import AlienDestruction.Weapons.IShootable;
 import AlienDestruction.Weapons.LaserGun;
 import com.github.hanyaeger.api.Coordinate2D;
