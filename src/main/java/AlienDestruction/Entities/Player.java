@@ -4,9 +4,7 @@ import AlienDestruction.App;
 import AlienDestruction.Buttons.BoosterButton;
 import AlienDestruction.Entities.PowerUps.PowerUpLaser;
 import AlienDestruction.Entities.PowerUps.PowerUpLives;
-import AlienDestruction.Entities.PowerUps.PowerUpShip;
 import AlienDestruction.Helper;
-import AlienDestruction.PowerUps.PowerUps;
 import AlienDestruction.Scenes.GameScreen;
 import AlienDestruction.Weapons.IShootable;
 import AlienDestruction.Weapons.LaserBeam;
@@ -25,7 +23,6 @@ import javafx.scene.input.KeyCode;
 
 import java.util.List;
 import java.util.Set;
-import java.util.Timer;
 
 public class Player extends DynamicSpriteEntity implements KeyListener, SceneBorderTouchingWatcher, Newtonian, Collided {
 // public class Player extends GameEntities implements Collided {

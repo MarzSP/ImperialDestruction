@@ -7,6 +7,6 @@ import com.github.hanyaeger.api.entities.impl.DynamicSpriteEntity;
 
 public class PowerUps extends DynamicSpriteEntity implements Collider {
     protected PowerUps(String resource, Coordinate2D initialLocation, Size size) {
-        super(resource, initialLocation);
+        super(resource, initialLocation, size);
     }
 }
