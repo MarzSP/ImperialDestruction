@@ -75,23 +75,23 @@ public class Player extends DynamicSpriteEntity implements KeyListener, SceneBor
             if (laserPowerUpActive && System.currentTimeMillis() < laserPowerUpEndTime) {
                 shoot();
             } else {
-
                 shoot();
                 canShoot = false;
             }
         }
         if(pressedKeys.contains(Helper.KeyStroke.LEFT)){
-            setMotion(Helper.Speed.MEDIUM,Helper.Direction.GOLEFT);
+            setMotion(Helper.Speed.TESTPLAYER3,Helper.Direction.GOLEFT);
         } else if(pressedKeys.contains(Helper.KeyStroke.RIGHT)){
-            setMotion(Helper.Speed.MEDIUM,Helper.Direction.GORIGHT);
+            setMotion(Helper.Speed.TESTPLAYER3,Helper.Direction.GORIGHT);
         } else if(pressedKeys.contains(Helper.KeyStroke.BOOST)){
-            setMotion(Helper.Speed.HIGH,Helper.Direction.GOUP);
+
+            setMotion(Helper.Speed.TESTPLAYER5,Helper.Direction.GOUP);
             checkMaxHeight();
         } else if(pressedKeys.contains(Helper.KeyStroke.RIGHTBOOST)){
-            setMotion(Helper.Speed.HIGH,Helper.Direction.GORIGHTUP);
+            setMotion(Helper.Speed.TESTPLAYER5,Helper.Direction.GORIGHTUP);
             checkMaxHeight();
         } else if(pressedKeys.contains(Helper.KeyStroke.LEFTBOOST)){
-            setMotion(Helper.Speed.HIGH,Helper.Direction.GOLEFTUP);
+            setMotion(Helper.Speed.TESTPLAYER5,Helper.Direction.GOLEFTUP);
             checkMaxHeight();
         }
         if(!pressedKeys.contains(Helper.KeyStroke.FIRE)) {
@@ -141,7 +141,6 @@ public class Player extends DynamicSpriteEntity implements KeyListener, SceneBor
             lives = lives - 1;
             updateLives();
             checkLives();
-
         } updateLives();
         checkLives();
     }
@@ -159,7 +158,6 @@ public class Player extends DynamicSpriteEntity implements KeyListener, SceneBor
     }
 
     public void checkLives(){
-        System.out.println(lives);
         if(lives < 0) {
             app.setActiveScene(Helper.SceneIds.EndScreen);
         }

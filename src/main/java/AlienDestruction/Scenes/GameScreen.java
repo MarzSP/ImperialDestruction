@@ -83,15 +83,14 @@ public class GameScreen extends DynamicScene implements EntitySpawnerContainer {
         var boost = new BoosterButton("sprites/booster.png", new Coordinate2D(90,20));
 
         player.setBooster(boost);
-        addEntity(boost);
+        //addEntity(boost);
         addEntity(playerLives);
 
         // Add Player lives text:
-        playerLivesText = new TextEntity(new Coordinate2D(80, 20), ": " + player.getLives());
+        playerLivesText = new TextEntity(new Coordinate2D(60, 20), ": " + player.getLives());
         playerLivesText.setFill(Color.GOLD);
         playerLivesText.setFont(Font.font("Roboto", FontWeight.BOLD, 20));
         addEntity(playerLivesText);
-
 
         // Add Level Text:
         var levelText = new TextEntity(new Coordinate2D(250, 20),  "Level:");

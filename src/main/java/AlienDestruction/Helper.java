@@ -35,5 +35,7 @@ public class Helper {
         public static final double LOW = 1.5;
         public static final double MEDIUM = 1.5;
         public static final double HIGH = 1.5;
+        public static final double TESTPLAYER3 = 3;
+        public static final double TESTPLAYER5 = 5;
     }
 }
