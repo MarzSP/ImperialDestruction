@@ -8,7 +8,7 @@ public class PowerUpShip extends PowerUps {
 
     public PowerUpShip(Coordinate2D initialLocation) {
         super("sprites/PowerUpShip.png", initialLocation, new Size(40, 40));
-        setMotion(Helper.Speed.LOW, Helper.Direction.DOWN);
+        setMotion(Helper.Speed.HIGH, Helper.Direction.DOWN);
     }
 }
 

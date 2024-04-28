@@ -33,29 +33,8 @@ public class Player extends DynamicSpriteEntity implements KeyListener, SceneBor
     private int score;
     private boolean canShoot = true;
     private BoosterButton booster;
-
     private boolean laserPowerUpActive = false; // Boolean voor PowerUpLaser
     private long laserPowerUpEndTime = 0; // int voor PowerUpLaser
-
-
-    public GameScreen getGameScreen() {
-        return gameScreen;
-    }
-    public int getLives() {
-        return lives;
-    }
-
-    public int getScore() {
-        return score;
-    }
-    public void setScore(int score) {
-        this.score = score;
-    }
-
-    public void setLives(int lives) {
-        this.lives = lives;
-
-    }
 
     public Player(Coordinate2D location, GameScreen gameScreen, App app) {
         super("sprites/xWingV1.png", location, new Size(80,80));
@@ -66,6 +45,21 @@ public class Player extends DynamicSpriteEntity implements KeyListener, SceneBor
         setFrictionConstant(0.00);
     }
 
+    public GameScreen getGameScreen() {
+        return gameScreen;
+    }
+    public int getLives() {
+        return lives;
+    }
+    public int getScore() {
+        return score;
+    }
+    public void setScore(int score) {
+        this.score = score;
+    }
+    public void setLives(int lives) {
+        this.lives = lives;
+    }
     @Override
     public void setMotion( double speed, final double direction) {
         boolean boosterActive = booster.isActive();
@@ -104,7 +98,6 @@ public class Player extends DynamicSpriteEntity implements KeyListener, SceneBor
             canShoot = true;
         }
     }
-
 
     @Override
     public void notifyBoundaryTouching(SceneBorder border){
@@ -177,9 +170,7 @@ public class Player extends DynamicSpriteEntity implements KeyListener, SceneBor
         double y = getLocationInScene().getY();
         shootable.shoot(new LaserBeam(new Coordinate2D(x + 5, y))); // todo: dynamisch aanpassen aan size sprite / pos lasers on sprite
         shootable.shoot(new LaserBeam(new Coordinate2D(x + 70, y)));//
-        soundLaser();                              // Fire Laser
-        score++;
-        updateScore();
+        soundLaser();                              // Fire Lasera
     }
 
     private void updateScore() {
@@ -206,5 +197,10 @@ public class Player extends DynamicSpriteEntity implements KeyListener, SceneBor
     public void activateLaserPowerUp() {
         laserPowerUpActive = true;
         laserPowerUpEndTime = System.currentTimeMillis() + 10000; // 10 seconds
+    }
+
+    public void increaseScore(int points){
+        this.score += points;
+        updateScore();
     }
 }

@@ -18,20 +18,21 @@ import java.util.Random;
 import java.util.Set;
 
 public class GameEntities extends DynamicSpriteEntity implements SceneBorderTouchingWatcher, Newtonian, Collided, Collider{
-
     private int points;
     private int penaltyPoints;
-    public int getPoints() {
-        return points;
-    }
+    private Player player;
 
-    protected GameEntities(String resource, Coordinate2D initialLocation, Size size) {
+
+    protected GameEntities(String resource, Coordinate2D initialLocation, Size size, Player player) {
         super(resource, initialLocation);
-
+        this.player = player;
         setGravityConstant(0.000);
         setFrictionConstant(0.00);
     }
 
+    public int getPoints() {
+        return points;
+    }
     public void setPoints(int points) {
         this.points = points;
     }
@@ -51,6 +52,7 @@ public class GameEntities extends DynamicSpriteEntity implements SceneBorderTouc
     public void onCollision(List<Collider> collidingObject) {
         for (Collider collider : collidingObject){
             if (collider instanceof LaserBeam){
+                player.increaseScore(points);
                 this.remove();                      // remove Enemy / entity
                 ((WeaponType) collider).remove();   // remove Laser / Weapon
             }
@@ -58,4 +60,3 @@ public class GameEntities extends DynamicSpriteEntity implements SceneBorderTouc
     }
 
 }
- 
