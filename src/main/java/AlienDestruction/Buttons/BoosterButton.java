@@ -42,6 +42,11 @@ public class BoosterButton extends SpriteButton implements TimerContainer {
 
     protected boolean boosterActive = false;
     protected boolean coolingDownActive = false;
+    protected SelfTimer timer = new SelfTimer(0);
+
+    public BoosterButton(String resource, Coordinate2D initialLocation) {
+        super(resource, initialLocation);
+    }
 
     public boolean isActive() {
         return this.boosterActive;
@@ -55,16 +60,10 @@ public class BoosterButton extends SpriteButton implements TimerContainer {
         this.coolingDownActive = coolingDownActive;
     }
 
-    protected SelfTimer timer = new SelfTimer(0);
-
     @Override
     public void setupTimers() {
         this.timer.pause();
         addTimer(this.timer);
-    }
-
-    public BoosterButton(String resource, Coordinate2D initialLocation) {
-        super(resource, initialLocation);
     }
 
     @Override
