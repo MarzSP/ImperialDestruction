@@ -1,7 +1,7 @@
 package AlienDestruction.Entities;
 
 import AlienDestruction.App;
-import AlienDestruction.Buttons.BoosterButton;
+import AlienDestruction.Buttons.Booster;
 import AlienDestruction.Entities.PowerUps.PowerUpLaser;
 import AlienDestruction.Entities.PowerUps.PowerUpLives;
 import AlienDestruction.Helper;
@@ -32,7 +32,7 @@ public class Player extends DynamicSpriteEntity implements KeyListener, SceneBor
     private int lives;
     private int score;
     private boolean canShoot = true;
-    private BoosterButton booster;
+    private Booster booster;
     private boolean laserPowerUpActive = false; // Boolean voor PowerUpLaser
     private long laserPowerUpEndTime = 0; // int voor PowerUpLaser
 
@@ -41,6 +41,7 @@ public class Player extends DynamicSpriteEntity implements KeyListener, SceneBor
         this.gameScreen = gameScreen;
         this.app = app;
         this.setLives(1);
+        this.booster = new Booster();
         setGravityConstant(0.070);
         setFrictionConstant(0.00);
     }
@@ -61,11 +62,12 @@ public class Player extends DynamicSpriteEntity implements KeyListener, SceneBor
     public void setLives(int lives) {
         this.lives = lives;
     }
+
     @Override
     public void setMotion( double speed, final double direction) {
         boolean boosterActive = booster.isActive();
         if (boosterActive) {
-            speed *= 2;
+            speed *= 1.5;
         }
         super.setMotion(speed, direction);
     }
@@ -84,7 +86,8 @@ public class Player extends DynamicSpriteEntity implements KeyListener, SceneBor
             setMotion(Helper.Speed.TESTPLAYER3,Helper.Direction.GOLEFT);
         } else if(pressedKeys.contains(Helper.KeyStroke.RIGHT)){
             setMotion(Helper.Speed.TESTPLAYER3,Helper.Direction.GORIGHT);
-        } else if(pressedKeys.contains(Helper.KeyStroke.BOOST)){
+        } else if(pressedKeys.contains(Helper.KeyStroke.BOOST) && canShoot){
+            activateBooster();
 
             setMotion(Helper.Speed.TESTPLAYER5,Helper.Direction.GOUP);
             checkMaxHeight();
@@ -99,6 +102,15 @@ public class Player extends DynamicSpriteEntity implements KeyListener, SceneBor
             canShoot = true;
         }
     }
+
+    private void activateBooster() {
+        if (booster != null && !booster.isActive() && !booster.setCoolingDownActive(false)) {
+            booster.setBoosterActive(true);
+            booster.timer.resume();
+            System.out.println("Booster Active");
+        }
+    }
+
 
     @Override
     public void notifyBoundaryTouching(SceneBorder border){
@@ -184,13 +196,6 @@ public class Player extends DynamicSpriteEntity implements KeyListener, SceneBor
 
     public void setWeapon(IShootable weapon) {
         this.shootable = weapon;
-    }
-    public BoosterButton getBooster() {
-        return booster;
-    }
-
-    public void setBooster(BoosterButton booster) {
-        this.booster = booster;
     }
 
     public void activateLaserPowerUp() {

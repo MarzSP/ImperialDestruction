@@ -1,7 +1,6 @@
 package AlienDestruction.Scenes;
 
 import AlienDestruction.App;
-import AlienDestruction.Buttons.BoosterButton;
 import AlienDestruction.Buttons.MenuButton;
 import AlienDestruction.Entities.*;
 import AlienDestruction.Entities.PowerUps.PowerUpLaser;
@@ -34,7 +33,7 @@ public class GameScreen extends DynamicScene implements EntitySpawnerContainer {
 
     protected App app;
     private Player player;
-    private GameScreen gameScreen;
+
     private final EntitySpawner weaponTypeSpawner;
 
 
@@ -83,9 +82,9 @@ public class GameScreen extends DynamicScene implements EntitySpawnerContainer {
         ));
 
         var playerLives = new PlayerLivesSprite(new Coordinate2D(20,20));
-        var boost = new BoosterButton("sprites/booster.png", new Coordinate2D(90,20));
 
-        player.setBooster(boost);
+
+
         //addEntity(boost);
         addEntity(playerLives);
 
