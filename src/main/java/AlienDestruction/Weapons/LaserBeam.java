@@ -7,13 +7,16 @@ import com.github.hanyaeger.api.entities.Collider;
 import java.util.List;
 
 public class LaserBeam extends WeaponType {
+
+
     public LaserBeam(Coordinate2D initialLocation) {
         super("sprites/laserred.png", initialLocation, new Size(5,16));
+
+        setDamagePoints(1);
     }
 
     @Override
     public void onCollision(List<Collider> collidingObject) {
-
     }
 
 }

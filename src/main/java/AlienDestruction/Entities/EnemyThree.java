@@ -14,9 +14,9 @@ public class EnemyThree extends GameEntities{
         this.player = player;
 
         setMotion(3, 45d);
-
         setPoints(100);
         setPenaltyPoints(50);
+        setHitPoints(4);
     }
 
     @Override

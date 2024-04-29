@@ -10,7 +10,7 @@ public class LaserGun extends EntitySpawner implements IShootable{
 
     @Override
     public void shoot(WeaponType weaponType) {
-        weaponType.setSpeed(20);
+        weaponType.setSpeed(25);
         weaponType.setDirection(180);
         this.spawn(weaponType);
     }

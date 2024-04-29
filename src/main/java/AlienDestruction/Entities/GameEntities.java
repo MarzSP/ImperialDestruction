@@ -18,6 +18,8 @@ import java.util.Set;
 public class GameEntities extends DynamicSpriteEntity implements SceneBorderTouchingWatcher, Newtonian, Collided, Collider, Rotatable, SceneBorderCrossingWatcher {
     private int points;
     private int penaltyPoints;
+
+    private int hitPoints;
     private Player player;
     private GameScreen gameScreen;
 
@@ -42,6 +44,12 @@ public class GameEntities extends DynamicSpriteEntity implements SceneBorderTouc
     public void setPenaltyPoints(int penaltyPoints) {
         this.penaltyPoints = penaltyPoints;
     }
+    public int getHitPoints() {
+        return hitPoints;
+    }
+    public void setHitPoints(int hitPoints) {
+        this.hitPoints = hitPoints;
+    }
 
     @Override
     public void notifyBoundaryTouching(SceneBorder sceneBorder) {
@@ -51,11 +59,22 @@ public class GameEntities extends DynamicSpriteEntity implements SceneBorderTouc
     @Override
     public void onCollision(List<Collider> collidingObject) {
         for (Collider collider : collidingObject){
-            if (collider instanceof LaserBeam){
-                player.increaseScore(points);
-                this.remove();                      // remove Enemy / entity
-                ((WeaponType) collider).remove();   // remove Laser / Weapon
+            if (collider instanceof WeaponType){
+                addDamage(((WeaponType) collider).getDamagePoints());
+                checkIfDestroyed();
+                ((WeaponType) collider).remove(); // remove Laser / Weapon
             }
+        }
+    }
+
+    public void addDamage(double damage){
+        this.hitPoints -= damage;
+    }
+
+    public void checkIfDestroyed(){
+        if (this.hitPoints <= 0) {
+            player.increaseScore(points);
+            this.remove();                      // remove Enemy / entity
         }
     }
 
