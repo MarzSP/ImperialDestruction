@@ -2,21 +2,25 @@ package AlienDestruction.Entities;
 
 import AlienDestruction.App;
 import AlienDestruction.Helper;
+import AlienDestruction.Scenes.GameScreen;
 import AlienDestruction.Weapons.LaserBeam;
 import AlienDestruction.Weapons.WeaponType;
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.Size;
 import com.github.hanyaeger.api.entities.Collider;
 import com.github.hanyaeger.api.entities.ContinuousRotatable;
+import com.github.hanyaeger.api.scenes.SceneBorder;
 
 import java.util.List;
 
 public class ObstacleOne extends GameEntities {
 
     private Player player;
+
     public ObstacleOne(Coordinate2D location, Player player) {
         super("sprites/asteroidSquareV1.png", location, new Size(100,100), player);
         this.player = player;
+
         setMotion(Helper.Speed.LOW, Helper.Direction.DOWN);
     }
 
@@ -31,10 +35,6 @@ public class ObstacleOne extends GameEntities {
     }
 
     public void bounceOff(WeaponType collider){
-        System.out.println(" Laser: " + collider.getAnchorLocation());
-        System.out.println(" Obstacle: " + this.getLocationInScene());
-        System.out.println(" width: " + this.getWidth() + "Height:" + this.getHeight());
-        System.out.println(" Grid: "+ getHitGrid(collider));
         switch (getHitGrid(collider)) {
             case 1:
                 setNewColliderDirection(collider, 90, 270);
@@ -80,24 +80,10 @@ public class ObstacleOne extends GameEntities {
         (collider).setDirection(direction);
     }
 
+    @Override
+    public void notifyBoundaryCrossing(SceneBorder sceneBorder) {
+
+    }
+
 }
 
-
-//public void checkMaxHeight() {
-//    if(getLocationInScene().getY() < 500) {
-//        setAnchorLocationY(500);
-//    }
-//}
-
-//        if (laserX <= colX + (obstWidth / 2) && colY <= colY + (obstHeight / 2)) {
-//        System.out.println(colX + (obstWidth / 2));
-//        return  1;
-//        } else if (colX >= colX + (obstWidth / 2) && colY <= colY + (obstHeight / 2)){
-//        return  2;
-//        } else if (colX >= colX + (obstWidth / 2) && colY >= colY + (obstHeight / 2)){
-//        return  3;
-//        } else if (colX <= colX + (obstWidth / 2) && colY >= colY + (obstHeight / 2)){
-//        return  4;
-//        }
-//        return 0;
-//        }

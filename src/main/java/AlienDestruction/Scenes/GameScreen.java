@@ -14,7 +14,9 @@ import AlienDestruction.Weapons.LaserGun;
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.EntitySpawnerContainer;
 import com.github.hanyaeger.api.Size;
+import com.github.hanyaeger.api.UpdateExposer;
 import com.github.hanyaeger.api.entities.EntitySpawner;
+import com.github.hanyaeger.api.entities.SceneBorderCrossingWatcher;
 import com.github.hanyaeger.api.entities.impl.TextEntity;
 import com.github.hanyaeger.api.scenes.DynamicScene;
 import javafx.scene.paint.Color;
@@ -32,6 +34,7 @@ public class GameScreen extends DynamicScene implements EntitySpawnerContainer {
 
     protected App app;
     private Player player;
+    private GameScreen gameScreen;
     private final EntitySpawner weaponTypeSpawner;
 
 

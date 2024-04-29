@@ -1,5 +1,6 @@
 package AlienDestruction.Entities;
 
+import AlienDestruction.Scenes.GameScreen;
 import AlienDestruction.Weapons.LaserBeam;
 import AlienDestruction.Weapons.WeaponType;
 import com.github.hanyaeger.api.Coordinate2D;
@@ -14,15 +15,17 @@ import java.util.List;
 import java.util.Random;
 import java.util.Set;
 
-public class GameEntities extends DynamicSpriteEntity implements SceneBorderTouchingWatcher, Newtonian, Collided, Collider, Rotatable {
+public class GameEntities extends DynamicSpriteEntity implements SceneBorderTouchingWatcher, Newtonian, Collided, Collider, Rotatable, SceneBorderCrossingWatcher {
     private int points;
     private int penaltyPoints;
     private Player player;
+    private GameScreen gameScreen;
 
 
     protected GameEntities(String resource, Coordinate2D initialLocation, Size size, Player player) {
         super(resource, initialLocation);
         this.player = player;
+        this.gameScreen = gameScreen;
         setGravityConstant(0.000);
         setFrictionConstant(0.00);
     }
@@ -56,4 +59,8 @@ public class GameEntities extends DynamicSpriteEntity implements SceneBorderTouc
         }
     }
 
+    @Override
+    public void notifyBoundaryCrossing(SceneBorder sceneBorder) {
+
+    }
 }
