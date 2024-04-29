@@ -22,7 +22,7 @@ public class EnemyTwo extends GameEntities{
         setMotion(Helper.Speed.MEDIUM, Helper.Direction.GORIGHTDOWN);
         setPoints(80);
         setPenaltyPoints(40);
-
+        setHitPoints(2);
     }
 
     @Override

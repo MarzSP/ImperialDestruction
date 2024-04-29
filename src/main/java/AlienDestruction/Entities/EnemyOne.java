@@ -20,10 +20,11 @@ public class EnemyOne extends GameEntities {
 
         super("sprites/tieFighterV1.png", location, new Size(80,80), player);
         this.player = player;
+
         setMotion(Helper.Speed.MEDIUM, Helper.Direction.DOWN);
         setPoints(50);
         setPenaltyPoints(25);
-
+        setHitPoints(1);
     }
 
     @Override
