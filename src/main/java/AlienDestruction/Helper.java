@@ -9,7 +9,10 @@ import javafx.scene.input.KeyCode;
  * Dit betekend: dat ze gedeeld worden tussen alle instanties van de Helper klasse en niet kunnen worden gewijzigd na initialisatie.
  */
 public class Helper {
-
+    /**
+     * De inner-class SceneIds defineert de numerieke constanten(identificatienummers) die gebruikt kunnen worden om te refereren naar verschillende schermen (scenes) in het spel.
+     * De constanten vertegenwoordigen de ID's van de schermen.
+     */
     public static class SceneIds {
         public static final int StartScreen = 0;
         public static final int GameScreen = 1;
@@ -17,6 +20,10 @@ public class Helper {
         public static final int GameMenu = 3;
     }
 
+    /**
+     * De inner class KeyStroke definieert constanten die de key codes vertegenwoordigen voor verschillende toetsenbord aanslagen die gebruikt worden in het spel.
+     * De constanten gebruiken de KeyCode enum uit JavaFX..
+     */
     public static class KeyStroke {
         public static final KeyCode LEFT = KeyCode.A;
         public static final KeyCode RIGHT = KeyCode.D;
@@ -26,6 +33,10 @@ public class Helper {
         public static final KeyCode FIRE = KeyCode.SPACE;
     }
 
+    /**
+     * De inner class Direction definieert numerieke constanten die verschillende richtingen in het spel vertegenwoordigen.
+     * De waarden worden vaak gebruikt in graden (bijv., GOLEFT = 270).
+     */
     public static class Direction {
         public static final double GOLEFT = 270;
         public static final double GORIGHT = 90;
@@ -37,6 +48,9 @@ public class Helper {
         public static final double GORIGHTDOWN = 45;
     }
 
+    /**
+     * De inner class Speed definieert numerieke constanten die verschillende snelheden in het spel vertegenwoordigen.
+     */
     public static class Speed {
         public static final double LOW = 1.5;
         public static final double MEDIUM = 1.5;
