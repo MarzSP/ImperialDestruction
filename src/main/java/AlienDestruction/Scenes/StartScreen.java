@@ -6,6 +6,7 @@ import AlienDestruction.Buttons.MusicButton;
 import AlienDestruction.Buttons.StartButton;
 import com.github.hanyaeger.api.AnchorPoint;
 import com.github.hanyaeger.api.Coordinate2D;
+import com.github.hanyaeger.api.Size;
 import com.github.hanyaeger.api.entities.impl.TextEntity;
 import com.github.hanyaeger.api.media.SoundClip;
 import javafx.scene.paint.Color;
@@ -26,7 +27,8 @@ import javafx.scene.text.FontWeight;
         setBackgroundImage("backgrounds/universe1.jpg");
 
         SoundClip musicClip = new SoundClip("audio/swmaintheme.mp3", SoundClip.INDEFINITE);
-        MusicButton musicButton = new MusicButton(new Coordinate2D(40, 40), musicClip);
+        MusicButton musicButton;
+        musicButton = new MusicButton(new Coordinate2D(20, 20), musicClip, new Size( 20,20) );
         addEntity(musicButton);
     }
 
