@@ -2,6 +2,12 @@ package AlienDestruction;
 
 import javafx.scene.input.KeyCode;
 
+/**De Helper klasse is een hulpklasse die statische constanten groepeert voor verschillende game-elementen.
+ * Deze constanten zijn bedoeld om de leesbaarheid en onderhoudbaarheid van de code te verbeteren door magische waarden te vermijden.
+ * Deze Helper klasse bevat subclasses: SceneIds, KeyStroke, Direction en Speed.
+ * Alle constanten in deze klasse zijn static en final:
+ * Dit betekend: dat ze gedeeld worden tussen alle instanties van de Helper klasse en niet kunnen worden gewijzigd na initialisatie.
+ */
 public class Helper {
 
     public static class SceneIds {

@@ -14,6 +14,10 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 
+/** App is de hoofd-klasse van deze game applicatie, deze erfst van YaegerGame.
+ * De App klasse is verantwoordelijk voor het initialiseren van de game-instellingen, het opzetten van de verschillende schermen (scenes).
+ * App start ook de game op.
+ */
 public class App extends YaegerGame {
 
     public static void main(String[] args ) {
