@@ -31,40 +31,53 @@ public class ObstacleOne extends GameEntities {
     }
 
     public void bounceOff(WeaponType collider){
-        System.out.println(collider.getAnchorLocation());
-        System.out.println(getHitGrid(collider));
+        System.out.println(" Laser: " + collider.getAnchorLocation());
+        System.out.println(" Obstacle: " + this.getLocationInScene());
+        System.out.println(" width: " + this.getWidth() + "Height:" + this.getHeight());
+        System.out.println(" Grid: "+ getHitGrid(collider));
         switch (getHitGrid(collider)) {
             case 1:
                 setNewColliderDirection(collider, 90, 270);
+                break;
             case 2:
                 setNewColliderDirection(collider, 90, 90);
+                break;
             case 3:
                 setNewColliderDirection(collider, 90, 90);
+                break;
             case 4:
                 setNewColliderDirection(collider, 90, 270);
+                break;
+            default:
+                break;
         }
     }
 
     int getHitGrid(WeaponType collider){
         double obstWidth = this.getWidth();
         double obstHeight = this.getHeight();
-        double colX = collider.getAnchorLocation().getX();
-        double colY = collider.getAnchorLocation().getY();
-        if (colX < colX + (obstWidth / 2) && colY < colY + (obstHeight / 2)) {
+        double obstacleX = getLocationInScene().getX();
+        double obstacleY = getLocationInScene().getY();
+        double laserX = collider.getAnchorLocation().getX();
+        double laserY = collider.getAnchorLocation().getY();
+        boolean isLeftSide = laserX < obstacleX + (obstWidth / 2);
+        boolean isTopSide = laserY < obstacleY + (obstHeight / 2);
+
+        if (isLeftSide && isTopSide) {
             return  1;
-        } else if (colX > colX + (obstWidth / 2) && colY < colY + (obstHeight / 2)){
+        } else if (!isLeftSide && isTopSide){
             return  2;
-        } else if (colX < colX + (obstWidth / 2) && colY > colY + (obstHeight / 2)){
+        } else if (!isLeftSide && !isTopSide){
             return  3;
-        } else if (colX > colX + (obstWidth / 2) && colY > colY + (obstHeight / 2)){
+        } else if (isLeftSide && !isTopSide){
             return  4;
         }
         return 0;
     }
 
     public void setNewColliderDirection(WeaponType collider, double rotate, double direction){
-        ((WeaponType) collider).setRotate(rotate);
-        ((WeaponType) collider).setDirection(direction);
+        (collider).setRotate(rotate);
+        (collider).setDirection(direction);
     }
 
 }
@@ -75,3 +88,16 @@ public class ObstacleOne extends GameEntities {
 //        setAnchorLocationY(500);
 //    }
 //}
+
+//        if (laserX <= colX + (obstWidth / 2) && colY <= colY + (obstHeight / 2)) {
+//        System.out.println(colX + (obstWidth / 2));
+//        return  1;
+//        } else if (colX >= colX + (obstWidth / 2) && colY <= colY + (obstHeight / 2)){
+//        return  2;
+//        } else if (colX >= colX + (obstWidth / 2) && colY >= colY + (obstHeight / 2)){
+//        return  3;
+//        } else if (colX <= colX + (obstWidth / 2) && colY >= colY + (obstHeight / 2)){
+//        return  4;
+//        }
+//        return 0;
+//        }
