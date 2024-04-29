@@ -1,22 +1,23 @@
 package AlienDestruction.Buttons;
 
-import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.Timer;
 import com.github.hanyaeger.api.TimerContainer;
-import javafx.scene.input.MouseButton;
+import javafx.scene.input.KeyCode;
+import java.util.List;
+import java.util.Set;
 
 /**
- * BoosterButton is een implementatie van de SpriteButton klasse:
- *  de "Booster" knop in het "Game Screen" is een knop die activeert een tijdelijke boost voor de speler met een cooldown periode.
+ * Booster is een implementatie van TimerContainer:
+ *  de "Booster" knop [W] op het toetsenbord, activeert in Game Screen een tijdelijke boost voor de speler met een cooldown periode.
 
- * BoosterButton:
+ * Booster:
  * BoostTime: Statische final variabele met de duur van de boost in seconden (10). Deze is statisch final omdat deze niet zal veranderen.
  * CoolDownTime: Statische final variabele met de duur van de cooldown periode in seconden (20).
  * boosterActive: Boolean is eem variabele die aangeeft of de boost actief is (true) of niet actief (false).
  * coolingDownActive: Boolean variabele die aangeeft of de cooldown periode actief is (true) of niet (false).
  * timer: `SelfTimer` object dat gebruikt wordt om de boost en cooldown te timen.
  *
- * BoosterButton Methoden:
+ * Booster Methoden:
  * isActive(): Retourneert `true` als de boost actief is, anders `false`.
  * setBoosterActive(boolean boosterActive): Stelt de `boosterActive` variabele in.
  * setCoolingDownActive(boolean coolingDownActive): Stelt de `coolingDownActive` variabele in.
@@ -26,7 +27,7 @@ import javafx.scene.input.MouseButton;
  *  Controleert of de boost of cooldown actief is, zo ja, dan gebeurt er niks.
  *   Activeert de boost - start de timer voor de boost tijd en hervat de timer.
  *
- * BoosterButton Innerlijke klasse:
+ * Booster Innerlijke klasse:
  *  SelfTimer: Extends de `Timer` klasse en handelt de boost en cooldown functies af.
  *     `onAnimationUpdate(long timestamp)`:
  *         * Pauzeert zichzelf.
@@ -36,17 +37,14 @@ import javafx.scene.input.MouseButton;
  *             * Als cooldown actief, schakelt deze de cooldown uit.
  * Implements: TimerContainer van Yaeger
  */
-public class BoosterButton extends SpriteButton implements TimerContainer {
-    static final int BoostTime = 10;
-    static final int CoolDownTime = 20;
+public class Booster implements TimerContainer {
+    static final int BoostTime = 5;
+    static final int CoolDownTime = 10;
 
     protected boolean boosterActive = false;
     protected boolean coolingDownActive = false;
-    protected SelfTimer timer = new SelfTimer(0);
+    public SelfTimer timer = new SelfTimer(0);
 
-    public BoosterButton(String resource, Coordinate2D initialLocation) {
-        super(resource, initialLocation);
-    }
 
     public boolean isActive() {
         return this.boosterActive;
@@ -56,8 +54,9 @@ public class BoosterButton extends SpriteButton implements TimerContainer {
         this.boosterActive = boosterActive;
     }
 
-    public void setCoolingDownActive(boolean coolingDownActive) {
+    public boolean setCoolingDownActive(boolean coolingDownActive) {
         this.coolingDownActive = coolingDownActive;
+        return coolingDownActive;
     }
 
     @Override
@@ -66,15 +65,20 @@ public class BoosterButton extends SpriteButton implements TimerContainer {
         addTimer(this.timer);
     }
 
-    @Override
-    public void onMouseButtonPressed(MouseButton button, Coordinate2D coordinate2D) {
+
+    public void onPressedKeysChange(Set<KeyCode> pressedKeys){
         if (this.boosterActive || this.coolingDownActive) {
-            return;
+           return;
         }
 
         setBoosterActive(true);
-        timer.setIntervalInMs(BoostTime*1000);
+        timer.setIntervalInMs(BoostTime*500);
         timer.resume();
+    }
+
+    @Override
+    public List<Timer> getTimers() {
+        return null;
     }
 
     public class SelfTimer extends Timer {
