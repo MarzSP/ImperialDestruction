@@ -6,6 +6,7 @@ import AlienDestruction.Buttons.MusicButton;
 import AlienDestruction.Entities.PowerUps.PowerUpLaser;
 import AlienDestruction.Entities.PowerUps.PowerUpLives;
 import AlienDestruction.Helper;
+import AlienDestruction.Highscore;
 import AlienDestruction.Scenes.GameScreen;
 import AlienDestruction.Weapons.IShootable;
 import AlienDestruction.Weapons.LaserBeam;
@@ -36,6 +37,7 @@ public class Player extends DynamicSpriteEntity implements KeyListener, SceneBor
     private Booster booster;
     private boolean laserPowerUpActive = false; // Boolean voor PowerUpLaser
     private long laserPowerUpEndTime = 0; // int voor PowerUpLaser
+    Highscore highscore = new Highscore(this);
 
     public Player(Coordinate2D location, GameScreen gameScreen, App app) {
         super("sprites/xWingV1.png", location, new Size(80,80));
@@ -50,6 +52,7 @@ public class Player extends DynamicSpriteEntity implements KeyListener, SceneBor
     public GameScreen getGameScreen() {
         return gameScreen;
     }
+
     public int getLives() {
         return lives;
     }
@@ -204,8 +207,11 @@ public class Player extends DynamicSpriteEntity implements KeyListener, SceneBor
         laserPowerUpEndTime = System.currentTimeMillis() + 10000; // 10 seconds
     }
 
+
     public void increaseScore(int points){
         this.score += points;
+        highscore.updateCurrentScore();
+        highscore.checkHighScore();
         updateScore();
     }
 }
