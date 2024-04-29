@@ -2,6 +2,7 @@ package AlienDestruction.Scenes;
 
 import AlienDestruction.App;
 import AlienDestruction.Buttons.MenuButton;
+import AlienDestruction.Buttons.MusicButton;
 import AlienDestruction.Entities.*;
 import AlienDestruction.Entities.PowerUps.PowerUpLaser;
 import AlienDestruction.Entities.PowerUps.PowerUpLives;
@@ -17,6 +18,7 @@ import com.github.hanyaeger.api.UpdateExposer;
 import com.github.hanyaeger.api.entities.EntitySpawner;
 import com.github.hanyaeger.api.entities.SceneBorderCrossingWatcher;
 import com.github.hanyaeger.api.entities.impl.TextEntity;
+import com.github.hanyaeger.api.media.SoundClip;
 import com.github.hanyaeger.api.scenes.DynamicScene;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -49,6 +51,8 @@ public class GameScreen extends DynamicScene implements EntitySpawnerContainer {
     @Override
     public void setupScene() {
         setBackgroundImage("backgrounds/universe2.jpg");
+
+
     }
 
     @Override
@@ -85,7 +89,6 @@ public class GameScreen extends DynamicScene implements EntitySpawnerContainer {
 
 
 
-        //addEntity(boost);
         addEntity(playerLives);
 
         // Add Player lives text:
@@ -105,6 +108,10 @@ public class GameScreen extends DynamicScene implements EntitySpawnerContainer {
         scoreText.setFill(Color.GOLD);
         scoreText.setFont(Font.font("Roboto", FontWeight.BOLD, 20));
         addEntity(scoreText);
+
+        SoundClip musicClip = new SoundClip("audio/swmaintheme.mp3", SoundClip.INDEFINITE);
+        MusicButton musicButton = new MusicButton(new Coordinate2D(750, 10), musicClip, new Size(10,10) );
+        addEntity(musicButton);
 
         MenuButton menuButton = new MenuButton(app, new Coordinate2D(940, 20));
         addEntity(menuButton);

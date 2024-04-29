@@ -2,6 +2,7 @@ package AlienDestruction.Entities;
 
 import AlienDestruction.App;
 import AlienDestruction.Buttons.Booster;
+import AlienDestruction.Buttons.MusicButton;
 import AlienDestruction.Entities.PowerUps.PowerUpLaser;
 import AlienDestruction.Entities.PowerUps.PowerUpLives;
 import AlienDestruction.Helper;
