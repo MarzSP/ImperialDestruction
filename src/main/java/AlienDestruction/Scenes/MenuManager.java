@@ -24,11 +24,17 @@ import javafx.stage.Stage;
 
  public abstract class MenuManager extends StaticScene implements YaegerScene {
 
-
+    /**
+     * de abstrate methode setupScene moet worden geïmplementeerd door klassen die MenuManager erven. Deze kan de visuele opmaak van de menuschermen verzorgen.
+     */
     public void setupScene() {
 
     }
 
+    /**
+     * dde abstracte methode setupEntities moet worden gegeïmplementeerd door klassen die MenuManager erven.
+     * Deze kan entiteiten (visuele elementen) toevoegen aan een menuscherm, zoals knoppen en tekstlabels.
+     */
     public void setupEntities() {
     }
 }

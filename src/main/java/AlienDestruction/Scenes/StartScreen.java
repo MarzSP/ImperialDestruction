@@ -19,10 +19,19 @@ import javafx.scene.text.FontWeight;
  public class StartScreen extends MenuManager {
     protected final App app;
 
+    /**
+     * Constructor StartScreen initialiseert een StartScreen object. Deze krijgt App object als argument omdat dit de hoogdapplicatie is.
+     * @param app
+     */
     public StartScreen(App app) {
         this.app = app;
     }
 
+    /**
+     * setupScene(): Deze methode zorgt voor de visuele opmaak van het startscherm.
+     *  Het stelt een achtergrondafbeelding in ("backgrounds/universe1.jpg").
+     *  Het maakt een knop musicButton, welke een eigen klasse heeft, om de achtergrondmuziek te bedienen ("audio/swmaintheme.mp3").
+     */
     public void setupScene() {
         setBackgroundImage("backgrounds/universe1.jpg");
 
@@ -32,6 +41,13 @@ import javafx.scene.text.FontWeight;
         addEntity(musicButton);
     }
 
+    /**
+     * Deze methode overschrijft de setupEntities methode van een superklasse MenuManager.
+     * Het voegt de volgende elementen toe aan het scherm:
+     *     Een tekst element met de titel "Imperial Destruction" gecentreerd bovenaan het scherm.
+     *     Een "Start Game" knop onderaan het scherm die geklikt kan worden om het spel te starten. Er is een eigen class StartButton.
+     *     Drie knoppen voor het selecteren van de moeilijkheidsgraad ("Easy", "Medium", "Hard"). Er is een eigen class DifficultyButtons.
+     */
     @Override
     public void setupEntities() {
         super.setupEntities();
