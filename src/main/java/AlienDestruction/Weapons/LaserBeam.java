@@ -8,7 +8,7 @@ import java.util.List;
 
 public class LaserBeam extends WeaponType {
     public LaserBeam(Coordinate2D initialLocation) {
-        super("sprites/laserred.png", initialLocation, new Size(3,16));
+        super("sprites/laserred.png", initialLocation, new Size(5,16));
     }
 
     @Override

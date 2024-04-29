@@ -25,7 +25,7 @@ import java.util.List;
 import java.util.Set;
 
 public class Player extends DynamicSpriteEntity implements KeyListener, SceneBorderTouchingWatcher, Newtonian, Collided {
-// public class Player extends GameEntities implements Collided {
+
     private App app;
     private GameScreen gameScreen;
     private IShootable shootable;
@@ -56,6 +56,7 @@ public class Player extends DynamicSpriteEntity implements KeyListener, SceneBor
     }
     public void setScore(int score) {
         this.score = score;
+        gameScreen.getScoreText().setText("Score: " + this.getScore());
     }
     public void setLives(int lives) {
         this.lives = lives;
@@ -168,7 +169,7 @@ public class Player extends DynamicSpriteEntity implements KeyListener, SceneBor
         double y = getLocationInScene().getY();
         shootable.shoot(new LaserBeam(new Coordinate2D(x + 5, y))); // todo: dynamisch aanpassen aan size sprite / pos lasers on sprite
         shootable.shoot(new LaserBeam(new Coordinate2D(x + 70, y)));//
-        soundLaser();                              // Fire Lasera
+        soundLaser();                              // Fire Laser
     }
 
     private void updateScore() {
