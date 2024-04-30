@@ -28,6 +28,8 @@ public class GameEntities extends DynamicSpriteEntity implements SceneBorderTouc
         super(resource, initialLocation);
         this.player = player;
         this.gameScreen = gameScreen;
+
+
         setGravityConstant(0.000);
         setFrictionConstant(0.00);
     }
@@ -81,5 +83,9 @@ public class GameEntities extends DynamicSpriteEntity implements SceneBorderTouc
     @Override
     public void notifyBoundaryCrossing(SceneBorder sceneBorder) {
 
+    }
+
+    public void setGameScene(GameScreen gameScreen) {
+        this.gameScreen = gameScreen;
     }
 }
