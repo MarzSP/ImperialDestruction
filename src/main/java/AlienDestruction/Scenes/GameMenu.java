@@ -17,11 +17,19 @@ import java.nio.MappedByteBuffer;
  * Het is verantwoordelijk voor het opzetten van de achtergrond afbeelding, de titeltekst, en de knoppen Quit Game en Play Again.
  */
 public class GameMenu extends MenuManager {
-
+    /**
+     * Methode setupScene() stelt een achtergrondafbeelding in voor het menu scherm.
+     */
     public void setupScene() {
         setBackgroundImage("backgrounds/universe1.jpg");
     }
 
+    /**
+     * setupEntities() overschrijft de abstracte setupEntities() methode van MenuManager.
+     * Het voegt de volgende elementen toe aan het menu:
+     *     Een tekst element met de titel "Game Menu" gecentreerd bovenaan het scherm.
+     *     Een "Quit Game" knop onderaan het scherm. De QuitGameButton is een eigen class.
+     */
     @Override
     public void setupEntities() {
         super.setupEntities();

@@ -10,7 +10,7 @@ import javafx.scene.input.KeyCode;
  */
 public class Helper {
     /**
-     * De inner-class SceneIds defineert de numerieke constanten(identificatienummers) die gebruikt kunnen worden om te refereren naar verschillende schermen (scenes) in het spel.
+     * De inner-class SceneIds definieert de numerieke constanten(identificatienummers) die gebruikt kunnen worden om te refereren naar verschillende schermen (scenes) in het spel.
      * De constanten vertegenwoordigen de ID's van de schermen.
      */
     public static class SceneIds {
@@ -22,7 +22,7 @@ public class Helper {
 
     /**
      * De inner class KeyStroke definieert constanten die de key codes vertegenwoordigen voor verschillende toetsenbord aanslagen die gebruikt worden in het spel.
-     * De constanten gebruiken de KeyCode enum uit JavaFX..
+     * De constanten gebruiken de KeyCode enum uit JavaFX.
      */
     public static class KeyStroke {
         public static final KeyCode LEFT = KeyCode.A;
@@ -35,7 +35,7 @@ public class Helper {
 
     /**
      * De inner class Direction definieert numerieke constanten die verschillende richtingen in het spel vertegenwoordigen.
-     * De waarden worden vaak gebruikt in graden (bijv., GOLEFT = 270).
+     * De waarden worden gebruikt in graden (bijv., GOLEFT = 270).
      */
     public static class Direction {
         public static final double GOLEFT = 270;

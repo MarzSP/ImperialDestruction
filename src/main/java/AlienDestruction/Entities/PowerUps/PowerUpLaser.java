@@ -11,6 +11,15 @@ import com.github.hanyaeger.api.entities.ContinuousRotatable;
  * Wanneer de Spatiebalk ingedrukt wordt, kan de speler 10 seconden lang extra snel lasers afvuren.
  */
 public class PowerUpLaser extends PowerUps implements ContinuousRotatable {
+
+    /**
+     * Constructor:
+     * @param initialLocation : De beginpositie van de power-up op het scherm (als Coordinate2D object)
+     * Sprite afbeelding: "sprites/LaserPowerUp.png" een visuele representatie van extra snelle laser.
+     * Grootte: Size(40,40)
+     * Hoge beginsnelheid en neerwaartse richting (met behulp van Helper.Speed.HIGH en Helper.Direction.DOWN)
+     * Rotatiesnelheid: 2
+     */
     public PowerUpLaser(Coordinate2D initialLocation) {
         super("sprites/LaserPowerUp.png", initialLocation,new Size(40, 40));
         setMotion(Helper.Speed.HIGH, Helper.Direction.DOWN);

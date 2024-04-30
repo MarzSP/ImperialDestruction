@@ -7,7 +7,16 @@ import com.github.hanyaeger.api.entities.impl.RectangleEntity;
 
 import java.util.ArrayList;
 
+/**
+ * De BlackRectangle class representeert een zwarte rechthoekige entiteit bovenin het scherm, welke fungeert als in-game menu balk.
+ */
 public class BlackRectangle extends RectangleEntity {
+
+    /**
+     * De constructor initialiseert dde zwarte rechthoek met de opgegeven beginpositie (Initial location) en grootte (size).
+      * @param initialLocation
+     * @param size
+     */
     public BlackRectangle(Coordinate2D initialLocation, Size size) {
         super(initialLocation, size);
     }

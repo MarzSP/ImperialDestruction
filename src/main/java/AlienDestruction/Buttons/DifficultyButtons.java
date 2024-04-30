@@ -10,18 +10,35 @@ import javafx.scene.text.FontWeight;
 
 /**
  * Dit is een sub-klasse van Button die knoppen maakt voor de verschillende moeilijkheidsgraden(Easy, Medium, Hard).
- * Constructor voor de `DifficultyButtons` klasse:
- *  @param initialLocation De initiële locatie van de knop op het scherm.
- *  @param difficultyIndex De index van de moeilijkheidsgraad in de `DIFFICULTIES` array (0 = Easy, 1 = Medium, 2 = Hard).
+ * Button: DifficultyButtons erft van de Button klasse, wat betekent dat het de basisfunctionaliteit van knoppen (zoals tekst weergeven, reageren op muisgebeurtenissen) heeft.
  */
 public class DifficultyButtons extends Button {
+    /**
+     * DIFFICULTIES: Een statische array met de namen van de moeilijkheidsgraden ("Easy", "Medium", "Hard").
+     */
     private static final String[] DIFFICULTIES = {"Easy", "Medium", "Hard"};
+
+    /**
+     *  * Constructor voor de `DifficultyButtons` klasse:
+     * @param initialLocation:De initiële locatie van de knop op het scherm.
+     * @param difficultyIndex: De index van de moeilijkheidsgraad in de `DIFFICULTIES` array (0 = Easy, 1 = Medium, 2 = Hard).
+     * Initialiseert de tekst van de knop met de naam van de geselecteerde moeilijkheidsgraad (DIFFICULTIES[difficultyIndex]).
+     * Stelt de knopkleur in op goud (setFill(Color.GOLD)).
+     * Stelt het lettertype in op Impact, semi-Bold, grootte 40 (setFont(Font.font("Impact", FontWeight.SEMI_BOLD, 40))).
+     * Stelt het ankerpunt van de knop in op het midden-links (setAnchorPoint(AnchorPoint.CENTER_LEFT)).
+     */
     public DifficultyButtons (Coordinate2D initialLocation, int difficultyIndex) {
         super(initialLocation, DIFFICULTIES[difficultyIndex]);
         setFill(Color.GOLD);
         setFont(Font.font("Impact", FontWeight.SEMI_BOLD, 40));
         setAnchorPoint(AnchorPoint.CENTER_LEFT);
     }
+
+    /**
+     *onMouseButtonPressed(MouseButton button, Coordinate2D coordinate2D) (overridden): Deze methode wordt opgeroepen wanneer er op de knop geklikt wordt
+     * @param button
+     * @param coordinate2D
+     */
 
     @Override
     public void onMouseButtonPressed(MouseButton button, Coordinate2D coordinate2D) {

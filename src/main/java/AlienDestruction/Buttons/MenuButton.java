@@ -13,11 +13,16 @@ import javafx.scene.text.FontWeight;
 /**
  * De MenuButton is sub-klsse van de Button klasse.
  * De knop wordt gebruikt om een menu met opties weer te geven wanneer de speler erop klikt.
- * De constructor initialiseert een nieuw MenuButton-object en stelt de volgende eigenschappen in:
- * initialLocation, Tekstlabel "Menu", tekstkleur, lettertype en ankerpunt.
  */
 public class MenuButton extends Button {
     private App app;
+
+    /**
+     *  De constructor initialiseert een nieuw MenuButton-object en stelt de volgende eigenschappen in:
+     *  initialLocation, Tekstlabel "Menu", tekstkleur, lettertype en ankerpunt
+     * @param app
+     * @param initialLocation
+     */
     public MenuButton(App app, Coordinate2D initialLocation) {
         super(initialLocation, "Menu");
         this.app = app;
@@ -26,6 +31,14 @@ public class MenuButton extends Button {
         setAnchorPoint(AnchorPoint.TOP_RIGHT);
     }
 
+    /**
+     * Deze publieke methode geeft aan dat deze wordt aangeroepen wanneer er op een muisknop wordt gedrukt.
+     *
+     * @param button       de {@link MouseButton} klik op de muis.
+     * @param coordinate2D de huidige locatie van waar de muisklik op de knop op het scherm is gebeurd.
+     * app.setActiveScene(Helper.SceneIds.GameMenu);: Deze regel vormt de kernfunctionaliteit van de methode.Het veranderd het scherm (Scene)
+     * De app-object wordt gebruikt om de actieve scène te wijzigen.
+     */
         @Override
         public void onMouseButtonPressed(MouseButton button, Coordinate2D coordinate2D) {
             app.setActiveScene(Helper.SceneIds.GameMenu);
