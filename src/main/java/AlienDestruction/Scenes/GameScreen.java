@@ -7,6 +7,8 @@ import AlienDestruction.Entities.*;
 import AlienDestruction.Entities.PowerUps.PowerUpLaser;
 import AlienDestruction.Entities.PowerUps.PowerUpLives;
 import AlienDestruction.Entities.PowerUps.PowerUpShip;
+import AlienDestruction.Game.EnemySpawner;
+import AlienDestruction.Game.Level;
 import AlienDestruction.MenuBar.BlackRectangle;
 import AlienDestruction.MenuBar.PlayerLivesSprite;
 import AlienDestruction.Weapons.IShootable;
@@ -35,17 +37,21 @@ public class GameScreen extends DynamicScene implements EntitySpawnerContainer {
 
     protected App app;
     private Player player;
-
     private final EntitySpawner weaponTypeSpawner;
+
+    private Level level;
+
+
+    public GameScreen(App app) {
+        this.app = app;
+        this.level = level;
+        this.weaponTypeSpawner = new LaserGun(10);
+    }
 
 
     public TextEntity getScoreText() {return scoreText;}
     public TextEntity getPlayerLivesText() {
         return playerLivesText;
-    }
-    public GameScreen(App app) {
-        this.app = app;
-        this.weaponTypeSpawner = new LaserGun(10);
     }
 
     @Override
@@ -60,8 +66,8 @@ public class GameScreen extends DynamicScene implements EntitySpawnerContainer {
         player = new Player(new Coordinate2D(getWidth() / 2, 550), this, app);
         player.setWeapon((IShootable) weaponTypeSpawner);
 
-        var enemySpriteOne = new EnemyOne(new Coordinate2D(40, -40), player);
-        addEntity(enemySpriteOne);
+//        var enemySpriteOne = new EnemyOne(new Coordinate2D(40, -40), player);
+//        addEntity(enemySpriteOne);
 
         var enemySpriteTwo = new EnemyTwo(new Coordinate2D(240, -40), player);
         addEntity(enemySpriteTwo);
@@ -86,8 +92,6 @@ public class GameScreen extends DynamicScene implements EntitySpawnerContainer {
         ));
 
         var playerLives = new PlayerLivesSprite(new Coordinate2D(20,20));
-
-
 
         addEntity(playerLives);
 
@@ -120,6 +124,7 @@ public class GameScreen extends DynamicScene implements EntitySpawnerContainer {
     @Override
     public void setupEntitySpawners() {
         addEntitySpawner(weaponTypeSpawner);
+        addEntitySpawner(new EnemySpawner(player));
 
         if (weaponTypeSpawner.isActive()) {
             weaponTypeSpawner.pause();

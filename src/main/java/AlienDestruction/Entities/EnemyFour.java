@@ -15,7 +15,7 @@ public class EnemyFour extends GameEntities{
         super("sprites/starDestroyerV1.png", location, new Size(160,290), player);
         this.player = player;
 
-        setMotion(3, 45d);
+        setMotion(1, 0d);
         setPoints(200);
         setPenaltyPoints(100);
         setHitPoints(8);
