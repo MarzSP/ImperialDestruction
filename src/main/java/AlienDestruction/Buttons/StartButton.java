@@ -13,16 +13,17 @@ import javafx.scene.text.FontWeight;
 
 /**
  * De StartButton klasse is een sub-klasse van de abstracte Button klasse en specificeert de knop om het spel te starten.
- * Constructor voor de `StartButton` klasse.
- *  @param app De instantie van de hoofdapplicatie.
- *  @param initialLocation De initiële locatie van de knop op het scherm.
  * Implements: MouseButtonPressedListener
  */
 public class StartButton extends Button implements MouseButtonPressedListener {
 
     protected App app;
 
-
+    /**
+     * Constructor voor de `StartButton` klasse.
+     * @param app :De instantie van de hoofdapplicatie.
+     * @param initialLocation: De initiële locatie van de knop op het scherm.
+     */
     public StartButton (App app, Coordinate2D initialLocation) {
         super(initialLocation, "Start Game!");
         this.app = app;
@@ -33,6 +34,13 @@ public class StartButton extends Button implements MouseButtonPressedListener {
         setAnchorPoint(AnchorPoint.CENTER_CENTER);
     }
 
+    /**
+     * Deze publieke methode geeft aan dat deze wordt aangeroepen wanneer er op een muisknop wordt gedrukt.
+     * @param mousebutton  de {@link MouseButton} die geklikt wordt.
+     * @param coordinate2D huidige locatie van de muis.
+     * app.setActiveScene(Helper.SceneIds.GameMenu);: Deze regel vormt de kernfunctionaliteit van de methode: Het veranderd het scherm (Scene)
+     * De app-object wordt gebruikt om de actieve scène te wijzigen.
+     */
     @Override
     public void onMouseButtonPressed(MouseButton mousebutton, Coordinate2D coordinate2D){
         app.setActiveScene(Helper.SceneIds.GameScreen);

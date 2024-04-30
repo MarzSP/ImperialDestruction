@@ -18,7 +18,7 @@ import java.nio.MappedByteBuffer;
  */
 public class GameMenu extends MenuManager {
     /**
-     * setupScene() stelt een achtergrondafbeelding in voor het menu.
+     * Methode setupScene() stelt een achtergrondafbeelding in voor het menu scherm.
      */
     public void setupScene() {
         setBackgroundImage("backgrounds/universe1.jpg");

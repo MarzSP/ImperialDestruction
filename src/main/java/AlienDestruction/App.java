@@ -2,6 +2,8 @@ package AlienDestruction;
 
 
 import AlienDestruction.Buttons.MenuButton;
+import AlienDestruction.Buttons.PlayAgainButton;
+import AlienDestruction.Entities.Player;
 import AlienDestruction.Scenes.EndScreen;
 import AlienDestruction.Scenes.GameMenu;
 import AlienDestruction.Scenes.GameScreen;
