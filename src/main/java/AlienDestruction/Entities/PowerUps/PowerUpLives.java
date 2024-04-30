@@ -5,7 +5,7 @@ import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.Size;
 import com.github.hanyaeger.api.entities.ContinuousRotatable;
 
-/**De klasse PowerUpLives is een power-up in de game die 1 extra leven toevoegd aan de speler.
+/**De klasse PowerUpLives is een power-up in de game die 1 extra leven toegevoegd aan de speler.
  * Deze klasse erft van de PowerUps klasse en implementeert de ContinuousRotatable interface.
  * De implementatie van PowerUpLives zit in Player in OnCollision.
  */
