@@ -19,7 +19,7 @@ public class EnemyTwo extends GameEntities{
         super("sprites/tieIntercepterV1.png", location, new Size(80,80), player);
         this.player = player;
 
-        setMotion(Helper.Speed.MEDIUM, Helper.Direction.GORIGHTDOWN);
+        setMotion(Helper.Speed.MEDIUM, Helper.Direction.DOWN);
         setPoints(80);
         setPenaltyPoints(40);
         setHitPoints(2);
