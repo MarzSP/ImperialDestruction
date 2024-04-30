@@ -7,8 +7,8 @@ import com.github.hanyaeger.api.entities.EntitySpawner;
 public class EnemySpawner extends EntitySpawner {
 
     private Player player;
-    public EnemySpawner(long intervalInMs) {
-        super(3000); // intervalInMs
+    public EnemySpawner(Player player) {
+        super(1000); // intervalInMs
 
         this.player = player;
     }
