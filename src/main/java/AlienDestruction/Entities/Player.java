@@ -1,12 +1,11 @@
 package AlienDestruction.Entities;
 
 import AlienDestruction.App;
-import AlienDestruction.Buttons.Booster;
-import AlienDestruction.Buttons.MusicButton;
+import AlienDestruction.Game.Booster;
 import AlienDestruction.Entities.PowerUps.PowerUpLaser;
 import AlienDestruction.Entities.PowerUps.PowerUpLives;
 import AlienDestruction.Helper;
-import AlienDestruction.Highscore;
+import AlienDestruction.Game.Highscore;
 import AlienDestruction.Scenes.GameScreen;
 import AlienDestruction.Weapons.IShootable;
 import AlienDestruction.Weapons.LaserBeam;

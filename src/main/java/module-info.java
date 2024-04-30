@@ -8,5 +8,6 @@ module AlienDestruction {
     opens audio;
     opens backgrounds;
     opens sprites;
+    exports AlienDestruction.Game;
 
 }

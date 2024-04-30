@@ -1,20 +1,14 @@
 package AlienDestruction;
 
 
-import AlienDestruction.Buttons.MenuButton;
-import AlienDestruction.Buttons.PlayAgainButton;
-import AlienDestruction.Entities.Player;
+
 import AlienDestruction.Scenes.EndScreen;
 import AlienDestruction.Scenes.GameMenu;
 import AlienDestruction.Scenes.GameScreen;
 import AlienDestruction.Scenes.StartScreen;
-import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.Size;
 import com.github.hanyaeger.api.YaegerGame;
-import com.github.hanyaeger.api.entities.impl.TextEntity;
-import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
+
 
 /** App is de hoofd-klasse van deze game applicatie, deze erft van YaegerGame.
  * De App klasse is verantwoordelijk voor het initialiseren van de game-instellingen, het opzetten van de verschillende schermen (scenes).
@@ -39,7 +33,7 @@ public class App extends YaegerGame {
     }
 
     /**
-     *setupScenes() methode is een @Override uit YaegerGame,om verschillendded schermen toe te voegen aan het spel met de addScene methode.
+     *setupScenes() methode is een @Override uit YaegerGame,om verschillende schermen toe te voegen aan het spel met de addScene methode.
      * Elke scene heeft een uniek identificatienummer.
      */
     @Override

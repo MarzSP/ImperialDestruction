@@ -1,4 +1,4 @@
-package AlienDestruction.Buttons;
+package AlienDestruction.Game;
 
 import com.github.hanyaeger.api.Timer;
 import com.github.hanyaeger.api.TimerContainer;

@@ -1,4 +1,4 @@
-package AlienDestruction;
+package AlienDestruction.Game;
 
 import AlienDestruction.Entities.Player;
 
