@@ -1,6 +1,7 @@
 package AlienDestruction.Entities;
 
 import AlienDestruction.App;
+import AlienDestruction.Helper;
 import AlienDestruction.MenuBar.PlayerLivesSprite;
 import AlienDestruction.Scenes.GameScreen;
 import com.github.hanyaeger.api.Coordinate2D;
@@ -15,7 +16,7 @@ public class EnemyFour extends GameEntities{
         super("sprites/starDestroyerV1.png", location, new Size(160,290), player);
         this.player = player;
 
-        setMotion(1, 0d);
+        setMotion(Helper.Speed.LOW, Helper.Direction.DOWN);
         setPoints(200);
         setPenaltyPoints(100);
         setHitPoints(8);
