@@ -55,7 +55,7 @@ public class EndScreen extends StaticScene implements YaegerScene{
                 "GAME OVER!");
         gameMenuText.setAnchorPoint(AnchorPoint.TOP_CENTER);
         gameMenuText.setFill(Color.ANTIQUEWHITE);
-        gameMenuText.setFont(Font.font("Roboto", FontWeight.SEMI_BOLD, 50));
+        gameMenuText.setFont(Font.font("Roboto", FontWeight.SEMI_BOLD, getWidth()/25));
         addEntity(gameMenuText);
 
         var scoreText = new TextEntity(
@@ -63,7 +63,7 @@ public class EndScreen extends StaticScene implements YaegerScene{
                 "Score: ");
         scoreText.setAnchorPoint(AnchorPoint.TOP_CENTER);
         scoreText.setFill(Color.ANTIQUEWHITE);
-        scoreText.setFont(Font.font("Roboto", FontWeight.SEMI_BOLD, 40));
+        scoreText.setFont(Font.font("Roboto", FontWeight.SEMI_BOLD, getHeight()/ 20));
         addEntity(scoreText);
 
         PlayAgainButton playButton;
