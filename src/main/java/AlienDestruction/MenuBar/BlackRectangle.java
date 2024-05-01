@@ -24,8 +24,6 @@ public class BlackRectangle extends RectangleEntity {
     YaegerEntity[] createEntities() {
         var list = new ArrayList<YaegerEntity>();
 
-//        list.add()
-
         return (YaegerEntity[]) list.toArray();
     }
 }
