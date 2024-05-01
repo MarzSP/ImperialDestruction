@@ -68,7 +68,7 @@ public class GameScreen extends DynamicScene implements EntitySpawnerContainer {
 
         addEntity(new BlackRectangle(
                 new Coordinate2D(0, 0),
-                new Size(1000, 80)
+                new Size(getWidth(), 80)
         ));
 
         var playerLives = new PlayerLivesSprite(new Coordinate2D(20,20));
