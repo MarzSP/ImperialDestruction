@@ -18,7 +18,7 @@ public class EnemyOne extends GameEntities {
 
     public EnemyOne(Coordinate2D location, Player player) {
 
-        super("sprites/tieFighterV1.png", location, new Size(80,80), player);
+        super("sprites/tieFighterV1.png", location, new Size(Helper.Size.MEDIUM,Helper.Size.MEDIUM), player);
         this.player = player;
 
         setMotion(Helper.Speed.MEDIUM, Helper.Direction.DOWN);

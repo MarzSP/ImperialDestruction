@@ -1,6 +1,7 @@
 package AlienDestruction.Entities;
 
 import AlienDestruction.App;
+import AlienDestruction.Helper;
 import AlienDestruction.Scenes.GameScreen;
 import AlienDestruction.Weapons.LaserBeam;
 import AlienDestruction.Weapons.WeaponType;
@@ -17,7 +18,7 @@ public class ObstacleTwo extends GameEntities{
 
 
     public ObstacleTwo(Coordinate2D location, Player player) {
-        super("sprites/asteroidRectangleV1.png", location, new Size(140,100), player);
+        super("sprites/asteroidRectangleV1.png", location, new Size(Helper.Size.HUGE,Helper.Size.LARGE), player);
         this.player = player;
         setMotion(3, 360d);
     }
@@ -26,7 +27,8 @@ public class ObstacleTwo extends GameEntities{
     public void onCollision(List<Collider> collidingObject) {
         for (Collider collider : collidingObject){
             if (collider instanceof LaserBeam){
-                ((WeaponType) collider).remove();   // remove Laser / Weapon
+                bounceOff((WeaponType) collider);
+                //((WeaponType) collider).remove();   // remove Laser / Weapon
             }
         }
     }
@@ -83,3 +85,4 @@ public class ObstacleTwo extends GameEntities{
     }
 
 }
+

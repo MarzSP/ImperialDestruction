@@ -57,8 +57,6 @@ public class GameScreen extends DynamicScene implements EntitySpawnerContainer {
     @Override
     public void setupScene() {
         setBackgroundImage("backgrounds/universe2.jpg");
-
-
     }
 
     @Override

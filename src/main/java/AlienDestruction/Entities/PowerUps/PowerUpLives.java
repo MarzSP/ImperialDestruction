@@ -20,7 +20,7 @@ public class PowerUpLives extends PowerUps implements ContinuousRotatable {
      * Rotatiesnelheid: 2
      */
     public PowerUpLives (Coordinate2D initialLocation) {
-        super("sprites/xWingPowerUp.png", initialLocation, new Size(40,40));
+        super("sprites/xWingPowerUp.png", initialLocation, new Size(Helper.Size.SMALL,Helper.Size.SMALL));
         setMotion(Helper.Speed.HIGH, Helper.Direction.DOWN);
         this.setRotationSpeed(2);
     }

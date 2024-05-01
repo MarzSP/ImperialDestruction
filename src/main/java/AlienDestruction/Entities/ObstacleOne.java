@@ -18,7 +18,7 @@ public class ObstacleOne extends GameEntities {
     private Player player;
 
     public ObstacleOne(Coordinate2D location, Player player) {
-        super("sprites/asteroidSquareV1.png", location, new Size(100,100), player);
+        super("sprites/asteroidSquareV1.png", location, new Size(Helper.Size.LARGE,Helper.Size.LARGE), player);
         this.player = player;
 
         setMotion(Helper.Speed.LOW, Helper.Direction.DOWN);
