@@ -2,6 +2,8 @@ package AlienDestruction;
 
 import javafx.scene.input.KeyCode;
 
+import java.util.Random;
+
 /**De Helper klasse is een hulpklasse die statische constanten groepeert voor verschillende game-elementen.
  * Deze constanten zijn bedoeld om de leesbaarheid en onderhoudbaarheid van de code te verbeteren door magische waarden te vermijden.
  * Deze Helper klasse bevat subclasses: SceneIds, KeyStroke, Direction en Speed.
@@ -9,6 +11,9 @@ import javafx.scene.input.KeyCode;
  * Dit betekend: dat ze gedeeld worden tussen alle instanties van de Helper klasse en niet kunnen worden gewijzigd na initialisatie.
  */
 public class Helper {
+
+    private static Random random = new Random();
+
     /**
      * De inner-class SceneIds definieert de numerieke constanten(identificatienummers) die gebruikt kunnen worden om te refereren naar verschillende schermen (scenes) in het spel.
      * De constanten vertegenwoordigen de ID's van de schermen.
@@ -58,9 +63,18 @@ public class Helper {
     }
 
     public static class Size {
-        public  static final double SMALL = 40;
-        public static final double MEDIUM = 80;
-        public static final double LARGE = 120;
-        public static final double HUGE = 160;
+        public  static final double SMALL = 30;     // default 40
+        public static final double MEDIUM = 60;     // default 80
+        public static final double LARGE = 90;     // default 120
+        public static final double HUGE = 120;      // default 160
+    }
+
+    public static int getRandomInt(int min, int max){
+        return random.nextInt(max - min) + min;
+    }
+
+    public static double getRandomDouble(double min, double max){
+        double randomDouble = random.nextDouble() * (max - min) + min;
+        return Math.round(randomDouble * 10.0) / 10.0;
     }
 }
