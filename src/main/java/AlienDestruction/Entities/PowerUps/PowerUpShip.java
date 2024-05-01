@@ -5,7 +5,7 @@ import com.github.hanyaeger.api.Size;
 import com.github.hanyaeger.api.entities.ContinuousRotatable;
 
 public class PowerUpShip extends PowerUps implements ContinuousRotatable {
-    private static final long PowerUpShipTime = 10000;
+    public static final long PowerUpShipTime = 10000;
 
     public PowerUpShip(Coordinate2D initialLocation) {
         super("sprites/PowerUpShip.png", initialLocation, new Size(Helper.Size.SMALL, Helper.Size.SMALL));
@@ -14,13 +14,3 @@ public class PowerUpShip extends PowerUps implements ContinuousRotatable {
     }
 }
 
-
-// On Collision in Player - werkt niet 
-//else if (collider instanceof PowerUpShip) { // PowerUp dubbelschip
-//powerUpCollision = true;
-//Player tempPlayer = new Player(getLocationInScene(), gameScreen, app);
-// tempPlayer.isTempPlayerActive = true;  // Set flag for temporary player
-//((PowerUpShip) collider).remove();
-// break;
-
-//}

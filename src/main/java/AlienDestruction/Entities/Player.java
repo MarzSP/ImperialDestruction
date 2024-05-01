@@ -1,6 +1,7 @@
 package AlienDestruction.Entities;
 
 import AlienDestruction.App;
+import AlienDestruction.Entities.PowerUps.PowerUpShip;
 import AlienDestruction.Game.Booster;
 import AlienDestruction.Entities.PowerUps.PowerUpLaser;
 import AlienDestruction.Entities.PowerUps.PowerUpLives;
@@ -24,6 +25,7 @@ import javafx.scene.input.KeyCode;
 
 import java.util.List;
 import java.util.Set;
+
 
 public class Player extends DynamicSpriteEntity implements KeyListener, SceneBorderTouchingWatcher, Newtonian, Collided {
 
@@ -150,6 +152,10 @@ public class Player extends DynamicSpriteEntity implements KeyListener, SceneBor
                 activateLaserPowerUp();
                 ((PowerUpLaser) collider).remove(); // verwijderd sprite uit het scherm
                 break;
+            } else if (collider instanceof PowerUpShip) { // PowerUp ship
+                powerUpCollision = true;
+                ((PowerUpShip) collider).remove(); // verwijder PowerUpShip sprite
+                break;
             }
 
         } if(!powerUpCollision) {
@@ -160,6 +166,7 @@ public class Player extends DynamicSpriteEntity implements KeyListener, SceneBor
         } updateLives();
         checkLives();
     }
+
 
     private void updateLives() {
         TextEntity playerLivesText;
