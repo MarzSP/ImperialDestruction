@@ -24,7 +24,7 @@ public class App extends YaegerGame {
     }
 
     /**
-     * setupGame() methode is een @Override uit YaegerGame, om de titel in het spel te zetten, en de grootte van het venser te bepalen.
+     * setupGame() methode is een @Override uit YaegerGame, om de titel in het spel te zetten, en de grootte van het venster te bepalen.
      */
     @Override
     public void setupGame() {

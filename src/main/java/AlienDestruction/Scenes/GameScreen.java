@@ -41,7 +41,7 @@ public class GameScreen extends DynamicScene implements EntitySpawnerContainer {
     private final EntitySpawner weaponTypeSpawner;
 
     private Level level = new Level();
-    private int textMenu = 20;
+    private double textMenu = 20;
 
     public GameScreen(App app) {
         this.app = app;
