@@ -58,4 +58,11 @@ public class Helper {
         public static final double TESTPLAYER3 = 3;
         public static final double TESTPLAYER5 = 5;
     }
+
+    public static class Size {
+        public  static final double SMALL = 40;
+        public static final double MEDIUM = 80;
+        public static final double LARGE = 120;
+        public static final double HUGE = 160;
+    }
 }

@@ -11,7 +11,7 @@ public class EnemyThree extends GameEntities{
     private Player player;
 
     public EnemyThree(Coordinate2D location, Player player) {
-        super("sprites/lambdaShuttleV1.png", location, new Size(120,80), player);
+        super("sprites/lambdaShuttleV1.png", location, new Size(Helper.Size.LARGE,Helper.Size.MEDIUM), player);
         this.player = player;
 
         setMotion(Helper.Speed.MEDIUM, Helper.Direction.DOWN);

@@ -8,7 +8,7 @@ public class PowerUpShip extends PowerUps implements ContinuousRotatable {
     private static final long PowerUpShipTime = 10000;
 
     public PowerUpShip(Coordinate2D initialLocation) {
-        super("sprites/PowerUpShip.png", initialLocation, new Size(40, 40));
+        super("sprites/PowerUpShip.png", initialLocation, new Size(Helper.Size.SMALL, Helper.Size.SMALL));
         setMotion(Helper.Speed.HIGH, Helper.Direction.DOWN);
         this.setRotationSpeed(2);
     }

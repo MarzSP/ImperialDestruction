@@ -13,7 +13,7 @@ public class EnemyFour extends GameEntities{
     private Player player;
 
     public EnemyFour(Coordinate2D location, Player player) {
-        super("sprites/starDestroyerV1.png", location, new Size(160,290), player);
+        super("sprites/starDestroyerV1.png", location, new Size(Helper.Size.HUGE,Helper.Size.HUGE * 2), player);
         this.player = player;
 
         setMotion(Helper.Speed.LOW, Helper.Direction.DOWN);

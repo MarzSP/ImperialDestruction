@@ -30,6 +30,7 @@ public class App extends YaegerGame {
     public void setupGame() {
         setGameTitle("Imperial Destruction");
         setSize(new Size(1000, 700));
+
     }
 
     /**
