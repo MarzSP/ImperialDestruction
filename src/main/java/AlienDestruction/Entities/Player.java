@@ -151,12 +151,15 @@ public class Player extends DynamicSpriteEntity implements KeyListener, SceneBor
                 break;
             }
 
-        } if(!powerUpCollision) {
+        }
+
+        if(!powerUpCollision) {
             setAnchorLocation(new Coordinate2D((getSceneWidth() - getWidth()) / 2, 550));
             lives = lives - 1;
             updateLives();
             checkLives();
-        } updateLives();
+        }
+        updateLives();
         checkLives();
     }
 

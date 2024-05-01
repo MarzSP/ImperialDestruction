@@ -53,7 +53,6 @@ public class GameEntities extends DynamicSpriteEntity implements SceneBorderTouc
 
     @Override
     public void notifyBoundaryTouching(SceneBorder sceneBorder) {
-
     }
 
     @Override
@@ -63,8 +62,24 @@ public class GameEntities extends DynamicSpriteEntity implements SceneBorderTouc
                 addDamage(((WeaponType) collider).getDamagePoints());
                 checkIfDestroyed();
                 ((WeaponType) collider).remove(); // remove Laser / Weapon
+                break;
+            } else if (collider instanceof Player){ // TODO Checken ??
+                remove();
+                break;
+            } else {
+                this.setMotion(this.getSpeed(), this.calculateCourse((int)getDirection()));
             }
         }
+    }
+
+    public int calculateCourse(int oldDirection){
+        int newDirection = 0;
+        if (oldDirection < 359 && oldDirection > 271) {
+            newDirection = 90 - (360-oldDirection);
+        } else {
+            newDirection = 360 -(360-oldDirection);
+        }
+        return newDirection;
     }
 
     public void addDamage(double damage){
@@ -79,7 +94,6 @@ public class GameEntities extends DynamicSpriteEntity implements SceneBorderTouc
     }
 
     public int getCourse(double xPos){
-        System.out.println(xPos);
         if(xPos < 500) {
             return Helper.getRandomInt(10, 40);
         } else if (xPos >500) {
@@ -87,6 +101,8 @@ public class GameEntities extends DynamicSpriteEntity implements SceneBorderTouc
         }
         return 0;
     }
+
+
 
     @Override
     public void notifyBoundaryCrossing(SceneBorder sceneBorder) {
