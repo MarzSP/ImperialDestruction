@@ -4,9 +4,6 @@ import AlienDestruction.App;
 import AlienDestruction.Buttons.MenuButton;
 import AlienDestruction.Buttons.MusicButton;
 import AlienDestruction.Entities.*;
-import AlienDestruction.Entities.PowerUps.PowerUpLaser;
-import AlienDestruction.Entities.PowerUps.PowerUpLives;
-import AlienDestruction.Entities.PowerUps.PowerUpShip;
 import AlienDestruction.Game.EnemySpawner;
 import AlienDestruction.Game.Level;
 import AlienDestruction.MenuBar.BlackRectangle;
@@ -16,9 +13,7 @@ import AlienDestruction.Weapons.LaserGun;
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.EntitySpawnerContainer;
 import com.github.hanyaeger.api.Size;
-import com.github.hanyaeger.api.UpdateExposer;
 import com.github.hanyaeger.api.entities.EntitySpawner;
-import com.github.hanyaeger.api.entities.SceneBorderCrossingWatcher;
 import com.github.hanyaeger.api.entities.impl.TextEntity;
 import com.github.hanyaeger.api.media.SoundClip;
 import com.github.hanyaeger.api.scenes.DynamicScene;
@@ -41,7 +36,7 @@ public class GameScreen extends DynamicScene implements EntitySpawnerContainer {
     private final EntitySpawner weaponTypeSpawner;
 
     private Level level = new Level();
-    private int textMenu = 20;
+    private double textMenu = 20;
 
     public GameScreen(App app) {
         this.app = app;

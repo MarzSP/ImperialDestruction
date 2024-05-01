@@ -25,6 +25,7 @@ import javafx.scene.input.KeyCode;
 import java.util.List;
 import java.util.Set;
 
+
 public class Player extends DynamicSpriteEntity implements KeyListener, SceneBorderTouchingWatcher, Newtonian, Collided {
 
     private App app;
@@ -160,6 +161,7 @@ public class Player extends DynamicSpriteEntity implements KeyListener, SceneBor
         } updateLives();
         checkLives();
     }
+
 
     private void updateLives() {
         TextEntity playerLivesText;

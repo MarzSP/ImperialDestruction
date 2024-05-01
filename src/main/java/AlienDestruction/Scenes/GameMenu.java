@@ -38,7 +38,7 @@ public class GameMenu extends MenuManager {
                 "Game Menu");
         gameMenuText.setAnchorPoint(AnchorPoint.TOP_CENTER);
         gameMenuText.setFill(Color.ANTIQUEWHITE);
-        gameMenuText.setFont(Font.font("Roboto", FontWeight.SEMI_BOLD, 60));
+        gameMenuText.setFont(Font.font("Roboto", FontWeight.SEMI_BOLD, getWidth()/25));
         addEntity(gameMenuText);
 
         var quitGameButton = new QuitGameButton(new Coordinate2D(getWidth() / 2, getHeight() * 5/6), "Quit Game");

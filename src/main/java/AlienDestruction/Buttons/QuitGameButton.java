@@ -20,7 +20,7 @@ public class QuitGameButton extends Button{
     public QuitGameButton(Coordinate2D initialLocation, String text) {
         super(initialLocation, "Quit Game");
         setFill(Color.RED);
-        setFont(Font.font("Impact", FontWeight.SEMI_BOLD, 50));
+        setFont(Font.font("Impact", FontWeight.SEMI_BOLD, 80));
         setAnchorPoint(AnchorPoint.CENTER_CENTER);
     }
 
