@@ -35,12 +35,13 @@ public class GameScreen extends DynamicScene implements EntitySpawnerContainer {
     private TextEntity playerLivesText;
     private TextEntity scoreText;
 
+
     protected App app;
     private Player player;
     private final EntitySpawner weaponTypeSpawner;
 
     private Level level = new Level();
-
+    private int textMenu = 20;
 
     public GameScreen(App app) {
         this.app = app;
@@ -71,33 +72,33 @@ public class GameScreen extends DynamicScene implements EntitySpawnerContainer {
                 new Size(getWidth(), 80)
         ));
 
-        var playerLives = new PlayerLivesSprite(new Coordinate2D(20,20));
+        var playerLives = new PlayerLivesSprite(new Coordinate2D(textMenu,textMenu));
 
         addEntity(playerLives);
 
         // Add Player lives text:
-        playerLivesText = new TextEntity(new Coordinate2D(60, 20), ": " + player.getLives());
+        playerLivesText = new TextEntity(new Coordinate2D(60, textMenu), ": " + player.getLives());
         playerLivesText.setFill(Color.GOLD);
-        playerLivesText.setFont(Font.font("Roboto", FontWeight.BOLD, 20));
+        playerLivesText.setFont(Font.font("Roboto", FontWeight.BOLD, textMenu));
         addEntity(playerLivesText);
 
         // Add Level Text:
-        var levelText = new TextEntity(new Coordinate2D(250, 20),  "Level:");
+        var levelText = new TextEntity(new Coordinate2D(250, textMenu),  "Level:");
         levelText.setFill(Color.GOLD);
-        levelText.setFont(Font.font("Roboto", FontWeight.BOLD, 20));
+        levelText.setFont(Font.font("Roboto", FontWeight.BOLD, textMenu));
         addEntity(levelText);
 
         // Add Score Text
-        scoreText = new TextEntity(new Coordinate2D(450, 20), "Score:" + player.getScore());
+        scoreText = new TextEntity(new Coordinate2D(450, textMenu), "Score:" + player.getScore());
         scoreText.setFill(Color.GOLD);
-        scoreText.setFont(Font.font("Roboto", FontWeight.BOLD, 20));
+        scoreText.setFont(Font.font("Roboto", FontWeight.BOLD, textMenu));
         addEntity(scoreText);
 
         SoundClip musicClip = new SoundClip("audio/swmaintheme.mp3", SoundClip.INDEFINITE);
-        MusicButton musicButton = new MusicButton(new Coordinate2D(750, 10), musicClip, new Size(10,10) );
+        MusicButton musicButton = new MusicButton(new Coordinate2D(750, 0.5 * textMenu), musicClip, new Size(0.5*textMenu,0.5*textMenu) );
         addEntity(musicButton);
 
-        MenuButton menuButton = new MenuButton(app, new Coordinate2D(940, 20));
+        MenuButton menuButton = new MenuButton(app, new Coordinate2D(940, textMenu));
         addEntity(menuButton);
     }
 
