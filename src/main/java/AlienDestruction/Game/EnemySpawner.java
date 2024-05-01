@@ -1,11 +1,9 @@
 package AlienDestruction.Game;
 
 import AlienDestruction.Entities.*;
-
 import AlienDestruction.Entities.PowerUps.PowerUpLaser;
 import AlienDestruction.Entities.PowerUps.PowerUpLives;
 import AlienDestruction.Helper;
-
 import AlienDestruction.Scenes.GameScreen;
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.entities.EntitySpawner;
@@ -56,7 +54,6 @@ public class EnemySpawner extends EntitySpawner {
     public void spawnEnemyFromLevel(int enemyType){
         GameEntities e;
         int randomX = getRandomX();
-        System.out.println(randomX);
 
         switch (enemyType) {
             case 1:

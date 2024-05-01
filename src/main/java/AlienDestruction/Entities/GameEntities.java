@@ -1,5 +1,6 @@
 package AlienDestruction.Entities;
 
+import AlienDestruction.Helper;
 import AlienDestruction.Scenes.GameScreen;
 import AlienDestruction.Weapons.LaserBeam;
 import AlienDestruction.Weapons.WeaponType;
@@ -21,14 +22,11 @@ public class GameEntities extends DynamicSpriteEntity implements SceneBorderTouc
 
     private int hitPoints;
     private Player player;
-    private GameScreen gameScreen;
 
 
     protected GameEntities(String resource, Coordinate2D initialLocation, Size size, Player player) {
         super(resource, initialLocation);
         this.player = player;
-        this.gameScreen = gameScreen;
-
 
         setGravityConstant(0.000);
         setFrictionConstant(0.00);
@@ -80,12 +78,18 @@ public class GameEntities extends DynamicSpriteEntity implements SceneBorderTouc
         }
     }
 
+    public int getCourse(double xPos){
+        System.out.println(xPos);
+        if(xPos < 500) {
+            return Helper.getRandomInt(10, 40);
+        } else if (xPos >500) {
+            return Helper.getRandomInt(310, 340);
+        }
+        return 0;
+    }
+
     @Override
     public void notifyBoundaryCrossing(SceneBorder sceneBorder) {
-
     }
 
-    public void setGameScene(GameScreen gameScreen) {
-        this.gameScreen = gameScreen;
-    }
 }

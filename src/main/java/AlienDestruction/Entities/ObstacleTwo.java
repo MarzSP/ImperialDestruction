@@ -20,8 +20,8 @@ public class ObstacleTwo extends GameEntities{
     public ObstacleTwo(Coordinate2D location, Player player) {
         super("sprites/asteroidRectangleV1.png", location, new Size(Helper.Size.HUGE,Helper.Size.LARGE), player);
         this.player = player;
-        setMotion(Helper.Speed.LOW, Helper.Direction.DOWN);
-        this.setRotationSpeed(Helper.getRandomDouble(0.1, 0.6));
+        setMotion(Helper.Speed.LOW, getCourse(this.getAnchorLocation().getX()));
+        this.setRotationSpeed(Helper.getRandomDouble(-0.6, 0.6));
     }
 
     @Override

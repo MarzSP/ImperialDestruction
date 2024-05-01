@@ -43,7 +43,7 @@ public class Player extends DynamicSpriteEntity implements KeyListener, SceneBor
         super("sprites/xWingV1.png", location, new Size(80,80));
         this.gameScreen = gameScreen;
         this.app = app;
-        this.setLives(1);
+        this.setLives(3);
         this.booster = new Booster();
         setGravityConstant(0.070);
         setFrictionConstant(0.00);
@@ -92,7 +92,6 @@ public class Player extends DynamicSpriteEntity implements KeyListener, SceneBor
             setMotion(Helper.Speed.MEDIUM,Helper.Direction.GORIGHT);
         } else if(pressedKeys.contains(Helper.KeyStroke.BOOST) && canShoot){
             activateBooster();
-
             setMotion(Helper.Speed.HIGH,Helper.Direction.GOUP);
             checkMaxHeight();
         } else if(pressedKeys.contains(Helper.KeyStroke.RIGHTBOOST)){
@@ -111,7 +110,6 @@ public class Player extends DynamicSpriteEntity implements KeyListener, SceneBor
         if (booster != null && !booster.isActive() && !booster.setCoolingDownActive(false)) {
             booster.setBoosterActive(true);
             booster.timer.resume();
-            System.out.println("Booster Active");
         }
     }
 
