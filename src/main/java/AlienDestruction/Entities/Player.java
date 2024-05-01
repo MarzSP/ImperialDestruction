@@ -1,7 +1,6 @@
 package AlienDestruction.Entities;
 
 import AlienDestruction.App;
-import AlienDestruction.Entities.PowerUps.PowerUpShip;
 import AlienDestruction.Game.Booster;
 import AlienDestruction.Entities.PowerUps.PowerUpLaser;
 import AlienDestruction.Entities.PowerUps.PowerUpLives;
@@ -151,10 +150,6 @@ public class Player extends DynamicSpriteEntity implements KeyListener, SceneBor
                 powerUpCollision = true;
                 activateLaserPowerUp();
                 ((PowerUpLaser) collider).remove(); // verwijderd sprite uit het scherm
-                break;
-            } else if (collider instanceof PowerUpShip) { // PowerUp ship
-                powerUpCollision = true;
-                ((PowerUpShip) collider).remove(); // verwijder PowerUpShip sprite
                 break;
             }
 

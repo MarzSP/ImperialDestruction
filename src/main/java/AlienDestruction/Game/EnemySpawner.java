@@ -1,9 +1,6 @@
 package AlienDestruction.Game;
 
 import AlienDestruction.Entities.*;
-import AlienDestruction.Entities.PowerUps.PowerUpLaser;
-import AlienDestruction.Entities.PowerUps.PowerUpLives;
-import AlienDestruction.Entities.PowerUps.PowerUpShip;
 import AlienDestruction.Scenes.GameScreen;
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.entities.EntitySpawner;
