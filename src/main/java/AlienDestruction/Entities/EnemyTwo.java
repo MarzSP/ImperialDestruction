@@ -26,7 +26,6 @@ public class EnemyTwo extends GameEntities{
 
     @Override
     public void notifyBoundaryCrossing(SceneBorder sceneBorder) {
-        //gameScreen.getScoreText().setText("Score: " + player.getScore());
         player.setScore(player.getScore() - this.getPenaltyPoints());
         this.remove();
     }

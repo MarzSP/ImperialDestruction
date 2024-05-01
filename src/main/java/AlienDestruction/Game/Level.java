@@ -6,9 +6,7 @@ public class Level {
     private int levelSize = 10;
 
     public Level (){
-
     }
-
 
     public int getLevelNumber() {
         return levelNumber;
@@ -16,19 +14,14 @@ public class Level {
     public void setLevelNumber(int levelNumber) {
         this.levelNumber = levelNumber;
     }
-    public int getLevelSize() {
-        return levelSize;
-    }
-    public void setLevelSize(int levelSize) {
-        this.levelSize = levelSize;
-    }
-
 
     public int[][] defineLevel() {
         return new int[][] {
-                {1, 1, 2, 2, 1, 2, 3},
-                {1, 2, 2, 6, 3, 3},
-                {4, 2, 2, 2, 3, 4}
+                {1, 1, 1, 5, 1, 2, 2, 2, 2, 5, 6, 2, 2},
+                {3, 3, 3, 2, 2, 2, 5, 6, 5},
+                {4, 2, 2, 2, 2, 4, 6, 5, 6},
+                {5, 5, 6, 5, 6, 6, 5, 5, 5},
+                {4, 4, 4}
         };
     }
 
@@ -42,14 +35,3 @@ public class Level {
 }
 
 
-
-
-// Test Levels
-//public int[][] defineLevel() {
-//    return new int[][] {
-//            {1, 1},
-//            {2, 2},
-//            {3, 3},
-//            {4}
-//    };
-//}
