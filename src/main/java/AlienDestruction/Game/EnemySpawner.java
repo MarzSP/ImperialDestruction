@@ -1,6 +1,11 @@
 package AlienDestruction.Game;
 
 import AlienDestruction.Entities.*;
+
+import AlienDestruction.Entities.PowerUps.PowerUpLaser;
+import AlienDestruction.Entities.PowerUps.PowerUpLives;
+import AlienDestruction.Helper;
+
 import AlienDestruction.Scenes.GameScreen;
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.entities.EntitySpawner;
@@ -30,6 +35,7 @@ public class EnemySpawner extends EntitySpawner {
     protected void spawnEntities() {
         int levelNumber = level.getLevelNumber();
         int[][] levelData = level.defineLevel();
+        int amountOfLevels = levelData.length;
         int amountInLevel = levelData[levelNumber - 1].length;
 
         //int[] enemyTypes = level.getEnemyTypes();
@@ -40,6 +46,9 @@ public class EnemySpawner extends EntitySpawner {
         if (enemyTypeIndex >= amountInLevel) {
             enemyTypeIndex = 0;
             level.setLevelNumber(levelNumber + 1);
+        }
+        if (levelNumber >= amountOfLevels) {
+            level.setLevelNumber(1);
         }
 
     }
@@ -85,7 +94,7 @@ public class EnemySpawner extends EntitySpawner {
         int minX = 40;
         int maxX = (int) w - 40;
 
-        return random.nextInt(maxX - minX) + minX;
+        return Helper.getRandomInt(minX, maxX);
     }
 
 
