@@ -22,6 +22,7 @@ public class ObstacleOne extends GameEntities {
         this.player = player;
 
         setMotion(Helper.Speed.LOW, Helper.Direction.DOWN);
+        this.setRotationSpeed(Helper.getRandomDouble(0.1, 0.6));
     }
 
     @Override
