@@ -25,7 +25,7 @@ public class EndScreen extends StaticScene implements YaegerScene{
 
     /**
      * Constructor: initialiseert de app referentie met de meegegeven App object. Dit zodat er een sceneverandering kan plaatsvinden.
-     * @param app.
+     * @param app
      * Ook initialiseert het de player referentie met het meegegeven Player object. Dit zodat de score kan worden opgehaald uit Player.
      */
     public EndScreen(App app) {
