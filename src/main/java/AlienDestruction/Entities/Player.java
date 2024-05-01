@@ -86,19 +86,19 @@ public class Player extends DynamicSpriteEntity implements KeyListener, SceneBor
             }
         }
         if(pressedKeys.contains(Helper.KeyStroke.LEFT)){
-            setMotion(Helper.Speed.TESTPLAYER3,Helper.Direction.GOLEFT);
+            setMotion(Helper.Speed.MEDIUM,Helper.Direction.GOLEFT);
         } else if(pressedKeys.contains(Helper.KeyStroke.RIGHT)){
-            setMotion(Helper.Speed.TESTPLAYER3,Helper.Direction.GORIGHT);
+            setMotion(Helper.Speed.MEDIUM,Helper.Direction.GORIGHT);
         } else if(pressedKeys.contains(Helper.KeyStroke.BOOST) && canShoot){
             activateBooster();
 
-            setMotion(Helper.Speed.TESTPLAYER5,Helper.Direction.GOUP);
+            setMotion(Helper.Speed.HIGH,Helper.Direction.GOUP);
             checkMaxHeight();
         } else if(pressedKeys.contains(Helper.KeyStroke.RIGHTBOOST)){
-            setMotion(Helper.Speed.TESTPLAYER5,Helper.Direction.GORIGHTUP);
+            setMotion(Helper.Speed.HIGH,Helper.Direction.GORIGHTUP);
             checkMaxHeight();
         } else if(pressedKeys.contains(Helper.KeyStroke.LEFTBOOST)){
-            setMotion(Helper.Speed.TESTPLAYER5,Helper.Direction.GOLEFTUP);
+            setMotion(Helper.Speed.HIGH,Helper.Direction.GOLEFTUP);
             checkMaxHeight();
         }
         if(!pressedKeys.contains(Helper.KeyStroke.FIRE)) {

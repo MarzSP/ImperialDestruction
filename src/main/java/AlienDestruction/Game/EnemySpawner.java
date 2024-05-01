@@ -4,8 +4,11 @@ import AlienDestruction.Entities.*;
 import AlienDestruction.Entities.PowerUps.PowerUpLaser;
 import AlienDestruction.Entities.PowerUps.PowerUpLives;
 import AlienDestruction.Entities.PowerUps.PowerUpShip;
+import AlienDestruction.Scenes.GameScreen;
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.entities.EntitySpawner;
+
+import java.util.Random;
 
 public class EnemySpawner extends EntitySpawner {
 
@@ -13,11 +16,17 @@ public class EnemySpawner extends EntitySpawner {
 
     private Level level;
 
+    private GameScreen gameScreen;
+
+    Random random = new Random();
+
     int enemyTypeIndex = 0;
-    public EnemySpawner(Player player, Level level) {
+    public EnemySpawner(Player player, Level level, GameScreen gameScreen) {
         super(1000); // intervalInMs
         this.level = level;
         this.player = player;
+        this.gameScreen = gameScreen;
+
     }
 
     @Override
@@ -40,25 +49,27 @@ public class EnemySpawner extends EntitySpawner {
 
     public void spawnEnemyFromLevel(int enemyType){
         GameEntities e;
+        int randomX = getRandomX();
+        System.out.println(randomX);
 
         switch (enemyType) {
             case 1:
-                e = new EnemyOne(new Coordinate2D(40, -40), player);
+                e = new EnemyOne(new Coordinate2D(randomX, -40), player);
                 spawn(e);
                 break;
-            case 2: e = new EnemyTwo(new Coordinate2D(120, -40), player);
+            case 2: e = new EnemyTwo(new Coordinate2D(randomX, -40), player);
                 spawn(e);
                 break;
-            case 3: e = new EnemyThree(new Coordinate2D(300, -40), player);
+            case 3: e = new EnemyThree(new Coordinate2D(randomX, -40), player);
                 spawn(e);
                 break;
-            case 4: e = new EnemyFour(new Coordinate2D(600, -40), player);
+            case 4: e = new EnemyFour(new Coordinate2D(randomX, -40), player);
                 spawn(e);
                 break;
-            case 5: e = new ObstacleOne(new Coordinate2D(400, -40), player);
+            case 5: e = new ObstacleOne(new Coordinate2D(randomX, -40), player);
                 spawn(e);
                 break;
-            case 6: e = new ObstacleTwo(new Coordinate2D(300, -40), player);
+            case 6: e = new ObstacleTwo(new Coordinate2D(randomX, -40), player);
                 spawn(e);
                 break;
 //            case 7: e = new PowerUpLives(new Coordinate2D(750, -40));
@@ -71,5 +82,15 @@ public class EnemySpawner extends EntitySpawner {
                 break;
         }
     }
+
+    int getRandomX(){
+        double w = gameScreen.getWidth();  // Width GameScreen
+        int minX = 40;
+        int maxX = (int) w - 40;
+
+        return random.nextInt(maxX - minX) + minX;
+    }
+
+
 }
 

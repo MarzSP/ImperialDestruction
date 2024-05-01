@@ -64,24 +64,6 @@ public class GameScreen extends DynamicScene implements EntitySpawnerContainer {
         player = new Player(new Coordinate2D(getWidth() / 2, 550), this, app);
         player.setWeapon((IShootable) weaponTypeSpawner);
 
-//        var enemySpriteOne = new EnemyOne(new Coordinate2D(40, -40), player);
-//        addEntity(enemySpriteOne);
-
-//        var enemySpriteTwo = new EnemyTwo(new Coordinate2D(240, -40), player);
-//        addEntity(enemySpriteTwo);
-//
-//        var obstacleSpriteOne = new ObstacleOne(new Coordinate2D(800, -40), player);
-//        addEntity(obstacleSpriteOne);
-//
-//        var powerUpLives = new PowerUpLives(new Coordinate2D(180, -40));
-//        addEntity(powerUpLives);
-//
-//        var powerUpLaser = new PowerUpLaser(new Coordinate2D(360, -40));
-//        addEntity(powerUpLaser);
-//
-//        var powerUpShip = new PowerUpShip(new Coordinate2D(300, -40));
-//        addEntity(powerUpShip);
-
         addEntity(player);
 
         addEntity(new BlackRectangle(
@@ -122,7 +104,7 @@ public class GameScreen extends DynamicScene implements EntitySpawnerContainer {
     @Override
     public void setupEntitySpawners() {
         addEntitySpawner(weaponTypeSpawner);
-        addEntitySpawner(new EnemySpawner(player, level));
+        addEntitySpawner(new EnemySpawner(player, level, this));
 
         if (weaponTypeSpawner.isActive()) {
             weaponTypeSpawner.pause();
