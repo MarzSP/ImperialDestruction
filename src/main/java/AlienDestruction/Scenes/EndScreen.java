@@ -17,7 +17,7 @@ import javafx.scene.text.FontWeight;
 /**
  * Deze klasse EndScreen is een sub-klasse van StaticScene (niet MenuManager) en implementeert YaegerScene.
  * Het toont het "GAME OVER" scherm. Deze bevat een achtergrond image, de tekst "Game Over", de score, de optie om opnieuw te spelen, en een 'Quit Game' button.
- * StaticScene: EndScreen erft van de StaticScene klasse, wat betekent dat de achtergrondafbeelding en entiteiten niet zullen veranderen tijdens het tonen van de EndScreen.
+ * DynamicScene: De inhoud van de FinalScoreText veranderd per keer dat het spel is gespeeld.
  */
 public class EndScreen extends DynamicScene implements YaegerScene{
 
@@ -29,6 +29,7 @@ public class EndScreen extends DynamicScene implements YaegerScene{
     /**
      * Constructor: initialiseert de app referentie met de meegegeven App object. Dit zodat er een sceneverandering kan plaatsvinden.
      * @param app
+     *
      * Ook initialiseert het de player referentie met het meegegeven Player object. Dit zodat de score kan worden opgehaald uit Player.
      */
     public EndScreen(App app) {
@@ -38,6 +39,7 @@ public class EndScreen extends DynamicScene implements YaegerScene{
     }
 
     public TextEntity getFinalScoreText(){ return finalScoreText;}
+
     /**
      * setupScene zet de achtergrondafbeelding van deze scene.
      */
@@ -49,7 +51,7 @@ public class EndScreen extends DynamicScene implements YaegerScene{
     /**
      * De methode setupEntities initialiseert en voegt de entiteiten toe aan de scene.
      * New TextEntity: Game Over
-     * New TextEntity: Score: (de waarde van score wordt toegevoegd met de getScore() methode.
+     * New TextEntity: finalScoreText: haalt uit Player de score op, op het moment dat de levens van de player op zijn
      * PlayAgainButton entiteit, welke een eigen class is: een actie om het spel opnieuw te starten.
      * QuitGameButton entiteit, welke een eigen class is: een actie om het spel te beeindigen.
      */
