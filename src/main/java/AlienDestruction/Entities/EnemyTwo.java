@@ -22,6 +22,7 @@ public class EnemyTwo extends GameEntities{
         setPoints(80);
         setPenaltyPoints(40);
         setHitPoints(2);
+        setCanShoot(true);
     }
 
     @Override

@@ -6,9 +6,12 @@ import AlienDestruction.Entities.PowerUps.PowerUpLives;
 import AlienDestruction.Helper;
 import AlienDestruction.Scenes.GameScreen;
 import com.github.hanyaeger.api.Coordinate2D;
+import com.github.hanyaeger.api.Timer;
+import com.github.hanyaeger.api.TimerContainer;
 import com.github.hanyaeger.api.entities.EntitySpawner;
 import com.github.hanyaeger.api.entities.impl.TextEntity;
 
+import java.util.List;
 import java.util.Random;
 
 public class EnemySpawner extends EntitySpawner {
@@ -43,7 +46,7 @@ public class EnemySpawner extends EntitySpawner {
             level.setIndexLevelNumber(indexLevelNumber + 1);
             level.setPlayerLevelNumber(level.getPlayerLevelNumber() + 1);
             updateLevelText();
-
+            gameScreen.pause();
         }
         if (indexLevelNumber >= amountOfLevels) {
             level.setIndexLevelNumber(1);
@@ -102,6 +105,13 @@ public class EnemySpawner extends EntitySpawner {
         double increase = level.getPlayerLevelNumber() * 0.1;
         return increase;
     }
+
+    public void changeLevel(){
+        gameScreen.pause();
+
+        gameScreen.resume();
+    }
+
 
 }
 
