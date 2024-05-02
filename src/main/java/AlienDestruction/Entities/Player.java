@@ -9,6 +9,7 @@ import AlienDestruction.Game.Highscore;
 import AlienDestruction.Scenes.GameScreen;
 import AlienDestruction.Weapons.IShootable;
 import AlienDestruction.Weapons.LaserBeam;
+import AlienDestruction.Weapons.WeaponType;
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.Size;
 import com.github.hanyaeger.api.entities.Collided;
@@ -242,7 +243,8 @@ public class Player extends DynamicSpriteEntity implements KeyListener, SceneBor
         double y = getLocationInScene().getY();
         shootable.shoot(new LaserBeam(new Coordinate2D(x + 5, y))); // todo: dynamisch aanpassen aan size sprite / pos lasers on sprite
         shootable.shoot(new LaserBeam(new Coordinate2D(x + 70, y)));//
-        soundLaser();                              // Fire Laser
+        soundLaser();
+
     }
 
     /**

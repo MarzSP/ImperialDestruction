@@ -3,6 +3,7 @@ package AlienDestruction.Weapons;
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.Size;
 import com.github.hanyaeger.api.entities.Collider;
+import com.github.hanyaeger.api.scenes.SceneBorder;
 
 import java.util.List;
 
@@ -35,6 +36,10 @@ public class LaserBeam extends WeaponType {
     public void onCollision(List<Collider> collidingObject) {
     }
 
+    @Override
+    public void notifyBoundaryCrossing(SceneBorder sceneBorder) {
+        this.remove();
+    }
 }
 
 

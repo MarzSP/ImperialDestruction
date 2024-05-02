@@ -4,6 +4,7 @@ import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.Size;
 import com.github.hanyaeger.api.entities.Collided;
 import com.github.hanyaeger.api.entities.Collider;
+import com.github.hanyaeger.api.entities.SceneBorderCrossingWatcher;
 import com.github.hanyaeger.api.entities.impl.DynamicSpriteEntity;
 
 import java.util.List;
@@ -15,7 +16,7 @@ import java.util.List;
  * Collide interface: aangeeft dat wapens kunnen botsen met andere objecten in de game.
  * Collided interface: Om te reageren wanneer een wapen met een ander object of entiteit botst.
  */
-public abstract class WeaponType extends DynamicSpriteEntity implements Collider, Collided {
+public abstract class WeaponType extends DynamicSpriteEntity implements Collider, Collided, SceneBorderCrossingWatcher {
     /**
      * damagePoints: Een double waarde die de hoeveelheid schade vertegenwoordigt die het wapen toebrengt bij een botsing.
      */
@@ -55,4 +56,5 @@ public abstract class WeaponType extends DynamicSpriteEntity implements Collider
     @Override
     public void onCollision(List<Collider> collidingObject) {
     }
+
 }
