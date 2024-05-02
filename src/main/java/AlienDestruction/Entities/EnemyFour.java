@@ -20,6 +20,7 @@ public class EnemyFour extends GameEntities{
         setPoints(200);
         setPenaltyPoints(100);
         setHitPoints(8);
+        setCanShoot(true);
     }
 
     @Override

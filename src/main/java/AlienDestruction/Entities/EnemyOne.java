@@ -26,11 +26,11 @@ public class EnemyOne extends GameEntities {
         setPoints(50);
         setPenaltyPoints(25);
         setHitPoints(1);
+        setCanShoot(false);
     }
 
     @Override
     public void notifyBoundaryCrossing(SceneBorder sceneBorder) {
-        //gameScreen.getScoreText().setText("Score: " + player.getScore());
         player.setScore(player.getScore() - this.getPenaltyPoints());
         this.remove();
     }

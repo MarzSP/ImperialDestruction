@@ -16,8 +16,9 @@ public class EnemyThree extends GameEntities{
 
         setMotion(Helper.Speed.LOW + speedIncrease, Helper.Direction.DOWN);
         setPoints(100);
-        setPenaltyPoints(50);
+        setPenaltyPoints(120);
         setHitPoints(4);
+        setCanShoot(false);
     }
 
     @Override

@@ -30,9 +30,12 @@ import java.util.Set;
 public class GameEntities extends DynamicSpriteEntity implements SceneBorderTouchingWatcher, Newtonian, Collided, Collider, Rotatable, SceneBorderCrossingWatcher {
     private int points;
     private int penaltyPoints;
-
     private int hitPoints;
+
+    private boolean canShoot;
     private Player player;
+
+
 
     /**
      * Constructor:
@@ -45,9 +48,6 @@ public class GameEntities extends DynamicSpriteEntity implements SceneBorderTouc
     protected GameEntities(String resource, Coordinate2D initialLocation, Size size, Player player) {
         super(resource, initialLocation);
         this.player = player;
-
-        setGravityConstant(0.000);
-        setFrictionConstant(0.00);
     }
 
     public int getPoints() {
@@ -67,6 +67,12 @@ public class GameEntities extends DynamicSpriteEntity implements SceneBorderTouc
     }
     public void setHitPoints(int hitPoints) {
         this.hitPoints = hitPoints;
+    }
+    public boolean isCanShoot() {
+        return canShoot;
+    }
+    public void setCanShoot(boolean canShoot) {
+        this.canShoot = canShoot;
     }
 
     @Override

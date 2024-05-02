@@ -21,7 +21,7 @@ public class LaserBeam extends WeaponType {
      *   Schade: 1 (via de setDamagePoints methode geërfd van WeaponType)
      */
     public LaserBeam(Coordinate2D initialLocation) {
-        super("sprites/laserred.png", initialLocation, new Size(5,16));
+        super("sprites/laserup.png", initialLocation, new Size(8,24));
 
         setDamagePoints(1);
     }
