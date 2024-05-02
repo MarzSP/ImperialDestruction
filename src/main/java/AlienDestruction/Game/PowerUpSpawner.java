@@ -18,6 +18,7 @@ public class PowerUpSpawner extends EntitySpawner {
     private GameScreen gameScreen;
     public PowerUpSpawner(Level level, GameScreen gameScreen) {
         super(Helper.getRandomInt(5000, 15000));
+        System.out.println(level.getPlayerLevelNumber());
         this.level = level;
         this.gameScreen = gameScreen;
     }
