@@ -7,6 +7,7 @@ import AlienDestruction.Helper;
 import AlienDestruction.Scenes.GameScreen;
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.entities.EntitySpawner;
+import com.github.hanyaeger.api.entities.impl.TextEntity;
 
 import java.util.Random;
 
@@ -47,6 +48,9 @@ public class EnemySpawner extends EntitySpawner {
             level.setPlayerLevelNumber(level.getPlayerLevelNumber() + 1);
             System.out.println("index " + level.getIndexLevelNumber());
             System.out.println("player " + level.getPlayerLevelNumber());
+
+            updateLevelText();
+
         }
         if (indexLevelNumber >= amountOfLevels) {
             level.setIndexLevelNumber(1);
@@ -94,6 +98,11 @@ public class EnemySpawner extends EntitySpawner {
         int maxX = (int) w - 40;
 
         return Helper.getRandomInt(minX, maxX);
+    }
+
+    public void updateLevelText(){
+        TextEntity levelText;
+        gameScreen.getLevelText().setText("Level: " + level.getPlayerLevelNumber());
     }
 
 

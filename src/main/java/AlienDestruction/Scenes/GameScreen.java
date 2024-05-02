@@ -29,6 +29,7 @@ public class GameScreen extends DynamicScene implements EntitySpawnerContainer {
 
     private TextEntity playerLivesText;
     private TextEntity scoreText;
+    private TextEntity levelText;
 
 
     protected App app;
@@ -49,6 +50,7 @@ public class GameScreen extends DynamicScene implements EntitySpawnerContainer {
     public TextEntity getPlayerLivesText() {
         return playerLivesText;
     }
+    public TextEntity getLevelText(){ return levelText;}
 
     @Override
     public void setupScene() {
@@ -78,7 +80,7 @@ public class GameScreen extends DynamicScene implements EntitySpawnerContainer {
         addEntity(playerLivesText);
 
         // Add Level Text:
-        var levelText = new TextEntity(new Coordinate2D(250, textMenu),  "Level:" + level.getPlayerLevelNumber());
+        levelText = new TextEntity(new Coordinate2D(250, textMenu),  "Level:" + level.getPlayerLevelNumber());
         levelText.setFill(Color.GOLD);
         levelText.setFont(Font.font("Roboto", FontWeight.BOLD, textMenu));
         addEntity(levelText);
