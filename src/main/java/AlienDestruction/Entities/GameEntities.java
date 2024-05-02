@@ -84,7 +84,7 @@ public class GameEntities extends DynamicSpriteEntity implements SceneBorderTouc
 
     /**
      * Detecteert botsingen en handelt deze af.
-     *     Botsing met WeaponType (waarschijnlijk laser/wapen) vermindert hitPoints en controleert of vernietiging nodig is.
+     *     Botsing met WeaponType vermindert hitPoints en controleert of vernietiging nodig is.
      *     Botsing met de speler, leidt tot verwijdering van dit object.
      *     Anders: stuurt het object in een andere richting.
      * @param collidingObject a {@link List} of all instances of {@link Collider} this {@link Collided} has collided
