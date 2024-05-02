@@ -23,14 +23,24 @@ import javafx.scene.text.FontWeight;
 
 /**
  * De klasse GameScreen is een dynamisch scherm (extends DynamicScene) wat het speelveld maakt.
- * GameScreen bevat een achtergrondafbeelding, speler, vijanden, menu balk met daarin: booster, levensmenu, en score.
+ * Deze erft van de DynamicScene klasse omdat die functionaliteit biedt voor het dynamisch toevoegen, verwijderen en wijzigen van elementen op het scherm.
+ * Implements EntitySpawnerContainer: Implementeert de EntitySpawnerContainer interface die functionaliteit biedt voor het beheren van EntitySpawner objecten om Levels te kunnen maken.
  */
 public class GameScreen extends DynamicScene implements EntitySpawnerContainer {
 
+    /**
+     * playerLivesText: Referentie naar de TextEntity die de levens tekst van de speler weergeeft.
+     * scoreText: Referentie naar de TextEntity die de score tekst weergeeft.
+     * levelText: Referentie naar de TextEntity die het level nummer weergeeft.
+     * app: Referentie naar de App class waar het GameScreen wordt aangemaakt.
+     * player: Instantie van de Player klasse die de speler vertegenwoordigt.
+     * weaponTypeSpawner: Instantie van de EntitySpawner klasse die verantwoordelijk is voor het  initialiseren van wapens.
+     * level: Instantie van de Level klasse die informatie over het level bevat.
+     * textMenu: De Y-positie voor de menu-elementen.
+     */
     private TextEntity playerLivesText;
     private TextEntity scoreText;
     private TextEntity levelText;
-
 
     protected App app;
     private Player player;
@@ -39,24 +49,58 @@ public class GameScreen extends DynamicScene implements EntitySpawnerContainer {
     private Level level = new Level();
     private double textMenu = 20;
 
+
+    /**
+     * GameScreen(App app): Initialiseert het speel scherm met een referentie naar de App class.
+     * Initialiseert de levels en de weaponTypeSpawner.
+     * @param app
+     */
     public GameScreen(App app) {
         this.app = app;
         this.level = level;
         this.weaponTypeSpawner = new LaserGun(10);
     }
 
-
+    /**
+     * getScoreText(): Retourneert de referentie naar de scoreText entity
+     * @return
+     */
     public TextEntity getScoreText() {return scoreText;}
+
+    /**
+     * getPlayerLivesText(): Retourneert de referentie naar de playerLivesText entity.
+     * @return
+     */
     public TextEntity getPlayerLivesText() {
         return playerLivesText;
     }
+
+    /**
+     * getLevelText(): Retourneert de referentie naar de levelText entity.
+     * @return
+     */
     public TextEntity getLevelText(){ return levelText;}
 
+    /**
+     * setupScene(): Zet de achtergrondafbeelding van het speel scherm.
+     */
     @Override
     public void setupScene() {
         setBackgroundImage("backgrounds/universe2.jpg");
     }
 
+    /**
+     * setupEntities(): Initialiseert en voegt de volgende entiteiten toe aan het scherm:
+     *
+     *     Speler (met wapen van de weaponTypeSpawner).
+     *     Zwarte rechthoek bovenaan het scherm die fungeert als menubalk
+     *     Speler levens sprite (links boven in menubalk)
+     *     Speler levens tekst (tekst naar de PlayerLivesSprite)
+     *     Level tekst. (Level: 1)
+     *     Score tekst. (Score: 10)
+     *     Muziek knop. (Sprite, muziek aan of uit zetten)
+     *     Menu knop. (Menu Sprite die je naar een scherm brengt om het spel te verlaten)
+     */
     @Override
     public void setupEntities() {
         player = new Player(new Coordinate2D(getWidth() / 2, 550), this, app);
@@ -99,6 +143,9 @@ public class GameScreen extends DynamicScene implements EntitySpawnerContainer {
         addEntity(menuButton);
     }
 
+    /**
+     * setupEntitySpawners(): Voegt de weaponTypeSpawner en EnemySpawner toe aan de scene en pauzeert eventueel de weaponTypeSpawner.
+     */
     @Override
     public void setupEntitySpawners() {
         addEntitySpawner(weaponTypeSpawner);
