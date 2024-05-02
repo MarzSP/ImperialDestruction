@@ -78,7 +78,7 @@ public class GameScreen extends DynamicScene implements EntitySpawnerContainer {
         addEntity(playerLivesText);
 
         // Add Level Text:
-        var levelText = new TextEntity(new Coordinate2D(250, textMenu),  "Level:");
+        var levelText = new TextEntity(new Coordinate2D(250, textMenu),  "Level:" + level.getPlayerLevelNumber());
         levelText.setFill(Color.GOLD);
         levelText.setFont(Font.font("Roboto", FontWeight.BOLD, textMenu));
         addEntity(levelText);
