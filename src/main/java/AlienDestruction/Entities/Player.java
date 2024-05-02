@@ -25,7 +25,13 @@ import javafx.scene.input.KeyCode;
 import java.util.List;
 import java.util.Set;
 
-
+/**
+ * DynamicSpriteEntity: Erft van de DynamicSpriteEntity klasse die functionalit kan geven aan een bewegende sprite entity met een afbeelding.
+ * KeyListener: Implementeert de KeyListener interface om toetsenbord-input te detecteren.
+ * SceneBorderTouchingWatcher: Implementeert de SceneBorderTouchingWatcher interface om te detecteren wanneer de speler de rand van het scherm raakt.
+ * Newtonian: Implementeert de Newtonian interface om physics simulatie toe te passen zoals zwaartekracht..
+ * Collided: Implementeert de Collided interface om te detecteren wanneer de speler met andere objecten in het spel botst.
+ */
 public class Player extends DynamicSpriteEntity implements KeyListener, SceneBorderTouchingWatcher, Newtonian, Collided {
 
     private App app;
@@ -39,9 +45,16 @@ public class Player extends DynamicSpriteEntity implements KeyListener, SceneBor
     private boolean laserPowerUpActive = false; // Boolean voor PowerUpLaser
     private long laserPowerUpEndTime = 0; // int voor PowerUpLaser
 
-
     Highscore highscore = new Highscore(this);
 
+    /**
+     * Player(Coordinate2D location, GameScreen gameScreen, App app):
+     * Initialiseert de speler entity met locatie, referentie naar GameScreen (waar je de speler ziet )en App (waar de speelschermen worden aangemaakt).
+     * Stelt het aantal levens in op 3 en initialiseert de booster.
+     * @param location
+     * @param gameScreen
+     * @param app
+     */
     public Player(Coordinate2D location, GameScreen gameScreen, App app) {
         super("sprites/xWingV1.png", location, new Size(80,80));
         this.gameScreen = gameScreen;
@@ -62,20 +75,24 @@ public class Player extends DynamicSpriteEntity implements KeyListener, SceneBor
     public int getScore() {
         return score;
     }
-    public void setScore(int score) {
-        this.score = score;
-        gameScreen.getScoreText().setText("Score: " + this.getScore());
-    }
-
     public static int getFinalScore() {
         return finalScore;
 
+    }
+    public void setScore(int score) {
+        this.score = score;
+        gameScreen.getScoreText().setText("Score: " + this.getScore());
     }
 
     public void setLives(int lives) {
         this.lives = lives;
     }
 
+    /**
+     * Stelt de beweging van de (sprite) speler in, rekening houdend met de booster.
+     * @param speed     the speed as a {@code double}
+     * @param direction the direction in degrees as a {@code double}
+     */
     @Override
     public void setMotion( double speed, final double direction) {
         boolean boosterActive = booster.isActive();
@@ -85,6 +102,11 @@ public class Player extends DynamicSpriteEntity implements KeyListener, SceneBor
         super.setMotion(speed, direction);
     }
 
+    /**
+     * Reageert op veranderingen in ingedrukte toetsen. Behandelt schieten, bewegen met pijltjestoetsen, boosten en hoogtecontrole.
+     * @param pressedKeys A {@link Set} of {@code KeyCode} representations of the keys that are currently pressed
+     * Voor de leesbaarheid van de code wordt er gebruik gemaakt van constanten uit de Helper class.
+     */
     @Override
     public void onPressedKeysChange(Set<KeyCode> pressedKeys){
         if(pressedKeys.contains(KeyCode.SPACE) && canShoot) {
@@ -115,6 +137,9 @@ public class Player extends DynamicSpriteEntity implements KeyListener, SceneBor
         }
     }
 
+    /**
+     * Als op de [W] toets wordt gedrukt activeert deze methode de Booster als deze beschikbaar is.
+     */
     private void activateBooster() {
         if (booster != null && !booster.isActive() && !booster.setCoolingDownActive(false)) {
             booster.setBoosterActive(true);
@@ -122,7 +147,10 @@ public class Player extends DynamicSpriteEntity implements KeyListener, SceneBor
         }
     }
 
-
+    /**
+     * notifyBoundaryTouching: reageert op het raken van de speelschermranden.
+     * @param border the border of the {@link YaegerScene} the {@link YaegerEntity} is touching
+     */
     @Override
     public void notifyBoundaryTouching(SceneBorder border){
         setSpeed(0);
@@ -140,6 +168,13 @@ public class Player extends DynamicSpriteEntity implements KeyListener, SceneBor
                 break;
         }
     }
+
+    /**
+     * onCollision(List<Collider> collidingObject):Detecteert botsingen en handelt deze af.
+     * Verhoogt levens bij power-up, activeert laser power-up en vermindert levens bij aanraking met vijanden.
+     * @param collidingObject a {@link List} of all instances of {@link Collider} this {@link Collided} has collided
+     *                         with, during the last Game World Update.
+     */
     @Override
     public void onCollision(List<Collider> collidingObject) {
         boolean powerUpCollision = false;
@@ -172,19 +207,26 @@ public class Player extends DynamicSpriteEntity implements KeyListener, SceneBor
         checkLives();
     }
 
-
+    /**
+     * updateLives(): Update de levens tekst op het scherm.
+     */
     private void updateLives() {
         TextEntity playerLivesText;
         gameScreen.getPlayerLivesText().setText(": " + this.getLives());
     }
 
-    // When [W] Booster check for maximum boost
+    /**
+     * checkMaxHeight(): Controleert of de speler niet te hoog boost.
+     */
     public void checkMaxHeight() {
         if(getLocationInScene().getY() < 500) {
             setAnchorLocationY(500);
         }
     }
 
+    /**
+     * checkLives(): Controleert of de speler nog levens heeft en wisselt van scene naar EndScreen als er geen levens meer zijn.
+     */
     public void checkLives(){
         if(lives < 0) {
             finalScore = score;
@@ -192,6 +234,9 @@ public class Player extends DynamicSpriteEntity implements KeyListener, SceneBor
         }
     }
 
+    /**
+     * shoot(): Schiet twee laser beams vanuit de speler.
+     */
     public void shoot(){
         double x = getLocationInScene().getX();
         double y = getLocationInScene().getY();
@@ -200,26 +245,42 @@ public class Player extends DynamicSpriteEntity implements KeyListener, SceneBor
         soundLaser();                              // Fire Laser
     }
 
+    /**
+     * updateScore: update de tekst van de score zodat deze kan worden weergegeven op het gameScherm
+     */
     private void updateScore() {
         TextEntity scoreText;
         gameScreen.getScoreText().setText("Score: " + getScore());
     }
 
+    /**
+     * soundLaser(): Speelt het laser geluid af.
+     */
     public void soundLaser() {
         var xWingLaser = new SoundClip("audio/xwinglaser.mp3");
         xWingLaser.play();
     }
 
+    /**
+     * setWeapon(IShootable weapon): Stelt het wapen van de speler in (implementatie van IShootable).
+     * @param weapon
+     */
     public void setWeapon(IShootable weapon) {
         this.shootable = weapon;
     }
 
+    /**
+     * activateLaserPowerUp(): Activeert de laser power-up (tijdelijk dubbele schoten PowerUpLaser).
+     */
     public void activateLaserPowerUp() {
         laserPowerUpActive = true;
         laserPowerUpEndTime = System.currentTimeMillis() + 10000; // 10 seconds
     }
 
-
+    /**
+     * increaseScore(int points): Verhoogt de score van de speler en update de score tekst en highscore.
+     * @param points
+     */
     public void increaseScore(int points){
         this.score += points;
         highscore.updateCurrentScore();
