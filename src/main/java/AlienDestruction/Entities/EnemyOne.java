@@ -22,6 +22,7 @@ public class EnemyOne extends GameEntities {
         this.player = player;
 
         setMotion(Helper.Speed.MEDIUM, Helper.Direction.DOWN);
+        System.out.println("Speed " + Helper.Speed.MEDIUM);
         setPoints(50);
         setPenaltyPoints(25);
         setHitPoints(1);

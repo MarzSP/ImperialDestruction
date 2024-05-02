@@ -29,7 +29,7 @@ public class App extends YaegerGame {
     @Override
     public void setupGame() {
         setGameTitle("Imperial Destruction");
-        setSize(new Size(1000, 800));
+        setSize(new Size(1200, 800));
 
     }
 

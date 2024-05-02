@@ -56,18 +56,19 @@ public class ObstacleTwo extends GameEntities{
      * @param collider
      */
     public void bounceOff(WeaponType collider){
+        double randomBounce = Helper.getRandomDouble(-8.0, 8.0);
         switch (getHitGrid(collider)) {
             case 1:
-                setNewColliderDirection(collider, 90, 270);
+                setNewColliderDirection(collider, 90 + randomBounce, 270 + randomBounce);
                 break;
             case 2:
-                setNewColliderDirection(collider, 90, 90);
+                setNewColliderDirection(collider, 90 + randomBounce, 90 + randomBounce);
                 break;
             case 3:
-                setNewColliderDirection(collider, 90, 90);
+                setNewColliderDirection(collider, 90 + randomBounce, 90+ randomBounce);
                 break;
             case 4:
-                setNewColliderDirection(collider, 90, 270);
+                setNewColliderDirection(collider, 90 + randomBounce, 270 + randomBounce);
                 break;
             default:
                 break;

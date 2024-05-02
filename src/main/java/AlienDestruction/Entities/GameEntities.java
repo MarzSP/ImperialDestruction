@@ -137,15 +137,13 @@ public class GameEntities extends DynamicSpriteEntity implements SceneBorderTouc
      * @return
      */
     public int getCourse(double xPos){
-        if(xPos < 500) {
+        if(xPos < 600) {
             return Helper.getRandomInt(10, 40);
         } else if (xPos >500) {
             return Helper.getRandomInt(310, 340);
         }
         return 0;
     }
-
-
 
     @Override
     public void notifyBoundaryCrossing(SceneBorder sceneBorder) {
