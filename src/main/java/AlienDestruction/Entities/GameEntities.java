@@ -16,6 +16,17 @@ import java.util.List;
 import java.util.Random;
 import java.util.Set;
 
+/**
+ * Class GameEntities:
+ * Extends:
+ *     DynamicSpriteEntity: Erft van de DynamicSpriteEntity klasse die functionaliteit biedt voor het hanteren van een bewegende sprite entity met een afbeelding.
+ *     SceneBorderTouchingWatcher: Implementeert de SceneBorderTouchingWatcher interface om te detecteren wanneer het object de rand van het scherm raakt.
+ *     Newtonian: Implementeert de Newtonian interface om physics simulatie toe te passen (zwaartekracht).
+ *     Collided: Implementeert de Collided interface om te detecteren wanneer het object met andere objecten botst. (Zoals bijv Speler met Vijand)
+ *     Collider: Implementeert de Collider interface voor detectie van botsingen
+ *     Rotatable: Implementeert de Rotatable interface om rotatie van sprites mogelijk te maken
+ *     SceneBorderCrossingWatcher: Implementeert de SceneBorderCrossingWatcher interface om te detecteren wanneer het objectbuiten de schermranden komt.
+ */
 public class GameEntities extends DynamicSpriteEntity implements SceneBorderTouchingWatcher, Newtonian, Collided, Collider, Rotatable, SceneBorderCrossingWatcher {
     private int points;
     private int penaltyPoints;
@@ -23,7 +34,14 @@ public class GameEntities extends DynamicSpriteEntity implements SceneBorderTouc
     private int hitPoints;
     private Player player;
 
-
+    /**
+     * Constructor:
+     * Initialiseert het object met een afbeelding, locatie, grootte en referentie naar de speler. Schakelt zwaartekracht en wrijving uit.
+     * @param resource
+     * @param initialLocation
+     * @param size
+     * @param player
+     */
     protected GameEntities(String resource, Coordinate2D initialLocation, Size size, Player player) {
         super(resource, initialLocation);
         this.player = player;
@@ -55,6 +73,14 @@ public class GameEntities extends DynamicSpriteEntity implements SceneBorderTouc
     public void notifyBoundaryTouching(SceneBorder sceneBorder) {
     }
 
+    /**
+     * Detecteert botsingen en handelt deze af.
+     *     Botsing met WeaponType (waarschijnlijk laser/wapen) vermindert hitPoints en controleert of vernietiging nodig is.
+     *     Botsing met de speler, leidt tot verwijdering van dit object.
+     *     Anders: stuurt het object in een andere richting.
+     * @param collidingObject a {@link List} of all instances of {@link Collider} this {@link Collided} has collided
+     *                         with, during the last Game World Update.
+     */
     @Override
     public void onCollision(List<Collider> collidingObject) {
         for (Collider collider : collidingObject){
@@ -72,6 +98,11 @@ public class GameEntities extends DynamicSpriteEntity implements SceneBorderTouc
         }
     }
 
+    /**
+     * calculateCourse maakt een nieuwe koers gebaseerd op de oude richting
+     * @param oldDirection
+     * @return
+     */
     public int calculateCourse(int oldDirection){
         int newDirection = 0;
         if (oldDirection < 359 && oldDirection > 271) {
@@ -82,10 +113,17 @@ public class GameEntities extends DynamicSpriteEntity implements SceneBorderTouc
         return newDirection;
     }
 
+    /**
+     * addDamage(double damage): Vermindert de hitPoints met de opgegeven schade.
+     * @param damage
+     */
     public void addDamage(double damage){
         this.hitPoints -= damage;
     }
 
+    /**
+     * checkIfDestroyed(): Controleert of het object vernietigd moet worden (hitpoints <= 0) en voegt score toe aan de speler en verwijdert zichzelf.
+     */
     public void checkIfDestroyed(){
         if (this.hitPoints <= 0) {
             player.increaseScore(points);
@@ -93,6 +131,11 @@ public class GameEntities extends DynamicSpriteEntity implements SceneBorderTouc
         }
     }
 
+    /**
+     * getCourse(double xPos): Berekent een nieuwe koers gebaseerd op de horizontale positie
+     * @param xPos
+     * @return
+     */
     public int getCourse(double xPos){
         if(xPos < 500) {
             return Helper.getRandomInt(10, 40);
