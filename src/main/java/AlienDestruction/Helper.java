@@ -77,4 +77,11 @@ public class Helper {
         double randomDouble = random.nextDouble() * (max - min) + min;
         return Math.round(randomDouble * 10.0) / 10.0;
     }
+
+    public static int getRandomX(double width){
+        int minX = 40;
+        int maxX = (int) width - 40;
+
+        return Helper.getRandomInt(minX, maxX);
+    }
 }

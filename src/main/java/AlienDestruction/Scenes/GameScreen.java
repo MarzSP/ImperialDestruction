@@ -6,6 +6,7 @@ import AlienDestruction.Buttons.MusicButton;
 import AlienDestruction.Entities.*;
 import AlienDestruction.Game.EnemySpawner;
 import AlienDestruction.Game.Level;
+import AlienDestruction.Game.PowerUpSpawner;
 import AlienDestruction.MenuBar.BlackRectangle;
 import AlienDestruction.MenuBar.PlayerLivesSprite;
 import AlienDestruction.Weapons.IShootable;
@@ -150,6 +151,7 @@ public class GameScreen extends DynamicScene implements EntitySpawnerContainer {
     public void setupEntitySpawners() {
         addEntitySpawner(weaponTypeSpawner);
         addEntitySpawner(new EnemySpawner(player, level, this));
+        addEntitySpawner(new PowerUpSpawner(level, this));
 
         if (weaponTypeSpawner.isActive()) {
             weaponTypeSpawner.pause();

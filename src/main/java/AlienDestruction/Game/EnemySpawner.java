@@ -21,10 +21,10 @@ public class EnemySpawner extends EntitySpawner {
     private Level level;
 
     private GameScreen gameScreen;
-
     Random random = new Random();
+    private int enemyTypeIndex = 0;
 
-    int enemyTypeIndex = 0;
+
     public EnemySpawner(Player player, Level level, GameScreen gameScreen) {
         super(1200);
         this.level = level;
@@ -54,7 +54,7 @@ public class EnemySpawner extends EntitySpawner {
 
     public void spawnEnemyFromLevel(int enemyType){
         GameEntities e;
-        int randomX = getRandomX();
+        int randomX = Helper.getRandomX(gameScreen.getWidth());
 
         switch (enemyType) {
             case 1:
@@ -76,23 +76,9 @@ public class EnemySpawner extends EntitySpawner {
             case 6: e = new ObstacleTwo(new Coordinate2D(randomX, -40), player);
                 spawn(e);
                 break;
-//            case 7: e = new PowerUpLives(new Coordinate2D(750, -40));
-//                spawn(e);
-//                break;
-//            case 8: e = new PowerUpLaser(new Coordinate2D(750, -40));
-//                spawn(e);
-//                break;
             default:
                 break;
         }
-    }
-
-    int getRandomX(){
-        double w = gameScreen.getWidth();  // Width GameScreen
-        int minX = 40;
-        int maxX = (int) w - 40;
-
-        return Helper.getRandomInt(minX, maxX);
     }
 
     public void updateLevelText(){
