@@ -23,11 +23,10 @@ public class EnemySpawner extends EntitySpawner {
 
     int enemyTypeIndex = 0;
     public EnemySpawner(Player player, Level level, GameScreen gameScreen) {
-        super(1000); // intervalInMs
+        super(1000);
         this.level = level;
         this.player = player;
         this.gameScreen = gameScreen;
-
     }
 
     @Override
@@ -37,18 +36,12 @@ public class EnemySpawner extends EntitySpawner {
         int amountOfLevels = levelData.length;
         int amountInLevel = levelData[indexLevelNumber - 1].length;
 
-        //int[] enemyTypes = level.getEnemyTypes();
-        //int totalAmount = enemyTypes.length;
-
         spawnEnemyFromLevel(levelData[indexLevelNumber - 1][enemyTypeIndex]);
         enemyTypeIndex ++;
         if (enemyTypeIndex >= amountInLevel) {
             enemyTypeIndex = 0;
             level.setIndexLevelNumber(indexLevelNumber + 1);
             level.setPlayerLevelNumber(level.getPlayerLevelNumber() + 1);
-            System.out.println("index " + level.getIndexLevelNumber());
-            System.out.println("player " + level.getPlayerLevelNumber());
-
             updateLevelText();
 
         }

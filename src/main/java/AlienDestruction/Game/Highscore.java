@@ -38,7 +38,6 @@ public class Highscore {
         updateCurrentScore();
         if (currentScore > highscore) {
             highscore = currentScore;
-            System.out.println("New Highscore!");
         }
     }
 
