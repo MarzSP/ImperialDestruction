@@ -1,6 +1,7 @@
 package AlienDestruction.Entities;
 
 import AlienDestruction.App;
+import AlienDestruction.Game.EnemySpawner;
 import AlienDestruction.Helper;
 import AlienDestruction.Scenes.GameScreen;
 import AlienDestruction.Weapons.LaserBeam;
@@ -16,13 +17,12 @@ public class EnemyOne extends GameEntities {
     private Player player;
 
 
-    public EnemyOne(Coordinate2D location, Player player) {
+    public EnemyOne(Coordinate2D location, Player player, double speedIncrease) {
 
         super("sprites/tieFighterV1.png", location, new Size(Helper.Size.MEDIUM,Helper.Size.MEDIUM), player);
         this.player = player;
 
-        setMotion(Helper.Speed.MEDIUM, Helper.Direction.DOWN);
-        System.out.println("Speed " + Helper.Speed.MEDIUM);
+        setMotion((Helper.Speed.MEDIUM + speedIncrease), Helper.Direction.DOWN);
         setPoints(50);
         setPenaltyPoints(25);
         setHitPoints(1);

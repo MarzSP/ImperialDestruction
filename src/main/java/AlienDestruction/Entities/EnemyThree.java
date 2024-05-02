@@ -10,7 +10,7 @@ import com.github.hanyaeger.api.scenes.SceneBorder;
 public class EnemyThree extends GameEntities{
     private Player player;
 
-    public EnemyThree(Coordinate2D location, Player player) {
+    public EnemyThree(Coordinate2D location, Player player, double speedIncrease) {
         super("sprites/lambdaShuttleV1.png", location, new Size(Helper.Size.LARGE,Helper.Size.MEDIUM), player);
         this.player = player;
 
