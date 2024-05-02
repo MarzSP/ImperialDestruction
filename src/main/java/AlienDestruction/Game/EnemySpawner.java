@@ -46,7 +46,6 @@ public class EnemySpawner extends EntitySpawner {
             level.setIndexLevelNumber(indexLevelNumber + 1);
             level.setPlayerLevelNumber(level.getPlayerLevelNumber() + 1);
             updateLevelText();
-            gameScreen.pause();
         }
         if (indexLevelNumber >= amountOfLevels) {
             level.setIndexLevelNumber(1);
@@ -106,11 +105,11 @@ public class EnemySpawner extends EntitySpawner {
         return increase;
     }
 
-    public void changeLevel(){
-        gameScreen.pause();
-
-        gameScreen.resume();
-    }
+//    public void changeLevel(){
+//        gameScreen.pause();
+//
+//        gameScreen.resume();
+//    }
 
 
 }
