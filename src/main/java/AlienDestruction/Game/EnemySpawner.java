@@ -23,7 +23,7 @@ public class EnemySpawner extends EntitySpawner {
 
     int enemyTypeIndex = 0;
     public EnemySpawner(Player player, Level level, GameScreen gameScreen) {
-        super(1000);
+        super(1200);
         this.level = level;
         this.player = player;
         this.gameScreen = gameScreen;
