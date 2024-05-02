@@ -56,16 +56,16 @@ public class EnemySpawner extends EntitySpawner {
 
         switch (enemyType) {
             case 1:
-                e = new EnemyOne(new Coordinate2D(randomX, -40), player);
+                e = new EnemyOne(new Coordinate2D(randomX, -40), player, getSpeedIncrease());
                 spawn(e);
                 break;
-            case 2: e = new EnemyTwo(new Coordinate2D(randomX, -40), player);
+            case 2: e = new EnemyTwo(new Coordinate2D(randomX, -40), player, getSpeedIncrease());
                 spawn(e);
                 break;
-            case 3: e = new EnemyThree(new Coordinate2D(randomX, -40), player);
+            case 3: e = new EnemyThree(new Coordinate2D(randomX, -40), player, getSpeedIncrease());
                 spawn(e);
                 break;
-            case 4: e = new EnemyFour(new Coordinate2D(randomX, -40), player);
+            case 4: e = new EnemyFour(new Coordinate2D(randomX, -40), player, getSpeedIncrease());
                 spawn(e);
                 break;
             case 5: e = new ObstacleOne(new Coordinate2D(randomX, -40), player);
@@ -98,6 +98,10 @@ public class EnemySpawner extends EntitySpawner {
         gameScreen.getLevelText().setText("Level: " + level.getPlayerLevelNumber());
     }
 
+    public double getSpeedIncrease() {
+        double increase = level.getPlayerLevelNumber() * 0.1;
+        return increase;
+    }
 
 }
 
