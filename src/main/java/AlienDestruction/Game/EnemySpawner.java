@@ -31,24 +31,24 @@ public class EnemySpawner extends EntitySpawner {
 
     @Override
     protected void spawnEntities() {
-        int levelNumber = level.getLevelNumber();
+        int indexLevelNumber = level.getIndexLevelNumber();
         int[][] levelData = level.defineLevel();
         int amountOfLevels = levelData.length;
-        int amountInLevel = levelData[levelNumber - 1].length;
+        int amountInLevel = levelData[indexLevelNumber - 1].length;
 
         //int[] enemyTypes = level.getEnemyTypes();
         //int totalAmount = enemyTypes.length;
 
-        spawnEnemyFromLevel(levelData[levelNumber - 1][enemyTypeIndex]);
+        spawnEnemyFromLevel(levelData[indexLevelNumber - 1][enemyTypeIndex]);
         enemyTypeIndex ++;
         if (enemyTypeIndex >= amountInLevel) {
             enemyTypeIndex = 0;
-            level.setLevelNumber(levelNumber + 1);
+            level.setIndexLevelNumber(indexLevelNumber + 1);
+            level.setPlayerLevelNumber(level.getPlayerLevelNumber() + 1);
         }
-        if (levelNumber >= amountOfLevels) {
-            level.setLevelNumber(1);
+        if (indexLevelNumber >= amountOfLevels) {
+            level.setIndexLevelNumber(1);
         }
-
     }
 
     public void spawnEnemyFromLevel(int enemyType){

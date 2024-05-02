@@ -2,36 +2,47 @@ package AlienDestruction.Game;
 
 public class Level {
 
-    private int levelNumber = 1;
-    private int levelSize = 10;
+    private int playerLevelNumber = 1;
 
-    public Level (){
+    private int indexLevelNumber = getPlayerLevelNumber();
+
+    public Level() {
     }
 
-    public int getLevelNumber() {
-        return levelNumber;
-    }
-    public void setLevelNumber(int levelNumber) {
-        this.levelNumber = levelNumber;
+    public int getIndexLevelNumber() {
+        return indexLevelNumber;
     }
 
-    public int[][] defineLevel() {
-        return new int[][] {
-                {1, 1, 1, 5, 1, 2, 2, 2, 2, 5, 6, 2, 2},
-                {3, 3, 3, 2, 2, 2, 5, 6, 5},
-                {4, 2, 2, 2, 2, 4, 6, 5, 6},
-                {5, 5, 6, 5, 6, 6, 5, 5, 5},
-                {4, 4, 4}
-        };
+    public void setIndexLevelNumber(int indexLevelNumber) {
+        this.indexLevelNumber = indexLevelNumber;
+    }
+
+    public int getPlayerLevelNumber() {
+        return playerLevelNumber;
+    }
+
+    public void setPlayerLevelNumber(int playerLevelNumber) {
+        this.playerLevelNumber = playerLevelNumber;
     }
 
 //    public int[][] defineLevel() {
-//    return new int[][] {
-//            {1, 1},
-//            {2, 2},
-//            {3, 3},
-//            {4}
-//    };
+//        return new int[][] {
+//                {1, 1, 1, 5, 1, 2, 2, 2, 2, 5, 6, 2, 2},
+//                {3, 3, 3, 2, 2, 2, 5, 6, 5},
+//                {4, 2, 2, 2, 2, 4, 6, 5, 6},
+//                {5, 5, 6, 5, 6, 6, 5, 5, 5},
+//                {4, 4, 4}
+//        };
+//    }
+
+    public int[][] defineLevel() {
+        return new int[][]{
+                {1, 1},
+                {2, 2},
+                {3, 3},
+                {4}
+        };
+    }
+
+
 }
-
-
