@@ -14,7 +14,7 @@ public class EnemyThree extends GameEntities{
         super("sprites/lambdaShuttleV1.png", location, new Size(Helper.Size.LARGE,Helper.Size.MEDIUM), player);
         this.player = player;
 
-        setMotion(Helper.Speed.MEDIUM, Helper.Direction.DOWN);
+        setMotion(Helper.Speed.LOW + speedIncrease, Helper.Direction.DOWN);
         setPoints(100);
         setPenaltyPoints(50);
         setHitPoints(4);
