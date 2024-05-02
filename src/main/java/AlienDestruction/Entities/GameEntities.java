@@ -48,6 +48,9 @@ public class GameEntities extends DynamicSpriteEntity implements SceneBorderTouc
     protected GameEntities(String resource, Coordinate2D initialLocation, Size size, Player player) {
         super(resource, initialLocation);
         this.player = player;
+
+        setGravityConstant(0.000);
+        setFrictionConstant(0.00);
     }
 
     public int getPoints() {
