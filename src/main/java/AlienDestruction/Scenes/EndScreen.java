@@ -7,6 +7,7 @@ import AlienDestruction.Entities.Player;
 import com.github.hanyaeger.api.AnchorPoint;
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.entities.impl.TextEntity;
+import com.github.hanyaeger.api.scenes.DynamicScene;
 import com.github.hanyaeger.api.scenes.StaticScene;
 import com.github.hanyaeger.api.scenes.YaegerScene;
 import javafx.scene.paint.Color;
@@ -18,10 +19,12 @@ import javafx.scene.text.FontWeight;
  * Het toont het "GAME OVER" scherm. Deze bevat een achtergrond image, de tekst "Game Over", de score, de optie om opnieuw te spelen, en een 'Quit Game' button.
  * StaticScene: EndScreen erft van de StaticScene klasse, wat betekent dat de achtergrondafbeelding en entiteiten niet zullen veranderen tijdens het tonen van de EndScreen.
  */
-public class EndScreen extends StaticScene implements YaegerScene{
+public class EndScreen extends DynamicScene implements YaegerScene{
 
     private App app;
     private Player player;
+    private TextEntity finalScoreText;
+
 
     /**
      * Constructor: initialiseert de app referentie met de meegegeven App object. Dit zodat er een sceneverandering kan plaatsvinden.
@@ -31,8 +34,10 @@ public class EndScreen extends StaticScene implements YaegerScene{
     public EndScreen(App app) {
         this.app = app;
         this.player = player;
+        this.finalScoreText = finalScoreText;
     }
 
+    public TextEntity getFinalScoreText(){ return finalScoreText;}
     /**
      * setupScene zet de achtergrondafbeelding van deze scene.
      */
@@ -58,13 +63,13 @@ public class EndScreen extends StaticScene implements YaegerScene{
         gameMenuText.setFont(Font.font("Roboto", FontWeight.SEMI_BOLD, getWidth()/25));
         addEntity(gameMenuText);
 
-        var scoreText = new TextEntity(
+        finalScoreText = new TextEntity(
                 new Coordinate2D(getWidth() / 2, getHeight() / 3),
-                "Score: ");
-        scoreText.setAnchorPoint(AnchorPoint.TOP_CENTER);
-        scoreText.setFill(Color.ANTIQUEWHITE);
-        scoreText.setFont(Font.font("Roboto", FontWeight.SEMI_BOLD, getHeight()/ 20));
-        addEntity(scoreText);
+                "Score: " + Player.getFinalScore());
+        finalScoreText.setAnchorPoint(AnchorPoint.TOP_CENTER);
+        finalScoreText.setFill(Color.ANTIQUEWHITE);
+        finalScoreText.setFont(Font.font("Roboto", FontWeight.SEMI_BOLD, getHeight()/ 20));
+        addEntity(finalScoreText);
 
         PlayAgainButton playButton;
         playButton = new PlayAgainButton(new Coordinate2D(getWidth() / 2, getHeight() * 4/6), app);

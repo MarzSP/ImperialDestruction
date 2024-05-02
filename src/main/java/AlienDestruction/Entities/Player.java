@@ -33,10 +33,13 @@ public class Player extends DynamicSpriteEntity implements KeyListener, SceneBor
     private IShootable shootable;
     private int lives;
     private int score;
+    private static int finalScore;
     private boolean canShoot = true;
     private Booster booster;
     private boolean laserPowerUpActive = false; // Boolean voor PowerUpLaser
     private long laserPowerUpEndTime = 0; // int voor PowerUpLaser
+
+
     Highscore highscore = new Highscore(this);
 
     public Player(Coordinate2D location, GameScreen gameScreen, App app) {
@@ -63,6 +66,12 @@ public class Player extends DynamicSpriteEntity implements KeyListener, SceneBor
         this.score = score;
         gameScreen.getScoreText().setText("Score: " + this.getScore());
     }
+
+    public static int getFinalScore() {
+        return finalScore;
+
+    }
+
     public void setLives(int lives) {
         this.lives = lives;
     }
@@ -178,6 +187,7 @@ public class Player extends DynamicSpriteEntity implements KeyListener, SceneBor
 
     public void checkLives(){
         if(lives < 0) {
+            finalScore = score;
             app.setActiveScene(Helper.SceneIds.EndScreen);
         }
     }
