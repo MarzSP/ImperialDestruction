@@ -188,11 +188,14 @@ public class Player extends DynamicSpriteEntity implements KeyListener, SceneBor
                 checkLives();
                 ((PowerUpLives) collider).remove(); //verwijderd de sprite van het scherm
                 break;
-            }
-            else if (collider instanceof PowerUpLaser) { //PowerUpLaserschot x2
+            } else if (collider instanceof PowerUpLaser) { //PowerUpLaserschot x2
                 powerUpCollision = true;
                 activateLaserPowerUp();
                 ((PowerUpLaser) collider).remove(); // verwijderd sprite uit het scherm
+                break;
+            } else if (collider instanceof GameEntities) {
+                ((GameEntities) collider).remove();
+                increaseScore(((GameEntities) collider).getPoints());
                 break;
             }
 
@@ -204,8 +207,8 @@ public class Player extends DynamicSpriteEntity implements KeyListener, SceneBor
             updateLives();
             checkLives();
         }
-        updateLives();
-        checkLives();
+//        updateLives();
+//        checkLives();
     }
 
     /**
@@ -244,7 +247,6 @@ public class Player extends DynamicSpriteEntity implements KeyListener, SceneBor
         shootable.shoot(new LaserBeam(new Coordinate2D(x + 5, y))); // todo: dynamisch aanpassen aan size sprite / pos lasers on sprite
         shootable.shoot(new LaserBeam(new Coordinate2D(x + 70, y)));//
         soundLaser();
-
     }
 
     /**
@@ -289,4 +291,5 @@ public class Player extends DynamicSpriteEntity implements KeyListener, SceneBor
         highscore.checkHighScore();
         updateScore();
     }
+
 }

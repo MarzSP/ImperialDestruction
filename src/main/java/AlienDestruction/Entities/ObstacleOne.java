@@ -119,7 +119,7 @@ public class ObstacleOne extends GameEntities {
 
     @Override
     public void notifyBoundaryCrossing(SceneBorder sceneBorder) {
-
+        remove();
     }
 
 }
