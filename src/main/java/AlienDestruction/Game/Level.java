@@ -23,6 +23,7 @@ public class Level {
 
     public void setPlayerLevelNumber(int playerLevelNumber) {
         this.playerLevelNumber = playerLevelNumber;
+
     }
 
 //    public int[][] defineLevel() {

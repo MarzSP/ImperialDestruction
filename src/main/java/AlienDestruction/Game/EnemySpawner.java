@@ -48,7 +48,9 @@ public class EnemySpawner extends EntitySpawner {
             level.setPlayerLevelNumber(level.getPlayerLevelNumber() + 1);
             System.out.println("index " + level.getIndexLevelNumber());
             System.out.println("player " + level.getPlayerLevelNumber());
+
             updateLevelText();
+
         }
         if (indexLevelNumber >= amountOfLevels) {
             level.setIndexLevelNumber(1);
