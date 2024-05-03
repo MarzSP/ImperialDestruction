@@ -10,17 +10,17 @@ import com.github.hanyaeger.api.entities.EntitySpawner;
 public class LaserGun extends EntitySpawner implements IShootable{
 
     /**
-     * Constructor:  Initialiseert het schietinterval van het lasergeweer in milliseconden
-     * @param intervalInMs
+     * Constructor:
+     * @param intervalInMs Initialiseert het schietinterval van het lasergeweer in milliseconden
      */
     public LaserGun(long intervalInMs) {
         super(intervalInMs);
     }
 
     /**
-     * @Override public void shoot(WeaponType weaponType) (overridden):
+     * public void shoot(WeaponType weaponType):
      *     Deze methode implementeert de shoot methode van de IShootable interface.
-     * @param weaponType
+     * @param weaponType :
      * Stelt de snelheid van de weaponType in op 25.
      * Stelt de richting van de weaponType  in op 180 graden.
      */
@@ -32,7 +32,7 @@ public class LaserGun extends EntitySpawner implements IShootable{
     }
 
     /**
-     * @Override protected void spawnEntities() (overridden):
+     * protected void spawnEntities() (overridden):
      * Deze abstracte methode is geërfd van EntitySpawner en moet worden geïmplementeerd voor de logica voor het spawnen van entiteiten.
      */
     @Override

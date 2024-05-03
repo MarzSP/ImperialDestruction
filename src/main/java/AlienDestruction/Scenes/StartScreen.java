@@ -20,7 +20,7 @@ import javafx.scene.text.FontWeight;
     protected final App app;
 
     /**
-     * Constructor StartScreen initialiseert een StartScreen object. 
+     * Constructor StartScreen initialiseert een StartScreen object.
      * @param app Referentie naar App omdat hier het StartScreen wordt aangemaakt.
      */
     public StartScreen(App app) {
