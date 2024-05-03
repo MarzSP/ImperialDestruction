@@ -3,6 +3,7 @@ package AlienDestruction.Scenes;
 import AlienDestruction.App;
 import AlienDestruction.Buttons.MenuButton;
 import AlienDestruction.Buttons.MusicButton;
+import AlienDestruction.Buttons.PauseButton;
 import AlienDestruction.Entities.*;
 import AlienDestruction.Game.EnemySpawner;
 import AlienDestruction.Game.Level;
@@ -45,6 +46,7 @@ public class GameScreen extends DynamicScene implements EntitySpawnerContainer {
 
     protected App app;
     private Player player;
+private PauseButton pauseButton;
     private final EntitySpawner weaponTypeSpawner;
 
     private Level level = new Level();
@@ -140,7 +142,11 @@ public class GameScreen extends DynamicScene implements EntitySpawnerContainer {
         MusicButton musicButton = new MusicButton(new Coordinate2D(750, 0.5 * textMenu), musicClip, new Size(0.5*textMenu,0.5*textMenu) );
         addEntity(musicButton);
 
-        MenuButton menuButton = new MenuButton(app, new Coordinate2D(940, textMenu));
+        Coordinate2D buttonLocation = new Coordinate2D(800, textMenu);
+        PauseButton pauseButton = new PauseButton(buttonLocation, this, new Size(10, 10));
+        addEntity(pauseButton);
+
+        MenuButton menuButton = new MenuButton(app, new Coordinate2D(980, textMenu));
         addEntity(menuButton);
     }
 
