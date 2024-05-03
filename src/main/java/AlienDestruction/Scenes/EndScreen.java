@@ -8,7 +8,6 @@ import com.github.hanyaeger.api.AnchorPoint;
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.entities.impl.TextEntity;
 import com.github.hanyaeger.api.scenes.DynamicScene;
-import com.github.hanyaeger.api.scenes.StaticScene;
 import com.github.hanyaeger.api.scenes.YaegerScene;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -21,8 +20,8 @@ import javafx.scene.text.FontWeight;
  */
 public class EndScreen extends DynamicScene implements YaegerScene{
 
-    private App app;
-    private Player player;
+    private final App app;
+
     private TextEntity finalScoreText;
 
 
@@ -34,11 +33,9 @@ public class EndScreen extends DynamicScene implements YaegerScene{
      */
     public EndScreen(App app) {
         this.app = app;
-        this.player = player;
-        this.finalScoreText = finalScoreText;
+
     }
 
-    public TextEntity getFinalScoreText(){ return finalScoreText;}
 
     /**
      * setupScene zet de achtergrondafbeelding van deze scene.
@@ -61,8 +58,8 @@ public class EndScreen extends DynamicScene implements YaegerScene{
                 new Coordinate2D(getWidth() / 2, getHeight() / 4),
                 "GAME OVER!");
         gameMenuText.setAnchorPoint(AnchorPoint.TOP_CENTER);
-        gameMenuText.setFill(Color.ANTIQUEWHITE);
-        gameMenuText.setFont(Font.font("Roboto", FontWeight.SEMI_BOLD, getWidth()/25));
+        gameMenuText.setFill(Color.GOLD);
+        gameMenuText.setFont(Font.font("Roboto", FontWeight.BOLD, getWidth()/25));
         addEntity(gameMenuText);
 
         finalScoreText = new TextEntity(

@@ -97,7 +97,7 @@ public class GameScreen extends DynamicScene implements EntitySpawnerContainer {
     }
 
     /**
-     * setupScene(): Zet de achtergrondafbeelding van het speel scherm.
+     * setupScene(): Zet de achtergrondafbeelding van het speel scherm. De boolean isPaused begint op false, omdat het spel niet is gepauseerd.
      */
     @Override
     public void setupScene() {
@@ -107,7 +107,6 @@ public class GameScreen extends DynamicScene implements EntitySpawnerContainer {
 
     /**
      * setupEntities(): Initialiseert en voegt de volgende entiteiten toe aan het scherm:
-     * <p>
      * Speler (met wapen van de weaponTypeSpawner).
      * Zwarte rechthoek bovenaan het scherm die fungeert als menubalk
      * Speler levens sprite (links boven in menubalk)
