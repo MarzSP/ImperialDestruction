@@ -21,7 +21,7 @@ public class EnemyTwo extends GameEntities{
 
     private Player player;
     private Timer fireTimer;
-    private boolean canFire = true;
+    private boolean allowedToFire = true;
 
     /**
      * Constructor:
@@ -55,9 +55,9 @@ public class EnemyTwo extends GameEntities{
     }
 
     public void shoot() {
-        if (canFire) {
+        if (allowedToFire) {
             System.out.println("test");
-            canFire = false;
+            allowedToFire = false;
         }
     }
     /**

@@ -31,7 +31,6 @@ public class GameEntities extends DynamicSpriteEntity implements SceneBorderTouc
     private int points;
     private int penaltyPoints;
     private int hitPoints;
-
     private boolean canShoot;
     private Player player;
 
