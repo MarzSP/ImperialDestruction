@@ -20,7 +20,7 @@ import java.util.List;
 public class EnemyTwo extends GameEntities{
     /**
      * Player player is final:
-     * Dit betekent dat de EnemyFour-instantie altijd een geldige referentie naar de Player-instantie heeft.
+     * Dit betekent dat de EnemyTwo-instantie altijd een geldige referentie naar de Player-instantie heeft.
      * Dit voorkomt dat er fouten optreden door null-waarden of ongeldige verwijzingen.
      */
     private final Player player;

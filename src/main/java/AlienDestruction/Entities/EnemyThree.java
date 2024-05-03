@@ -11,7 +11,7 @@ import com.github.hanyaeger.api.scenes.SceneBorder;
 public class EnemyThree extends GameEntities{
     /**
      *   Player player is final:
-     *  Dit betekent dat de EnemyFour-instantie altijd een geldige referentie naar de Player-instantie heeft.
+     *  Dit betekent dat de EnemyThree-instantie altijd een geldige referentie naar de Player-instantie heeft.
      * Dit voorkomt dat er fouten optreden door null-waarden of ongeldige verwijzingen.
     */
 
