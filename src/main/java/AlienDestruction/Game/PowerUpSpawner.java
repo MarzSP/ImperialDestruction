@@ -23,7 +23,7 @@ public class PowerUpSpawner extends EntitySpawner {
      * GameScreen gameScreen is final:
      * Dit betekent dat de PowerUpSpawner-instantie altijd een geldige referentie naar de gameScreen-instantie heeft.
      * */
-    private GameScreen gameScreen;
+    private final GameScreen gameScreen;
 
     /**
      * Constructor: - `PowerUpSpawner(Level level, GameScreen gameScreen)`

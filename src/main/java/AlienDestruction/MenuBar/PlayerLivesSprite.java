@@ -15,7 +15,7 @@ public class PlayerLivesSprite extends DynamicSpriteEntity {
      *  Afbeelding: "sprites/xWingV1.png" (vermoedelijk een afbeelding van een ruimteschip)
      *  Locatie: location (de positie waar de sprite getekend moet worden)
      *  Grootte: Size(30, 60) (de breedte en hoogte van de sprite)
-     * @param location
+     * @param location de positie waar de sprite getekend moet worden
      */
     public PlayerLivesSprite(Coordinate2D location) {
         super("sprites/xWingV1.png", location, new Size(30,60));

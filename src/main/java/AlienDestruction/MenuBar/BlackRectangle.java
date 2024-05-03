@@ -14,8 +14,8 @@ public class BlackRectangle extends RectangleEntity {
 
     /**
      * De constructor initialiseert dde zwarte rechthoek met de opgegeven beginpositie (Initial location) en grootte (size).
-      * @param initialLocation
-     * @param size
+      * @param initialLocation beginpositie (Initial location
+     * @param size  grootte (size)
      */
     public BlackRectangle(Coordinate2D initialLocation, Size size) {
         super(initialLocation, size);
