@@ -35,6 +35,7 @@ public class Helper {
         public static final KeyCode BOOST = KeyCode.W;
         public static final KeyCode LEFTBOOST = KeyCode.Q;
         public static final KeyCode RIGHTBOOST = KeyCode.E;
+        public static final KeyCode BRAKE = KeyCode.S;
         public static final KeyCode FIRE = KeyCode.SPACE;
     }
 
