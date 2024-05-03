@@ -20,8 +20,8 @@ import java.util.List;
 public class EnemyTwo extends GameEntities{
 
     private Player player;
-    private Timer fireTimer;
-    private boolean allowedToFire = true;
+     private Timer fireTimer;
+     private boolean allowedToFire = true;
 
     /**
      * Constructor:
@@ -46,20 +46,15 @@ public class EnemyTwo extends GameEntities{
         setCanShoot(true);
         shoot();
 
-        fireTimer = new Timer(2000) {
-            @Override
-            public void onAnimationUpdate(long timestamp) {
-
-            }
-        };
+//        fireTimer = new Timer(6000) {
+//
+//            @Override
+//            public void onAnimationUpdate(long timestamp) {
+//
+//            }
+//        };
     }
 
-    public void shoot() {
-        if (allowedToFire) {
-            System.out.println("test");
-            allowedToFire = false;
-        }
-    }
     /**
      * notifyBoundaryCrossing(SceneBorder sceneBorder):
      * Deze methode wordt aangeroepen wanneer de vijand de grens van het scherm verlaat (sceneBorder).

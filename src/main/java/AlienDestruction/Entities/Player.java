@@ -62,7 +62,7 @@ public class Player extends DynamicSpriteEntity implements KeyListener, SceneBor
         this.app = app;
         this.setLives(3);
         this.booster = new Booster();
-        setGravityConstant(0.070);
+        setGravityConstant(0.080);
         setFrictionConstant(0.00);
     }
 
@@ -124,14 +124,18 @@ public class Player extends DynamicSpriteEntity implements KeyListener, SceneBor
             setMotion(Helper.Speed.HIGH,Helper.Direction.GORIGHT);
         } else if(pressedKeys.contains(Helper.KeyStroke.BOOST) && canShoot){
             activateBooster();
+            checkMaxHeight();
             setMotion(Helper.Speed.HIGH,Helper.Direction.GOUP);
-            checkMaxHeight();
         } else if(pressedKeys.contains(Helper.KeyStroke.RIGHTBOOST)){
+            activateBooster();
+            checkMaxHeight();
             setMotion(Helper.Speed.HIGH,Helper.Direction.GORIGHTUP);
-            checkMaxHeight();
         } else if(pressedKeys.contains(Helper.KeyStroke.LEFTBOOST)){
-            setMotion(Helper.Speed.HIGH,Helper.Direction.GOLEFTUP);
+            activateBooster();
             checkMaxHeight();
+            setMotion(Helper.Speed.HIGH,Helper.Direction.GOLEFTUP);
+        } else if(pressedKeys.contains(Helper.KeyStroke.BRAKE)) {
+            setMotion(Helper.Speed.LOW,Helper.Direction.DOWN);
         }
         if(!pressedKeys.contains(Helper.KeyStroke.FIRE)) {
             canShoot = true;
@@ -224,8 +228,8 @@ public class Player extends DynamicSpriteEntity implements KeyListener, SceneBor
      * checkMaxHeight(): Controleert of de speler niet te hoog boost.
      */
     public void checkMaxHeight() {
-        if(getLocationInScene().getY() < 500) {
-            setAnchorLocationY(500);
+        if(getLocationInScene().getY() < 600) {
+            setAnchorLocationY(600);
         }
     }
 

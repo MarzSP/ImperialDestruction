@@ -15,6 +15,8 @@ import com.github.hanyaeger.api.scenes.SceneBorder;
 public class EnemyFour extends GameEntities{
 
     private Player player;
+    // private Timer fireTimer;
+    // private boolean allowedToFire = true;
 
     /**
      * Constructor:

@@ -6,6 +6,7 @@ import AlienDestruction.Weapons.LaserBeam;
 import AlienDestruction.Weapons.WeaponType;
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.Size;
+import com.github.hanyaeger.api.Timer;
 import com.github.hanyaeger.api.entities.*;
 import com.github.hanyaeger.api.entities.impl.DynamicSpriteEntity;
 import com.github.hanyaeger.api.scenes.SceneBorder;
@@ -32,7 +33,9 @@ public class GameEntities extends DynamicSpriteEntity implements SceneBorderTouc
     private int penaltyPoints;
     private int hitPoints;
     private boolean canShoot;
+    private boolean allowedToFire = true;
     private Player player;
+    private Timer fireTimer;
 
 
 
@@ -50,6 +53,22 @@ public class GameEntities extends DynamicSpriteEntity implements SceneBorderTouc
 
         setGravityConstant(0.000);
         setFrictionConstant(0.00);
+
+        fireTimer = new Timer(4000) {
+            @Override
+            public void onAnimationUpdate(long timestamp) {
+                shoot();
+            }
+        };
+    }
+
+    public void shoot() {
+        if (this.canShoot) {
+            if (this.allowedToFire) {
+                System.out.println("test");
+                this.allowedToFire = false;
+            }
+        }
     }
 
     public int getPoints() {
