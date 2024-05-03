@@ -37,8 +37,6 @@ public class GameEntities extends DynamicSpriteEntity implements SceneBorderTouc
     private Player player;
     private Timer fireTimer;
 
-
-
     /**
      * Constructor:
      * Initialiseert het object met een afbeelding, locatie, grootte en referentie naar de speler. Schakelt zwaartekracht en wrijving uit.
@@ -65,6 +63,7 @@ public class GameEntities extends DynamicSpriteEntity implements SceneBorderTouc
     public void shoot() {
         if (this.canShoot) {
             if (this.allowedToFire) {
+
                 System.out.println("test");
                 this.allowedToFire = false;
             }
@@ -128,7 +127,7 @@ public class GameEntities extends DynamicSpriteEntity implements SceneBorderTouc
     /**
      * calculateCourse maakt een nieuwe koers gebaseerd op de oude richting
      * @param oldDirection
-     * @return
+     * @return newDirection
      */
     public int calculateCourse(int oldDirection){
         int newDirection = 0;
@@ -172,6 +171,10 @@ public class GameEntities extends DynamicSpriteEntity implements SceneBorderTouc
         return 0;
     }
 
+    /**
+     * notifyBoundaryCrossing(SceneBorder sceneBorder):
+     * Deze methode wordt aangeroepen wanneer de vijand de grens van het scherm verlaat (sceneBorder).
+     */
     @Override
     public void notifyBoundaryCrossing(SceneBorder sceneBorder) {
     }

@@ -4,7 +4,7 @@ import javafx.scene.input.KeyCode;
 
 import java.util.Random;
 
-/**De Helper klasse is een hulpklasse die statische constanten groepeert voor verschillende game-elementen.
+/**De Helper klasse is een hulpklasse die statische final (constanten) groepeert voor verschillende game-elementen.
  * Deze constanten zijn bedoeld om de leesbaarheid en onderhoudbaarheid van de code te verbeteren door magische waarden te vermijden.
  * Deze Helper klasse bevat subclasses: SceneIds, KeyStroke, Direction en Speed.
  * Alle constanten in deze klasse zijn static en final:
@@ -15,8 +15,7 @@ public class Helper {
     private static Random random = new Random();
 
     /**
-     * De inner-class SceneIds definieert de numerieke constanten(identificatienummers) die gebruikt kunnen worden om te refereren naar verschillende schermen (scenes) in het spel.
-     * De constanten vertegenwoordigen de ID's van de schermen.
+     * De inner-class SceneIds definieert de numerieke constanten(identificatienummers) die gebruikt kunnen worden om te refereren naar verschillende schermen (scenes) in het spel).
      */
     public static class SceneIds {
         public static final int StartScreen = 0;
@@ -26,8 +25,8 @@ public class Helper {
     }
 
     /**
-     * De inner class KeyStroke definieert constanten die de key codes vertegenwoordigen voor verschillende toetsenbord aanslagen die gebruikt worden in het spel.
-     * De constanten gebruiken de KeyCode enum uit JavaFX.
+     * De inner class KeyStroke definieert constanten die de key-codes vertegenwoordigen van verschillende toetsenbord aanslagen die gebruikt worden in het spel.
+     * Deze gebruiken de KeyCode enums uit JavaFX.
      */
     public static class KeyStroke {
         public static final KeyCode LEFT = KeyCode.A;
@@ -40,8 +39,8 @@ public class Helper {
     }
 
     /**
-     * De inner class Direction definieert numerieke constanten die verschillende richtingen in het spel vertegenwoordigen.
-     * De waarden worden gebruikt in graden (bijv., GOLEFT = 270).
+     * De inner class Direction definieert numerieke constanten die verschillende beweeg richtingen in het spel vertegenwoordigen.
+     * De waarden worden gebruikt in graden (bijv., GOLEFT = 270 graden).
      */
     public static class Direction {
         public static final double GOLEFT = 270;
