@@ -9,7 +9,6 @@ import AlienDestruction.Game.Highscore;
 import AlienDestruction.Scenes.GameScreen;
 import AlienDestruction.Weapons.IShootable;
 import AlienDestruction.Weapons.LaserBeam;
-import AlienDestruction.Weapons.WeaponType;
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.Size;
 import com.github.hanyaeger.api.entities.Collided;
@@ -35,8 +34,19 @@ import java.util.Set;
  */
 public class Player extends DynamicSpriteEntity implements KeyListener, SceneBorderTouchingWatcher, Newtonian, Collided {
 
-    private App app;
-    private GameScreen gameScreen;
+    /**
+     *   App app is final:
+     *  Dit betekent dat de App-instantie altijd een geldige referentie naar de Player-instantie heeft.
+     * Dit voorkomt dat er fouten optreden door null-waarden of ongeldige verwijzingen.
+     */
+    private final App app;
+
+    /**
+     *  GameScreen gameScreen is final:
+     *  Dit betekent dat de GameScreen-instantie altijd een geldige referentie naar de Player-instantie heeft.
+     * Dit voorkomt dat er fouten optreden door null-waarden of ongeldige verwijzingen.
+     */
+    private final GameScreen gameScreen;
     private IShootable shootable;
     private int lives;
     private int score;
@@ -52,9 +62,9 @@ public class Player extends DynamicSpriteEntity implements KeyListener, SceneBor
      * Player(Coordinate2D location, GameScreen gameScreen, App app):
      * Initialiseert de speler entity met locatie, referentie naar GameScreen (waar je de speler ziet )en App (waar de speelschermen worden aangemaakt).
      * Stelt het aantal levens in op 3 en initialiseert de booster.
-     * @param location
-     * @param gameScreen
-     * @param app
+     * @param location De locatie van de speler
+     * @param gameScreen Een referentie van het GameScreen waar de speler zich op bevind
+     * @param app De referentie van app staat hier tussen, zodat zodra de levens van de speler <0 zijn, er naar het eindscherm genavigeerd kan worden.
      */
     public Player(Coordinate2D location, GameScreen gameScreen, App app) {
         super("sprites/xWingV1.png", location, new Size(80,80));
@@ -66,9 +76,6 @@ public class Player extends DynamicSpriteEntity implements KeyListener, SceneBor
         setFrictionConstant(0.00);
     }
 
-    public GameScreen getGameScreen() {
-        return gameScreen;
-    }
 
     public int getLives() {
         return lives;
@@ -155,7 +162,7 @@ public class Player extends DynamicSpriteEntity implements KeyListener, SceneBor
 
     /**
      * notifyBoundaryTouching: reageert op het raken van de speelschermranden.
-     * @param border the border of the {@link YaegerScene} the {@link YaegerEntity} is touching
+     * @param border the border of the YaegerScene the YaegerEntity is touching
      */
     @Override
     public void notifyBoundaryTouching(SceneBorder border){
@@ -272,7 +279,7 @@ public class Player extends DynamicSpriteEntity implements KeyListener, SceneBor
 
     /**
      * setWeapon(IShootable weapon): Stelt het wapen van de speler in (implementatie van IShootable).
-     * @param weapon
+     * @param weapon Een verwijzing naar een (object) wapen in interface IShootable
      */
     public void setWeapon(IShootable weapon) {
         this.shootable = weapon;
@@ -288,7 +295,7 @@ public class Player extends DynamicSpriteEntity implements KeyListener, SceneBor
 
     /**
      * increaseScore(int points): Verhoogt de score van de speler en update de score tekst en highscore.
-     * @param points
+     * @param points int, vertegenwoordigd het aantal punten dat de speler ontvangt.
      */
     public void increaseScore(int points){
         this.score += points;
