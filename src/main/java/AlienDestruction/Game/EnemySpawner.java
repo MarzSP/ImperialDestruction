@@ -10,6 +10,9 @@ import com.github.hanyaeger.api.Timer;
 import com.github.hanyaeger.api.TimerContainer;
 import com.github.hanyaeger.api.entities.EntitySpawner;
 import com.github.hanyaeger.api.entities.impl.TextEntity;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 
 import java.util.List;
 import java.util.Random;
@@ -23,6 +26,7 @@ public class EnemySpawner extends EntitySpawner {
     private GameScreen gameScreen;
     Random random = new Random();
     private int enemyTypeIndex = 0;
+
 
 
     public EnemySpawner(Player player, Level level, GameScreen gameScreen) {
@@ -46,6 +50,10 @@ public class EnemySpawner extends EntitySpawner {
             level.setIndexLevelNumber(indexLevelNumber + 1);
             level.setPlayerLevelNumber(level.getPlayerLevelNumber() + 1);
             updateLevelText();
+            //gameScreen.pauseGame();
+            //gameScreen.resume();
+
+
         }
         if (indexLevelNumber >= amountOfLevels) {
             level.setIndexLevelNumber(1);

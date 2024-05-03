@@ -138,6 +138,7 @@ public class Player extends DynamicSpriteEntity implements KeyListener, SceneBor
         }
     }
 
+
     /**
      * Als op de [W] toets wordt gedrukt activeert deze methode de Booster als deze beschikbaar is.
      */

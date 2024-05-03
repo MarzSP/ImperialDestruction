@@ -19,6 +19,7 @@ import com.github.hanyaeger.api.entities.EntitySpawner;
 import com.github.hanyaeger.api.entities.impl.TextEntity;
 import com.github.hanyaeger.api.media.SoundClip;
 import com.github.hanyaeger.api.scenes.DynamicScene;
+import javafx.scene.input.MouseButton;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
@@ -44,9 +45,12 @@ public class GameScreen extends DynamicScene implements EntitySpawnerContainer {
     private TextEntity scoreText;
     private TextEntity levelText;
 
+    private TextEntity pauseText;
+
     protected App app;
     private Player player;
-private PauseButton pauseButton;
+
+    private boolean isPaused;
     private final EntitySpawner weaponTypeSpawner;
 
     private Level level = new Level();
@@ -56,6 +60,7 @@ private PauseButton pauseButton;
     /**
      * GameScreen(App app): Initialiseert het speel scherm met een referentie naar de App class.
      * Initialiseert de levels en de weaponTypeSpawner.
+     *
      * @param app
      */
     public GameScreen(App app) {
@@ -66,12 +71,16 @@ private PauseButton pauseButton;
 
     /**
      * getScoreText(): Retourneert de referentie naar de scoreText entity
+     *
      * @return
      */
-    public TextEntity getScoreText() {return scoreText;}
+    public TextEntity getScoreText() {
+        return scoreText;
+    }
 
     /**
      * getPlayerLivesText(): Retourneert de referentie naar de playerLivesText entity.
+     *
      * @return
      */
     public TextEntity getPlayerLivesText() {
@@ -80,9 +89,12 @@ private PauseButton pauseButton;
 
     /**
      * getLevelText(): Retourneert de referentie naar de levelText entity.
+     *
      * @return
      */
-    public TextEntity getLevelText(){ return levelText;}
+    public TextEntity getLevelText() {
+        return levelText;
+    }
 
     /**
      * setupScene(): Zet de achtergrondafbeelding van het speel scherm.
@@ -90,19 +102,20 @@ private PauseButton pauseButton;
     @Override
     public void setupScene() {
         setBackgroundImage("backgrounds/universe2.jpg");
+        isPaused = false;
     }
 
     /**
      * setupEntities(): Initialiseert en voegt de volgende entiteiten toe aan het scherm:
-     *
-     *     Speler (met wapen van de weaponTypeSpawner).
-     *     Zwarte rechthoek bovenaan het scherm die fungeert als menubalk
-     *     Speler levens sprite (links boven in menubalk)
-     *     Speler levens tekst (tekst naar de PlayerLivesSprite)
-     *     Level tekst. (Level: 1)
-     *     Score tekst. (Score: 10)
-     *     Muziek knop. (Sprite, muziek aan of uit zetten)
-     *     Menu knop. (Menu Sprite die je naar een scherm brengt om het spel te verlaten)
+     * <p>
+     * Speler (met wapen van de weaponTypeSpawner).
+     * Zwarte rechthoek bovenaan het scherm die fungeert als menubalk
+     * Speler levens sprite (links boven in menubalk)
+     * Speler levens tekst (tekst naar de PlayerLivesSprite)
+     * Level tekst. (Level: 1)
+     * Score tekst. (Score: 10)
+     * Muziek knop. (Sprite, muziek aan of uit zetten)
+     * Menu knop. (Menu Sprite die je naar een scherm brengt om het spel te verlaten)
      */
     @Override
     public void setupEntities() {
@@ -116,7 +129,7 @@ private PauseButton pauseButton;
                 new Size(getWidth(), 80)
         ));
 
-        var playerLives = new PlayerLivesSprite(new Coordinate2D(textMenu,textMenu));
+        var playerLives = new PlayerLivesSprite(new Coordinate2D(textMenu, textMenu));
 
         addEntity(playerLives);
 
@@ -127,7 +140,7 @@ private PauseButton pauseButton;
         addEntity(playerLivesText);
 
         // Add Level Text:
-        levelText = new TextEntity(new Coordinate2D(250, textMenu),  "Level:" + level.getPlayerLevelNumber());
+        levelText = new TextEntity(new Coordinate2D(250, textMenu), "Level:" + level.getPlayerLevelNumber());
         levelText.setFill(Color.GOLD);
         levelText.setFont(Font.font("Roboto", FontWeight.BOLD, textMenu));
         addEntity(levelText);
@@ -138,12 +151,13 @@ private PauseButton pauseButton;
         scoreText.setFont(Font.font("Roboto", FontWeight.BOLD, textMenu));
         addEntity(scoreText);
 
+
         SoundClip musicClip = new SoundClip("audio/swmaintheme.mp3", SoundClip.INDEFINITE);
-        MusicButton musicButton = new MusicButton(new Coordinate2D(750, 0.5 * textMenu), musicClip, new Size(0.5*textMenu,0.5*textMenu) );
+        MusicButton musicButton = new MusicButton(new Coordinate2D(750, 10), musicClip, new Size(0.5 * textMenu, 0.5 * textMenu));
         addEntity(musicButton);
 
-        Coordinate2D buttonLocation = new Coordinate2D(800, textMenu);
-        PauseButton pauseButton = new PauseButton(buttonLocation, this, new Size(10, 10));
+        Coordinate2D buttonLocation = new Coordinate2D(800, 15);
+        PauseButton pauseButton = new PauseButton(buttonLocation, this);
         addEntity(pauseButton);
 
         MenuButton menuButton = new MenuButton(app, new Coordinate2D(980, textMenu));
@@ -163,5 +177,35 @@ private PauseButton pauseButton;
             weaponTypeSpawner.pause();
         }
     }
-    }
+}
+
+/**
+    public void pauseGame() {
+        this.pause();
+        if (isPaused) {
+            pauseText = new TextEntity(new Coordinate2D(500, 400), "Click to continue!");
+            pauseText.setFill(Color.GOLD);
+            pauseText.setFont(Font.font("Roboto", FontWeight.BOLD, 60));
+            addEntity(pauseText);
+            isPaused = true;
+            System.out.println("LevelPause!");
+        }}
+
+
+        private void resumeGame() {
+            this.resume();
+            isPaused = false;
+            System.out.println("LevelResume!");
+        }
+
+        public void onMouseButtonPressed (MouseButton button, Coordinate2D coordinate2D){
+            if (isPaused) {
+                resumeGame();
+            } else {
+                pauseGame();
+            }
+            isPaused = !isPaused;
+        }
+
+    }**/
 
