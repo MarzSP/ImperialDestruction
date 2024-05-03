@@ -1,7 +1,6 @@
 package AlienDestruction.Buttons;
 
 import com.github.hanyaeger.api.Coordinate2D;
-import com.github.hanyaeger.api.Size;
 import com.github.hanyaeger.api.scenes.DynamicScene;
 import javafx.scene.input.MouseButton;
 
@@ -11,12 +10,11 @@ public class PauseButton extends SpriteButton {
     private static final String resourcePause = "sprites/pause-button.png";
     private DynamicScene gameScreen;
 
-    public PauseButton(Coordinate2D initialLocation, DynamicScene gameScreen, Size size) {
+    public PauseButton(Coordinate2D initialLocation, DynamicScene gameScreen) {
         super(resourcePause, initialLocation);
         this.gameScreen = gameScreen;
         isPaused = false; //
     }
-
 
     private void pauseGame() {
         gameScreen.pause();
