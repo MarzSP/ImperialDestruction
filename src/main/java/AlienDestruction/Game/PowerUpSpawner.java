@@ -13,8 +13,16 @@ import com.github.hanyaeger.api.entities.EntitySpawner;
  */
 public class PowerUpSpawner extends EntitySpawner {
 
-    private Level level;
+    /**
+     * Level level is final:
+     * Dit betekent dat de PowerUpSpawner-instantie altijd een geldige referentie naar de level-instantie heeft.
+     * */
+    private final Level level;
 
+    /**
+     * GameScreen gameScreen is final:
+     * Dit betekent dat de PowerUpSpawner-instantie altijd een geldige referentie naar de gameScreen-instantie heeft.
+     * */
     private GameScreen gameScreen;
 
     /**
