@@ -23,7 +23,7 @@ public class EnemyTwo extends GameEntities{
      * Dit betekent dat de EnemyFour-instantie altijd een geldige referentie naar de Player-instantie heeft.
      * Dit voorkomt dat er fouten optreden door null-waarden of ongeldige verwijzingen.
      */
-    private Player player;
+    private final Player player;
      private Timer fireTimer;
      private boolean allowedToFire = true;
 
