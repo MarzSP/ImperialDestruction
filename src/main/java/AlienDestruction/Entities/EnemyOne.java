@@ -1,16 +1,11 @@
 package AlienDestruction.Entities;
 
-import AlienDestruction.App;
-import AlienDestruction.Game.EnemySpawner;
+
 import AlienDestruction.Helper;
-import AlienDestruction.Scenes.GameScreen;
-import AlienDestruction.Weapons.LaserBeam;
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.Size;
-import com.github.hanyaeger.api.entities.Collider;
 import com.github.hanyaeger.api.scenes.SceneBorder;
 
-import java.util.List;
 
 /**
  * EnemyOne:erft van de GameEntities klasse, dit is een vijand die niet kan schieten.
@@ -18,8 +13,12 @@ import java.util.List;
  *
  */
 public class EnemyOne extends GameEntities {
-
-    private Player player;
+    /**
+     *  Player player is final:
+     *  Dit betekent dat de EnemyFour-instantie altijd een geldige referentie naar de Player-instantie heeft.
+     *  Dit voorkomt dat er fouten optreden door null-waarden of ongeldige verwijzingen.
+     *  */
+    private final  Player player;
 
 /**
  * Constructor:

@@ -1,8 +1,6 @@
 package AlienDestruction.Entities;
 
-import AlienDestruction.App;
 import AlienDestruction.Helper;
-import AlienDestruction.Scenes.GameScreen;
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.Size;
 import com.github.hanyaeger.api.scenes.SceneBorder;
@@ -11,7 +9,13 @@ import com.github.hanyaeger.api.scenes.SceneBorder;
    * EnemyThree erft: zie constructor
 **/
 public class EnemyThree extends GameEntities{
-    private Player player;
+    /**
+     *   Player player is final:
+     *  Dit betekent dat de EnemyFour-instantie altijd een geldige referentie naar de Player-instantie heeft.
+     * Dit voorkomt dat er fouten optreden door null-waarden of ongeldige verwijzingen.
+    */
+
+    private final Player player;
 
     /**
      * Constructor:
