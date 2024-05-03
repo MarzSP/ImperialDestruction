@@ -20,7 +20,7 @@ public class PauseButton extends SpriteButton {
 
     private void pauseGame() {
         gameScreen.pause();
-        System.out.println("Game Paused!"); // Placeholder for actual pause logic
+        System.out.println("Game Paused!");
     }
 
     private void resumeGame() {
@@ -35,7 +35,7 @@ public class PauseButton extends SpriteButton {
         } else {
             pauseGame();
         }
-        isPaused = !isPaused; // Toggle pause state
+        isPaused = !isPaused;
     }
 }
 
