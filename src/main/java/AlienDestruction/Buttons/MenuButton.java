@@ -2,7 +2,6 @@ package AlienDestruction.Buttons;
 
 import AlienDestruction.App;
 import AlienDestruction.Helper;
-import AlienDestruction.Scenes.GameMenu;
 import com.github.hanyaeger.api.AnchorPoint;
 import com.github.hanyaeger.api.Coordinate2D;
 import javafx.scene.input.MouseButton;
@@ -15,13 +14,13 @@ import javafx.scene.text.FontWeight;
  * De knop wordt gebruikt om een menu met opties weer te geven wanneer de speler erop klikt.
  */
 public class MenuButton extends Button {
-    private App app;
+    private final App app;
 
     /**
      *  De constructor initialiseert een nieuw MenuButton-object en stelt de volgende eigenschappen in:
      *  initialLocation, Tekstlabel "Menu", tekstkleur, lettertype en ankerpunt
-     * @param app
-     * @param initialLocation
+     * @param app De referentie naar de `App`-instantie waaraan de MenuButton is gekoppeld (omdat deze ook scene-veranderingen kunnen bewerkstelligen)
+     * @param initialLocation initialLocation De initiële locatie van de knop in 2D-coördinaten.
      */
     public MenuButton(App app, Coordinate2D initialLocation) {
         super(initialLocation, "Menu");

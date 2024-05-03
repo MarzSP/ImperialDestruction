@@ -1,7 +1,6 @@
 package AlienDestruction.Buttons;
 
 import AlienDestruction.App;
-import AlienDestruction.Buttons.Button;
 import AlienDestruction.Helper;
 import com.github.hanyaeger.api.AnchorPoint;
 import com.github.hanyaeger.api.Coordinate2D;
@@ -20,7 +19,7 @@ public class StartButton extends Button implements MouseButtonPressedListener {
     protected App app;
 
     /**
-     * Constructor voor de `StartButton` klasse.
+     * Constructor: StartButton klasse.
      * @param app :De instantie van de hoofdapplicatie.
      * @param initialLocation: De initiële locatie van de knop op het scherm.
      */

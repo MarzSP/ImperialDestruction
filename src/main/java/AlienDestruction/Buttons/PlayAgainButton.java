@@ -9,7 +9,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 
 /**
- * De PlayAgainButton is een sub-klasse van Button.
+ * De PlayAgainButton is een sub-class van Button.
  * Deze knop wordt in het Eindscherm gebruikt om het spel opnieuw op te starten nadat het spel is afgelopen.
  * Button: PlayAgainButton erft functionaliteit van de Button klasse, die de basisfunctionaliteit van knoppen verzorgt (zoals tekst weergeven, reageren op muisklik events).
  */
@@ -18,8 +18,8 @@ import javafx.scene.text.FontWeight;
 
     /**
      * public PlayAgainButton(Coordinate2D initialLocation, App app):
-     *@param initialLocation
-     *@param app
+     *@param initialLocation : de locatie van de knop
+     *@param app : Een koppeling naar app, waar de scenes worden geinitialiseert.
      *  Initialiseert de knop met de tekst "Play again!" op de opgegeven locatie.
      *  Stelt de knopkleur in op zwart (setFill(Color.BLACK))
      *  Stelt de randdikte in op 2 pixels (setStrokeWidth(2))
