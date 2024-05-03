@@ -1,9 +1,7 @@
 package AlienDestruction.Entities;
 
-import AlienDestruction.App;
+
 import AlienDestruction.Helper;
-import AlienDestruction.MenuBar.PlayerLivesSprite;
-import AlienDestruction.Scenes.GameScreen;
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.Size;
 import com.github.hanyaeger.api.scenes.SceneBorder;
@@ -13,8 +11,12 @@ import com.github.hanyaeger.api.scenes.SceneBorder;
  **/
 
 public class EnemyFour extends GameEntities{
-
-    private Player player;
+    /**
+     * Player player is final:
+     * Dit betekent dat de EnemyFour-instantie altijd een geldige referentie naar de Player-instantie heeft.
+     * Dit voorkomt dat er fouten optreden door null-waarden of ongeldige verwijzingen.
+     */
+    private final Player player;
     // private Timer fireTimer;
     // private boolean allowedToFire = true;
 
@@ -51,7 +53,6 @@ public class EnemyFour extends GameEntities{
      */
     @Override
     public void notifyBoundaryCrossing(SceneBorder sceneBorder) {
-        //gameScreen.getScoreText().setText("Score: " + player.getScore());
         player.setScore(player.getScore() - this.getPenaltyPoints());
         this.remove();
     }

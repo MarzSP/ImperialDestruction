@@ -19,7 +19,6 @@ import com.github.hanyaeger.api.entities.EntitySpawner;
 import com.github.hanyaeger.api.entities.impl.TextEntity;
 import com.github.hanyaeger.api.media.SoundClip;
 import com.github.hanyaeger.api.scenes.DynamicScene;
-import javafx.scene.input.MouseButton;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
@@ -54,14 +53,16 @@ public class GameScreen extends DynamicScene implements EntitySpawnerContainer {
     private final EntitySpawner weaponTypeSpawner;
 
     private Level level = new Level();
-    private double textMenu = 20;
+    /**
+     * De tekstgrootte van textMenu staat vast en wordt niet veranderd.
+     */
+    private final double textMenu = 20;
 
 
     /**
      * GameScreen(App app): Initialiseert het speel scherm met een referentie naar de App class.
      * Initialiseert de levels en de weaponTypeSpawner.
-     *
-     * @param app
+     * @param app een referentie naar de App klasse, omdat daar deze scene wordt aangemaakt.
      */
     public GameScreen(App app) {
         this.app = app;
@@ -70,27 +71,24 @@ public class GameScreen extends DynamicScene implements EntitySpawnerContainer {
     }
 
     /**
-     * getScoreText(): Retourneert de referentie naar de scoreText entity
-     *
-     * @return
+     * getScoreText():
+     * @return Retourneert de referentie naar de scoreText entity
      */
     public TextEntity getScoreText() {
         return scoreText;
     }
 
     /**
-     * getPlayerLivesText(): Retourneert de referentie naar de playerLivesText entity.
-     *
-     * @return
+     * getPlayerLivesText():
+     * @return Retourneert de referentie naar de playerLivesText entity.
      */
     public TextEntity getPlayerLivesText() {
         return playerLivesText;
     }
 
     /**
-     * getLevelText(): Retourneert de referentie naar de levelText entity.
-     *
-     * @return
+     * getLevelText(): .
+     * @return Retourneert de referentie naar de levelText entity
      */
     public TextEntity getLevelText() {
         return levelText;

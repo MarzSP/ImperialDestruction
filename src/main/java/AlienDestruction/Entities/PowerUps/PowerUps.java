@@ -7,7 +7,7 @@ import com.github.hanyaeger.api.entities.impl.DynamicSpriteEntity;
 
 /** Deze klasse is een blauwdruk voor power-ups (PowerUpLives, PowerUpLaser).
  * Extends DynamicSpriteEntity: klasse die sprites met posities en afmetingen in de game beheert.
- * Implements Collider:  implementeert de Collider welke aangeeft dat power-ups kunnen botsen met andere objecten in de game.
+ * Implements Collider:  implementeert de Collider welke aangeeft dat power-ups kunnen botsen met andere objecten in de game en wat er dan gebeurd.
  */
 public class PowerUps extends DynamicSpriteEntity implements Collider {
 

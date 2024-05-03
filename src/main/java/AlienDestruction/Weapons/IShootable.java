@@ -7,8 +7,7 @@ public interface IShootable {
 
     /**
      * Deze methode simuleert het schieten met een wapen.
-     *     weaponType: Een parameter van het type WeaponType die specificeert welk wapen wordt gebruikt om te schieten
-     * @param weaponType
+     * @param weaponType Een parameter van het type WeaponType die specificeert welk wapen wordt gebruikt om te schieten
      */
     void shoot(WeaponType weaponType);
 }

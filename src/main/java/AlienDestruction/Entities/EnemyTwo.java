@@ -18,8 +18,12 @@ import java.util.List;
  */
 
 public class EnemyTwo extends GameEntities{
-
-    private Player player;
+    /**
+     * Player player is final:
+     * Dit betekent dat de EnemyTwo-instantie altijd een geldige referentie naar de Player-instantie heeft.
+     * Dit voorkomt dat er fouten optreden door null-waarden of ongeldige verwijzingen.
+     */
+    private final Player player;
      private Timer fireTimer;
      private boolean allowedToFire = true;
 

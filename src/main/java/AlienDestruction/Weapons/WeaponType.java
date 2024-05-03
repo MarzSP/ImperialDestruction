@@ -33,16 +33,16 @@ public abstract class WeaponType extends DynamicSpriteEntity implements Collider
     }
 
     /**
-     * getDamagePoints() retourneert de hoeveelheid schade die het wapen toebrengt.
-     * @return
+     * getDamagePoints()
+     * @return retourneert de hoeveelheid schade die het wapen toebrengt.
      */
     public double getDamagePoints() {
         return damagePoints;
     }
 
     /**
-     * setDamagePoints() stelt de hoeveelheid schade die het wapen toebrengt in.
-     * @param damagePoints
+     * setDamagePoints()
+     * @param damagePoints stelt de hoeveelheid schade die het wapen toebrengt in.
      */
     public void setDamagePoints(double damagePoints) {
         this.damagePoints = damagePoints;

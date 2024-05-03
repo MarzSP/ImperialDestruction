@@ -11,9 +11,9 @@ import javafx.scene.input.MouseButton;
  */
 public class MusicButton extends SpriteButton {
     /**
-     * ResourceSpeakerOn: Statische string met het pad naar de afbeelding "sprites/Speaker.png".
-     * musicClip: Een SoundClip object dat de achtergrondmuziek bevat die door de knop wordt bediend.
-     * isActive: Een boolean variabele die aangeeft of de muziek op dit moment actief afspeelt (true) of gepauzeerd is (false).
+     * ResourceSpeakerOn: Statische string met het pad naar de afbeelding "sprites/Speaker.png". (Deze is statisch omdat de sprite niet zal veranderen)
+     * musicClip: Een SoundClip object dat de achtergrond muziek bevat die door de knop wordt bediend.
+     * isActive: Een boolean  die aangeeft of de muziek op dit moment actief afspeelt (true) of gepauzeerd is (false).
      */
     private static final String ResourceSpeakerOn = "sprites/Speaker.png";
     private final SoundClip musicClip;

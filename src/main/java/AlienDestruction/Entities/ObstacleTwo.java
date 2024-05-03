@@ -1,8 +1,7 @@
 package AlienDestruction.Entities;
 
-import AlienDestruction.App;
+
 import AlienDestruction.Helper;
-import AlienDestruction.Scenes.GameScreen;
 import AlienDestruction.Weapons.LaserBeam;
 import AlienDestruction.Weapons.WeaponType;
 import com.github.hanyaeger.api.Coordinate2D;
@@ -19,16 +18,17 @@ import java.util.List;
 public class ObstacleTwo extends GameEntities{
 
     /**
-     * Referentie naar speler object: player niet direct het speler-object zelf is, maar een verwijzing naar dat object.
-     * Deze verwijzing maakt het mogelijk met het speler-object te interacteren. (Zoals schieten en score verandering)
-     */
-    private Player player;
+     *  Player player is final:
+     *  Dit betekent dat de ObstacleTwo-instantie altijd een geldige referentie naar de Player-instantie heeft.
+     *  Dit voorkomt dat er fouten optreden door null-waarden of ongeldige verwijzingen.
+     *  */
+    private final Player player;
 
     /**
      * ObstacleTwo(Coordinate2D location, Player player): Initialiseert de ObstacleTwo met een afbeelding, locatie, grootte en referentie naar de speler.
     * Het obstakel krijgt een lage beginsnelheid naar beneden en een willekeurige rotatiesnelheid.
-    * @param location
-    * @param player
+    * @param location De locatie van ObstacleOne
+    * @param player Een referentie naar Player waar het obstakel interactie mee heeft
       */
     public ObstacleTwo(Coordinate2D location, Player player) {
         super("sprites/asteroidRectangleV1.png", location, new Size(Helper.Size.HUGE,Helper.Size.LARGE), player);
@@ -53,7 +53,7 @@ public class ObstacleTwo extends GameEntities{
     /**
      * bounceOff(WeaponType) collider): Bepaalt op basis van het geraakte regio van de obstakel in welke richting de laserstraal moet worden teruggekaatst.
      * De methode gebruikt getHitGrid(WeaponType) om te bepalen welk gedeelte geraakt is.
-     * @param collider
+     * @param collider is een referentie naar het object dat met de laserstraal botst.
      */
     public void bounceOff(WeaponType collider){
         double randomBounce = Helper.getRandomDouble(-8.0, 8.0);
@@ -76,8 +76,8 @@ public class ObstacleTwo extends GameEntities{
     }
     /**
      * getHitGrid(WeaponType) collider): Berekent op basis van de locatie van de obstakel en de laserstraal op welk gedeelte van de obstakel de laserstraal is geraakt.
-     * @param collider
-     * @return
+     * @param collider is een referentie naar het object dat met de laserstraal botst.
+     * @return terug naar 0
      */
     int getHitGrid(WeaponType collider){
         double obstWidth = this.getWidth();
@@ -102,16 +102,19 @@ public class ObstacleTwo extends GameEntities{
     }
 /**
  * setNewColliderDirection(WeaponType collider, double rotate, double direction): Wijzigt de rotatie en richting van de laserstraal zodat deze wegkaatst.
- * @param collider
- * @param rotate
- * @param direction
+ * @param collider is een referentie naar het object dat met de laserstraal botst.
+ * @param rotate De nieuwe rotatiehoek in graden van de laserstraal
+ * @param direction De nieuwe bewegingsrichting in graden van de laserstraal
  **/
 
     public void setNewColliderDirection(WeaponType collider, double rotate, double direction){
         (collider).setRotate(rotate);
         (collider).setDirection(direction);
     }
-
+    /**
+     * Deze methode implementeert de `notifyBoundaryCrossing`-methode van de `GameEntity`-klasse.
+     * Wordt aangeroepen wanneer de laserstraal de grens van het scherm overschrijdt.
+     **/
     @Override
     public void notifyBoundaryCrossing(SceneBorder sceneBorder) {
         remove();

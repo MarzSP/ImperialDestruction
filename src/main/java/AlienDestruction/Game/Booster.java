@@ -28,25 +28,25 @@ public class Booster implements TimerContainer {
     public SelfTimer timer = new SelfTimer(0);
 
     /**
-     * isActive(): Retourneert `true` als de boost actief is, anders `false`.
-     * @return
+     * isActive():
+     * @return Retourneert `true` als de boost actief is, anders `false`.
      */
     public boolean isActive() {
         return this.boosterActive;
     }
 
     /**
-     *  setBoosterActive(boolean boosterActive): Stelt de `boosterActive` variabele in.
-     * @param boosterActive
+     *  setBoosterActive(boolean boosterActive):
+     * @param boosterActive Stelt de `boosterActive` variabele in.
      */
     public void setBoosterActive(boolean boosterActive) {
         this.boosterActive = boosterActive;
     }
 
     /**
-     * setCoolingDownActive(boolean coolingDownActive): Stelt de `coolingDownActive` variabele in.
-     * @param coolingDownActive
-     * @return
+     * setCoolingDownActive(boolean coolingDownActive):
+     * @param coolingDownActive Stelt de `coolingDownActive` variabele in.
+     * @return of de coolingDownActive is of niet.
      */
     public boolean setCoolingDownActive(boolean coolingDownActive) {
         this.coolingDownActive = coolingDownActive;
@@ -84,8 +84,6 @@ public class Booster implements TimerContainer {
     /**
     Booster Innerlijke klasse:
      *  SelfTimer: Extends de `Timer` klasse en handelt de boost en cooldown functies af.
-
-
     **/
 
     public class SelfTimer extends Timer {

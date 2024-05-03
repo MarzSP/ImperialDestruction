@@ -29,8 +29,7 @@ public class LaserBeam extends WeaponType {
 
     /**
      * Deze methode wordt opgeroepen wanneer de laserstraal botst met andere objecten in de game (vanwege de geërfde Collider interface).
-     * @param collidingObject a {@link List} of all instances of {@link Collider} this {@link Collided} has collided
-     *                         with, during the last Game World Update.
+     * @param collidingObject een lijst van welke objecten een botsing kunnen maken
      */
     @Override
     public void onCollision(List<Collider> collidingObject) {

@@ -1,6 +1,6 @@
 package AlienDestruction.Buttons;
 
-import AlienDestruction.App;
+
 import com.github.hanyaeger.api.AnchorPoint;
 import com.github.hanyaeger.api.Coordinate2D;
 import javafx.scene.input.MouseButton;
@@ -15,6 +15,7 @@ import javafx.scene.text.FontWeight;
 public class DifficultyButtons extends Button {
     /**
      * DIFFICULTIES: Een statische array met de namen van de moeilijkheidsgraden ("Easy", "Medium", "Hard").
+     * Deze array is statisch omdat de waardes niet zullen veranderen tijdens de runtime van deze applicatie.
      */
     private static final String[] DIFFICULTIES = {"Easy", "Medium", "Hard"};
 
