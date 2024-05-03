@@ -1,8 +1,6 @@
 package AlienDestruction.Entities;
 
 import AlienDestruction.Helper;
-import AlienDestruction.Scenes.GameScreen;
-import AlienDestruction.Weapons.LaserBeam;
 import AlienDestruction.Weapons.WeaponType;
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.Size;
@@ -10,12 +8,10 @@ import com.github.hanyaeger.api.Timer;
 import com.github.hanyaeger.api.entities.*;
 import com.github.hanyaeger.api.entities.impl.DynamicSpriteEntity;
 import com.github.hanyaeger.api.scenes.SceneBorder;
-import com.github.hanyaeger.api.userinput.KeyListener;
-import javafx.scene.input.KeyCode;
+
 
 import java.util.List;
-import java.util.Random;
-import java.util.Set;
+
 
 /**
  * Class GameEntities:
@@ -34,16 +30,21 @@ public class GameEntities extends DynamicSpriteEntity implements SceneBorderTouc
     private int hitPoints;
     private boolean canShoot;
     private boolean allowedToFire = true;
-    private Player player;
+    /**
+     * Player player is final:
+     * Dit betekent dat de EnemyFour-instantie altijd een geldige referentie naar de Player-instantie heeft.
+     * Dit voorkomt dat er fouten optreden door null-waarden of ongeldige verwijzingen.
+     */
+    private final Player player;
     private Timer fireTimer;
 
     /**
      * Constructor:
      * Initialiseert het object met een afbeelding, locatie, grootte en referentie naar de speler. Schakelt zwaartekracht en wrijving uit.
-     * @param resource
-     * @param initialLocation
-     * @param size
-     * @param player
+     * @param resource De afbeelding van de GameEntity
+     * @param initialLocation De initiele locatie van de GameEntity
+     * @param size Het formaat van de sprite
+     * @param player de referentie naar Player zodat deze kan interageren met Player
      */
     protected GameEntities(String resource, Coordinate2D initialLocation, Size size, Player player) {
         super(resource, initialLocation);
@@ -126,8 +127,8 @@ public class GameEntities extends DynamicSpriteEntity implements SceneBorderTouc
 
     /**
      * calculateCourse maakt een nieuwe koers gebaseerd op de oude richting
-     * @param oldDirection
-     * @return newDirection
+     * @param oldDirection de richting waar de Entity vandaan kwam, zodat deze kan veranderen naar een nieuwe
+     * @return newDirection de nieuwe richting waar de Entity heen gaat
      */
     public int calculateCourse(int oldDirection){
         int newDirection = 0;
@@ -141,7 +142,7 @@ public class GameEntities extends DynamicSpriteEntity implements SceneBorderTouc
 
     /**
      * addDamage(double damage): Vermindert de hitPoints met de opgegeven schade.
-     * @param damage
+     * @param damage de hoeveelheid hitPoints dat een Entity geeft
      */
     public void addDamage(double damage){
         this.hitPoints -= damage;
@@ -159,8 +160,11 @@ public class GameEntities extends DynamicSpriteEntity implements SceneBorderTouc
 
     /**
      * getCourse(double xPos): Berekent een nieuwe koers gebaseerd op de horizontale positie
-     * @param xPos
-     * @return
+     * @param xPos de X positie van de koers van deze Entity
+     * @return de nieuwe koers van deze Entity in graden.
+     * Als de xPos kleiner is dan 600, wordt een willekeurige koers tussen 10 en 40 graden gekozen.
+     * Als de xPos groter is dan 500, wordt een willekeurige koers tussen 310 en 340 graden gekozen.
+     * In andere gevallen wordt 0 graden (recht omhoog) geretourneerd.
      */
     public int getCourse(double xPos){
         if(xPos < 600) {
