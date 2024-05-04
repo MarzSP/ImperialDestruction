@@ -1,5 +1,6 @@
 package AlienDestruction.Game;
 
+import AlienDestruction.App;
 import AlienDestruction.Entities.*;
 import AlienDestruction.Helper;
 import AlienDestruction.Scenes.GameScreen;
@@ -31,6 +32,7 @@ public class EnemySpawner extends EntitySpawner {
      * Dit voorkomt dat er fouten optreden door null-waarden of ongeldige verwijzingen.
      */
     private final GameScreen gameScreen;
+    private final App app;
     Random random = new Random();
     private int enemyTypeIndex = 0;
 
@@ -42,11 +44,12 @@ public class EnemySpawner extends EntitySpawner {
      * @param level Een referentie naar het Level-object met de leveldata.
      * @param gameScreen Een referentie naar het GameScreen-object waar de entiteiten worden gespawned.
      */
-    public EnemySpawner(Player player, Level level, GameScreen gameScreen) {
+    public EnemySpawner(Player player, Level level, GameScreen gameScreen, App app) {
         super(1200);
         this.level = level;
         this.player = player;
         this.gameScreen = gameScreen;
+        this.app = app;
     }
 /**
     protected void spawnEntities()`:
@@ -63,13 +66,15 @@ public class EnemySpawner extends EntitySpawner {
  *      */
     @Override
     protected void spawnEntities() {
+        int difficulty = app.getDifficulty();
+
         int indexLevelNumber = level.getIndexLevelNumber();
         int[][] levelData = level.defineLevel();
         int amountOfLevels = levelData.length;
         int amountInLevel = levelData[indexLevelNumber - 1].length;
 
         spawnEnemyFromLevel(levelData[indexLevelNumber - 1][enemyTypeIndex]);
-        enemyTypeIndex ++;
+        enemyTypeIndex++;
         if (enemyTypeIndex >= amountInLevel) {
             enemyTypeIndex = 0;
             level.setIndexLevelNumber(indexLevelNumber + 1);
