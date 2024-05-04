@@ -82,7 +82,7 @@ public class ObstacleOne extends GameEntities {
      * @param collider is een referentie naar het object dat met de laserstraal botst.
      * @return terug naar 0
      */
-    int getHitGrid(WeaponType collider){
+    public int getHitGrid(WeaponType collider){
         double obstWidth = this.getWidth();
         double obstHeight = this.getHeight();
         double obstacleX = getLocationInScene().getX();
