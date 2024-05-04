@@ -76,6 +76,10 @@ public class Booster implements TimerContainer {
         timer.resume();
     }
 
+    /**
+     * Geeft een lijst terug van timers die aan het object zijn gekoppeld.
+     * @return een lijst van timers die aan het object zijn gekoppeld, of null als er geen timers zijn ingesteld
+     */
     @Override
     public List<Timer> getTimers() {
         return null;

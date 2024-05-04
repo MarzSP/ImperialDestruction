@@ -66,11 +66,20 @@ public class GameEntities extends DynamicSpriteEntity implements TimerContainer,
         };
     }
 
+    /**
+     * Configureert en start timers voor het object.
+     * Deze methode voegt de vuur-timer toe aan het object.
+     * De vuur-timer regelt het interval waarin het object schiet.
+     */
     @Override
     public void setupTimers() {
         addTimer(fireTimer);
     }
 
+    /**
+     * Schiet een laserstraal vanaf de spelerpositie.
+     * De laserstraal wordt afgevuurd vanaf het bovenste midden van het spelerobject.
+     */
     public void shoot() {
         double x = getLocationInScene().getX() + (this.size.height() / 2);
         double y = getLocationInScene().getY();
@@ -95,6 +104,11 @@ public class GameEntities extends DynamicSpriteEntity implements TimerContainer,
         this.hitPoints = hitPoints;
     }
 
+    /**
+     * Wordt aangeroepen wanneer het object een grens van de scène raakt.
+     *
+     * @param sceneBorder de grens van de scène waarmee het object in aanraking komt
+     */
     @Override
     public void notifyBoundaryTouching(SceneBorder sceneBorder) {
     }
