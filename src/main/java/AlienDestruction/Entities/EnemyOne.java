@@ -42,7 +42,6 @@ public class EnemyOne extends GameEntities {
         setPoints(50);
         setPenaltyPoints(25);
         setHitPoints(1);
-        setCanShoot(false);
     }
 
     /**

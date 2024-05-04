@@ -3,6 +3,7 @@ package AlienDestruction.Weapons;
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.Size;
 import com.github.hanyaeger.api.entities.Collider;
+import com.github.hanyaeger.api.entities.impl.DynamicSpriteEntity;
 import com.github.hanyaeger.api.scenes.SceneBorder;
 
 import java.util.List;
@@ -13,17 +14,28 @@ import java.util.List;
  */
 public class LaserBeam extends WeaponType {
 
+
     /**
      * Constructor: LaserBeam
-     * @param initialLocation:  De beginpositie van de laserstraal op het scherm (als Coordinate2D object).
-     *   Initialiseert de laserstraal met de volgende eigenschappen:
-     *   Sprite afbeelding: "sprites/laserred.png" (rode laser)
-     *   Grootte: Size(5,16)
-     *   Schade: 1 (via de setDamagePoints methode geërfd van WeaponType)
+     *
+     * @param isUp            decides the sprite
+     * @param initialLocation :  De beginpositie van de laserstraal op het scherm (als Coordinate2D object).
+     *                        Initialiseert de laserstraal met de volgende eigenschappen:
+     *                        Sprite afbeelding: "sprites/laserred.png" (rode laser)
+     *                        Grootte: Size(5,16)
+     *                        Schade: 1 (via de setDamagePoints methode geërfd van WeaponType)
      */
-    public LaserBeam(Coordinate2D initialLocation) {
-        super("sprites/laserup.png", initialLocation, new Size(8,24));
-
+    //isUp ? expression is true/false
+    public LaserBeam(boolean isUp, Coordinate2D initialLocation, DynamicSpriteEntity owner) {
+        super(
+                isUp ? "sprites/laserup.png" : "sprites/laserdown.png",
+                initialLocation,
+                new Size(8,24),
+                owner
+        );
+        if (isUp) {
+            setDirection(180);
+        }
         setDamagePoints(1);
     }
 
@@ -39,6 +51,7 @@ public class LaserBeam extends WeaponType {
     public void notifyBoundaryCrossing(SceneBorder sceneBorder) {
         this.remove();
     }
+
 }
 
 

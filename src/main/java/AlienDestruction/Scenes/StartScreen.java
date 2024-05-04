@@ -81,5 +81,5 @@ import javafx.scene.text.FontWeight;
         addEntity(hardButton);
 
     }
-    }
+ }
 

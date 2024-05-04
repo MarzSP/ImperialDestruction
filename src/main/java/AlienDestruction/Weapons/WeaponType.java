@@ -22,14 +22,17 @@ public abstract class WeaponType extends DynamicSpriteEntity implements Collider
      */
     private double damagePoints;
 
+    private final DynamicSpriteEntity owner;
+
     /**
      * Protected constructor:Door de constructor protected te maken, beperkt de klasse het direct aanmaken van WeaponType-objecten buiten het pakket of door ongerelateerde klassen.
      * @param resource : De locatie van het sprite-bestand (afbeelding) dat voor het wapen wordt gebruikt.
      * @param initialLocation : De beginpositie van het wapen op het scherm (als Coordinate2D object).
      * @param size : De grootte van de wapen sprite (als Size object).
      **/
-    protected WeaponType(String resource, Coordinate2D initialLocation, Size size) {
+    protected WeaponType(String resource, Coordinate2D initialLocation, Size size, DynamicSpriteEntity owner) {
         super(resource, initialLocation, size );
+        this.owner = owner;
     }
 
     /**
@@ -55,6 +58,11 @@ public abstract class WeaponType extends DynamicSpriteEntity implements Collider
      */
     @Override
     public void onCollision(List<Collider> collidingObject) {
+    }
+
+
+    public boolean isOwnedBy(DynamicSpriteEntity other) {
+        return owner == other;
     }
 
 }

@@ -9,6 +9,7 @@ import AlienDestruction.Game.Highscore;
 import AlienDestruction.Scenes.GameScreen;
 import AlienDestruction.Weapons.IShootable;
 import AlienDestruction.Weapons.LaserBeam;
+import AlienDestruction.Weapons.WeaponType;
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.Size;
 import com.github.hanyaeger.api.entities.Collided;
@@ -190,11 +191,11 @@ public class Player extends DynamicSpriteEntity implements KeyListener, SceneBor
      */
     @Override
     public void onCollision(List<Collider> collidingObject) {
-        boolean powerUpCollision = false;
 
         for (Collider collider : collidingObject) {
+            boolean powerUpCollision = false;
+
             if (collider instanceof PowerUpLives) { //PowerUpLives
-                powerUpCollision = true;
                 lives = lives + 1;
                 updateLives();
                 checkLives();
@@ -209,18 +210,27 @@ public class Player extends DynamicSpriteEntity implements KeyListener, SceneBor
                 ((GameEntities) collider).remove();
                 increaseScore(((GameEntities) collider).getPoints());
                 break;
+            } else if (collider instanceof WeaponType) {
+                WeaponType weaponType = (WeaponType) collider;
+
+                // Dont get hit by your own laser beams
+                if (weaponType.isOwnedBy(this)) {
+                    powerUpCollision = true;;
+                } else {
+                    weaponType.remove();
+                }
             }
 
+            if(!powerUpCollision) {
+                setAnchorLocation(new Coordinate2D((getSceneWidth() - getWidth()) / 2, 550));
+                lives = lives - 1;
+                updateLives();
+                checkLives();
+            }
         }
 
-        if(!powerUpCollision) {
-            setAnchorLocation(new Coordinate2D((getSceneWidth() - getWidth()) / 2, 550));
-            lives = lives - 1;
-            updateLives();
-            checkLives();
-        }
-//        updateLives();
-//        checkLives();
+
+
     }
 
     /**
@@ -256,8 +266,8 @@ public class Player extends DynamicSpriteEntity implements KeyListener, SceneBor
     public void shoot(){
         double x = getLocationInScene().getX();
         double y = getLocationInScene().getY();
-        shootable.shoot(new LaserBeam(new Coordinate2D(x + 5, y))); // todo: dynamisch aanpassen aan size sprite / pos lasers on sprite
-        shootable.shoot(new LaserBeam(new Coordinate2D(x + 70, y)));//
+        shootable.shoot(new LaserBeam(true, new Coordinate2D(x + 5, y), this));
+        shootable.shoot(new LaserBeam(true, new Coordinate2D(x + 70, y),this));
         soundLaser();
     }
 
@@ -302,6 +312,10 @@ public class Player extends DynamicSpriteEntity implements KeyListener, SceneBor
         highscore.updateCurrentScore();
         highscore.checkHighScore();
         updateScore();
+    }
+
+    public IShootable getGun() {
+        return shootable;
     }
 
 }

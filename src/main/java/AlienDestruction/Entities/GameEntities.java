@@ -1,10 +1,12 @@
 package AlienDestruction.Entities;
 
 import AlienDestruction.Helper;
+import AlienDestruction.Weapons.LaserBeam;
 import AlienDestruction.Weapons.WeaponType;
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.Size;
 import com.github.hanyaeger.api.Timer;
+import com.github.hanyaeger.api.TimerContainer;
 import com.github.hanyaeger.api.entities.*;
 import com.github.hanyaeger.api.entities.impl.DynamicSpriteEntity;
 import com.github.hanyaeger.api.scenes.SceneBorder;
@@ -24,19 +26,19 @@ import java.util.List;
  *     Rotatable: Implementeert de Rotatable interface om rotatie van sprites mogelijk te maken
  *     SceneBorderCrossingWatcher: Implementeert de SceneBorderCrossingWatcher interface om te detecteren wanneer het objectbuiten de schermranden komt.
  */
-public class GameEntities extends DynamicSpriteEntity implements SceneBorderTouchingWatcher, Newtonian, Collided, Collider, Rotatable, SceneBorderCrossingWatcher {
+public class GameEntities extends DynamicSpriteEntity implements TimerContainer, SceneBorderTouchingWatcher, Newtonian, Collided, Collider, Rotatable, SceneBorderCrossingWatcher {
     private int points;
     private int penaltyPoints;
     private int hitPoints;
-    private boolean canShoot;
-    private boolean allowedToFire = true;
+    protected boolean allowedToFire;
+    private final Size size;
     /**
      * Player player is final:
      * Dit betekent dat de EnemyFour-instantie altijd een geldige referentie naar de Player-instantie heeft.
      * Dit voorkomt dat er fouten optreden door null-waarden of ongeldige verwijzingen.
      */
-    private final Player player;
-    private Timer fireTimer;
+    protected final Player player;
+    private final Timer fireTimer;
 
     /**
      * Constructor:
@@ -47,28 +49,33 @@ public class GameEntities extends DynamicSpriteEntity implements SceneBorderTouc
      * @param player de referentie naar Player zodat deze kan interageren met Player
      */
     protected GameEntities(String resource, Coordinate2D initialLocation, Size size, Player player) {
-        super(resource, initialLocation);
+        super(resource, initialLocation, size);
+        this.size = size;
         this.player = player;
 
         setGravityConstant(0.000);
         setFrictionConstant(0.00);
 
-        fireTimer = new Timer(4000) {
+        fireTimer = new Timer(1000) {
             @Override
             public void onAnimationUpdate(long timestamp) {
-                shoot();
+                if (allowedToFire) {
+                    shoot();
+                }
             }
         };
     }
 
-    public void shoot() {
-        if (this.canShoot) {
-            if (this.allowedToFire) {
+    @Override
+    public void setupTimers() {
+        addTimer(fireTimer);
+    }
 
-                System.out.println("test");
-                this.allowedToFire = false;
-            }
-        }
+    public void shoot() {
+        double x = getLocationInScene().getX() + (this.size.height() / 2);
+        double y = getLocationInScene().getY();
+
+        player.getGun().shoot(new LaserBeam(false, new Coordinate2D(x, y), this));
     }
 
     public int getPoints() {
@@ -83,17 +90,9 @@ public class GameEntities extends DynamicSpriteEntity implements SceneBorderTouc
     public void setPenaltyPoints(int penaltyPoints) {
         this.penaltyPoints = penaltyPoints;
     }
-//    public int getHitPoints() {
-//        return hitPoints;
-//    }
+
     public void setHitPoints(int hitPoints) {
         this.hitPoints = hitPoints;
-    }
-    public boolean isCanShoot() {
-        return canShoot;
-    }
-    public void setCanShoot(boolean canShoot) {
-        this.canShoot = canShoot;
     }
 
     @Override
@@ -111,10 +110,16 @@ public class GameEntities extends DynamicSpriteEntity implements SceneBorderTouc
     @Override
     public void onCollision(List<Collider> collidingObject) {
         for (Collider collider : collidingObject){
-            if (collider instanceof WeaponType){
-                addDamage(((WeaponType) collider).getDamagePoints());
+            if (collider instanceof WeaponType weaponType){
+
+                // Dont get hit by your own laser beams
+                if (weaponType.isOwnedBy(this)) {
+                    break;
+                }
+
+                addDamage(weaponType.getDamagePoints());
                 checkIfDestroyed();
-                ((WeaponType) collider).remove(); // remove Laser / Weapon
+                weaponType.remove(); // remove Laser / Weapon
                 break;
             } else if (collider instanceof Player){ // TODO Checken ??
                 remove();
