@@ -1,7 +1,7 @@
 package AlienDestruction.Scenes;
 
 import AlienDestruction.App;
-import AlienDestruction.Buttons.DifficultyButtons;
+import AlienDestruction.Buttons.DifficultyButton;
 import AlienDestruction.Buttons.MusicButton;
 import AlienDestruction.Buttons.StartButton;
 import com.github.hanyaeger.api.AnchorPoint;
@@ -70,14 +70,16 @@ import javafx.scene.text.FontWeight;
         Coordinate2D button2Location = new Coordinate2D(getWidth() * 1/2 - 35, getHeight() /2);
         Coordinate2D button3Location = new Coordinate2D(getWidth() * 2/3, getHeight() /2);
 
-        DifficultyButtons easyButton = new DifficultyButtons(button1Location, 0);
-        DifficultyButtons mediumButton = new DifficultyButtons(button2Location, 1);
-        DifficultyButtons hardButton = new DifficultyButtons(button3Location, 2);
+        DifficultyButton easyButton = new DifficultyButton(button1Location, 0, app);
+        DifficultyButton mediumButton = new DifficultyButton(button2Location, 1, app);
+        DifficultyButton hardButton = new DifficultyButton(button3Location, 2, app);
+        // default difficulty is Medium
+        app.setDifficulty(1);
 
         addEntity(easyButton);
         addEntity(mediumButton);
         addEntity(hardButton);
 
     }
-    }
+ }
 

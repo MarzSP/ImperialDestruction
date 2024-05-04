@@ -23,6 +23,11 @@ public class Level {
         return indexLevelNumber;
     }
 
+    public void advanceLevel() {
+        indexLevelNumber++;
+        playerLevelNumber++;
+    }
+
     /**
      * setIndexLevelNumber:
      * @param indexLevelNumber Stelt de waarde van `indexLevelNumber` in.

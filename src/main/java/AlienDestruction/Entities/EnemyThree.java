@@ -45,7 +45,6 @@ public class EnemyThree extends GameEntities{
         setPoints(100);
         setPenaltyPoints(120);
         setHitPoints(4);
-        setCanShoot(false);
     }
 
     @Override

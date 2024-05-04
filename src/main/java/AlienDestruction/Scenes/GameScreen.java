@@ -19,16 +19,21 @@ import com.github.hanyaeger.api.entities.EntitySpawner;
 import com.github.hanyaeger.api.entities.impl.TextEntity;
 import com.github.hanyaeger.api.media.SoundClip;
 import com.github.hanyaeger.api.scenes.DynamicScene;
+import com.github.hanyaeger.api.userinput.KeyListener;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.MouseButton;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
+
+import java.util.Set;
 
 /**
  * De klasse GameScreen is een dynamisch scherm (extends DynamicScene) wat het speelveld maakt.
  * Deze erft van de DynamicScene klasse omdat die functionaliteit biedt voor het dynamisch toevoegen, verwijderen en wijzigen van elementen op het scherm.
  * Implements EntitySpawnerContainer: Implementeert de EntitySpawnerContainer interface die functionaliteit biedt voor het beheren van EntitySpawner objecten om Levels te kunnen maken.
  */
-public class GameScreen extends DynamicScene implements EntitySpawnerContainer {
+public class GameScreen extends DynamicScene implements EntitySpawnerContainer, KeyListener {
 
     /**
      * playerLivesText: Referentie naar de TextEntity die de levens tekst van de speler weergeeft.
@@ -159,6 +164,12 @@ public class GameScreen extends DynamicScene implements EntitySpawnerContainer {
 
         MenuButton menuButton = new MenuButton(app, new Coordinate2D(980, textMenu));
         addEntity(menuButton);
+
+        pauseText = new TextEntity(new Coordinate2D(500, 400), "Press any key to continue!");
+        pauseText.setFill(Color.GOLD);
+        pauseText.setFont(Font.font("Roboto", FontWeight.BOLD, 60));
+        addEntity(pauseText);
+        pauseText.setVisible(false);
     }
 
     /**
@@ -167,42 +178,42 @@ public class GameScreen extends DynamicScene implements EntitySpawnerContainer {
     @Override
     public void setupEntitySpawners() {
         addEntitySpawner(weaponTypeSpawner);
-        addEntitySpawner(new EnemySpawner(player, level, this));
+        addEntitySpawner(new EnemySpawner(player, level, this, app));
         addEntitySpawner(new PowerUpSpawner(level, this));
 
         if (weaponTypeSpawner.isActive()) {
             weaponTypeSpawner.pause();
         }
     }
-}
 
-/**
-    public void pauseGame() {
-        this.pause();
+    @Override
+    public void pause() {
+        super.pause();
+        pauseText.setVisible(true);
+        isPaused = true;
+    }
+
+    @Override
+    public void resume() {
+        super.resume();
+        pauseText.setVisible(false);
+        isPaused = false;
+    }
+
+    public void onMouseButtonPressed(MouseButton button, Coordinate2D coordinate2D) {
         if (isPaused) {
-            pauseText = new TextEntity(new Coordinate2D(500, 400), "Click to continue!");
-            pauseText.setFill(Color.GOLD);
-            pauseText.setFont(Font.font("Roboto", FontWeight.BOLD, 60));
-            addEntity(pauseText);
-            isPaused = true;
-            System.out.println("LevelPause!");
-        }}
-
-
-        private void resumeGame() {
-            this.resume();
-            isPaused = false;
-            System.out.println("LevelResume!");
+            resume();
+        } else {
+            pause();
         }
+    }
 
-        public void onMouseButtonPressed (MouseButton button, Coordinate2D coordinate2D){
-            if (isPaused) {
-                resumeGame();
-            } else {
-                pauseGame();
-            }
-            isPaused = !isPaused;
+    @Override
+    public void onPressedKeysChange(Set<KeyCode> pressedKeys){
+        if (isPaused) {
+            resume();
         }
+    }
 
-    }**/
+}
 

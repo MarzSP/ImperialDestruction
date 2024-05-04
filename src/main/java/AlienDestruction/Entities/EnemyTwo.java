@@ -19,15 +19,6 @@ import java.util.List;
 
 public class EnemyTwo extends GameEntities{
     /**
-     * Player player is final:
-     * Dit betekent dat de EnemyTwo-instantie altijd een geldige referentie naar de Player-instantie heeft.
-     * Dit voorkomt dat er fouten optreden door null-waarden of ongeldige verwijzingen.
-     */
-    private final Player player;
-     private Timer fireTimer;
-     private boolean allowedToFire = true;
-
-    /**
      * Constructor:
      * EnemyTwo(Coordinate2D location, Player player, double speedIncrease):
      *   Initialiseert een nieuw object van EnemyTwo
@@ -42,21 +33,12 @@ public class EnemyTwo extends GameEntities{
      */
     public EnemyTwo(Coordinate2D location, Player player, double speedIncrease) {
         super("sprites/tieIntercepterV1.png", location, new Size(Helper.Size.MEDIUM,Helper.Size.MEDIUM), player);
-        this.player = player;
         setMotion(Helper.Speed.MEDIUM + speedIncrease, getCourse(this.getAnchorLocation().getX()));
         setPoints(80);
         setPenaltyPoints(40);
         setHitPoints(2);
-        setCanShoot(true);
-        shoot();
 
-//        fireTimer = new Timer(6000) {
-//
-//            @Override
-//            public void onAnimationUpdate(long timestamp) {
-//
-//            }
-//        };
+        allowedToFire = true;
     }
 
     /**

@@ -15,6 +15,8 @@ import com.github.hanyaeger.api.YaegerGame;
  * App start de game op.
  */
 public class App extends YaegerGame {
+    private int difficulty;
+
     /**
      * Deze static methode kan aangeroepen worden zonder eerst een object van de class te maken. Deze klasse is de aangestelde entrypoint methode.
      * Launch("--noSplash) verbergt het Yaeger Game Engine start Splash scherm.
@@ -48,4 +50,12 @@ public class App extends YaegerGame {
 
     }
 
+
+    public int getDifficulty() {
+        return difficulty;
+    }
+
+    public void setDifficulty(int difficulty) {
+        this.difficulty = difficulty;
+    }
 }
