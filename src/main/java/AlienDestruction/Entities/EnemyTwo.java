@@ -13,7 +13,7 @@ import com.github.hanyaeger.api.scenes.SceneBorder;
 import java.util.List;
 
 /**
- * EnemyTwo:erft van de GameEntities klasse, dit is een vijand die niet kan schieten.
+ * EnemyTwo:erft van de GameEntities klasse, dit is een vijand die kan schieten.
  *  EnemyTwo erft: zie constructor
  */
 
@@ -29,7 +29,7 @@ public class EnemyTwo extends GameEntities{
      *   Stelt de punten in op 80 (points).
      *   Stelt de aftrekpunten in op 40 (penaltyPoints).
      *   Stelt de levens in op 2 (hitPoints).
-     *   Stelt canShoot in op true, wat aangeeft dat deze vijand wel kan schieten.
+     *   Stelt allowedToFire in op true, wat aangeeft dat deze vijand kan schieten.
      */
     public EnemyTwo(Coordinate2D location, Player player, double speedIncrease) {
         super("sprites/tieIntercepterV1.png", location, new Size(Helper.Size.MEDIUM,Helper.Size.MEDIUM), player);

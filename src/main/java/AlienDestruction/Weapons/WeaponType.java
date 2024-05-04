@@ -60,7 +60,11 @@ public abstract class WeaponType extends DynamicSpriteEntity implements Collider
     public void onCollision(List<Collider> collidingObject) {
     }
 
-
+    /**
+     * Boolean: is dit de eigenaar van dit wapen
+     * @param other
+     * @return
+     */
     public boolean isOwnedBy(DynamicSpriteEntity other) {
         return owner == other;
     }

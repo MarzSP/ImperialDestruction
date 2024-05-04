@@ -15,6 +15,9 @@ import com.github.hanyaeger.api.YaegerGame;
  * App start de game op.
  */
 public class App extends YaegerGame {
+    /**
+     * Initialiseert de moeilijkheidsgraad (difficulty) op de standaardwaarde (Easy)
+     */
     private int difficulty;
 
     /**
@@ -50,11 +53,17 @@ public class App extends YaegerGame {
 
     }
 
+    /**
+     * @return Geeft de huidige moeilijkheidsgraad van het spel terug.
+     */
 
     public int getDifficulty() {
         return difficulty;
     }
 
+    /**
+     * @param difficulty Stelt de moeilijkheidsgraad van het spel in op de opgegeven waarde (difficulty).
+     */
     public void setDifficulty(int difficulty) {
         this.difficulty = difficulty;
     }

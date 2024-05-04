@@ -67,14 +67,5 @@ public class Level {
         };
     }
 
-//    public int[][] defineLevel() {
-//        return new int[][]{
-//                {3, 3},
-//                {3, 3},
-//                {3, 3},
-//                {3, 3}
-//        };
-//    }
-
 
 }

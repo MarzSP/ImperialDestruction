@@ -16,14 +16,13 @@ public class LaserBeam extends WeaponType {
 
 
     /**
-     * Constructor: LaserBeam
-     *
-     * @param isUp            decides the sprite
-     * @param initialLocation :  De beginpositie van de laserstraal op het scherm (als Coordinate2D object).
-     *                        Initialiseert de laserstraal met de volgende eigenschappen:
-     *                        Sprite afbeelding: "sprites/laserred.png" (rode laser)
-     *                        Grootte: Size(5,16)
-     *                        Schade: 1 (via de setDamagePoints methode geërfd van WeaponType)
+     isUp: Bepaalt of de laserstraal omhoog of omlaag gericht is.
+
+     true: De laserstraal is omhoog gericht.
+     false: De laserstraal is omlaag gericht.
+
+     initialLocation: De beginpositie van de laserstraal op het scherm (als Coordinate2D-object).
+     owner: De entiteit die eigenaar is van de laserstraal (bijv. de speler of een vijand).
      */
     //isUp ? expression is true/false
     public LaserBeam(boolean isUp, Coordinate2D initialLocation, DynamicSpriteEntity owner) {

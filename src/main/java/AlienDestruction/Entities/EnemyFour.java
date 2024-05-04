@@ -6,7 +6,7 @@ import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.Size;
 import com.github.hanyaeger.api.scenes.SceneBorder;
 /**
- * EnemyFour:erft van de GameEntities klasse, dit is een vijand die niet kan schieten.
+ * EnemyFour:erft van de GameEntities klasse, dit is een vijand die kan schieten
  * EnemyFour erft: zie constructor
  **/
 
@@ -23,7 +23,7 @@ public class EnemyFour extends GameEntities{
      *   Stelt de punten in op 200 (points).
      *   Stelt de aftrekpunten in op 100 (penaltyPoints).
      *   Stelt de levens in op 8 (hitPoints).
-     *   Stelt canShoot in op true, wat aangeeft dat deze vijand wel kan schieten.
+     *   Stelt allowedToFire in op true, wat aangeeft dat deze vijand kan schieten.
      */
 
     public EnemyFour(Coordinate2D location, Player player, double speedIncrease) {
