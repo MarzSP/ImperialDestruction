@@ -83,9 +83,9 @@ public class GameEntities extends DynamicSpriteEntity implements SceneBorderTouc
     public void setPenaltyPoints(int penaltyPoints) {
         this.penaltyPoints = penaltyPoints;
     }
-    public int getHitPoints() {
-        return hitPoints;
-    }
+//    public int getHitPoints() {
+//        return hitPoints;
+//    }
     public void setHitPoints(int hitPoints) {
         this.hitPoints = hitPoints;
     }
