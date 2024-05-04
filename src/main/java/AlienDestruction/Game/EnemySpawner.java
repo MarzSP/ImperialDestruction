@@ -32,10 +32,10 @@ public class EnemySpawner extends EntitySpawner {
      * Dit voorkomt dat er fouten optreden door null-waarden of ongeldige verwijzingen.
      */
     private final GameScreen gameScreen;
-    private final App app;
-    Random random = new Random();
     private int enemyTypeIndex = 0;
 
+    int[][] levelData;
+    int difficulty;
 
     /**
      * EnemySpawner(Player player, Level level, GameScreen gameScreen)`: Deze constructor initialiseert de spawner met een referentie naar de speler, de leveldata en het gamescherm.
@@ -49,7 +49,14 @@ public class EnemySpawner extends EntitySpawner {
         this.level = level;
         this.player = player;
         this.gameScreen = gameScreen;
-        this.app = app;
+
+        levelData = level.defineLevel();
+        difficulty = app.getDifficulty();
+        for (int lvl = 0; lvl < levelData.length; lvl++) {
+            for (int enemy = levelData[lvl].length - 1; enemy >= 0; enemy--) {
+                levelData[lvl][enemy] += difficulty;
+            }
+        }
     }
 /**
     protected void spawnEntities()`:
@@ -64,29 +71,31 @@ public class EnemySpawner extends EntitySpawner {
      *  Werk de leveltekst bij die op het scherm wordt weergegeven.
      *  Als het einde van alle levels is bereikt, wordt het huidige levelnummer opnieuw ingesteld op 1.
  *      */
+
     @Override
     protected void spawnEntities() {
-        int difficulty = app.getDifficulty();
 
         int indexLevelNumber = level.getIndexLevelNumber();
-        int[][] levelData = level.defineLevel();
-        int amountOfLevels = levelData.length;
-        int amountInLevel = levelData[indexLevelNumber - 1].length;
-
-        spawnEnemyFromLevel(levelData[indexLevelNumber - 1][enemyTypeIndex]);
+        int[] currentLevel = levelData[indexLevelNumber - 1];
+        spawnEnemyFromLevel(currentLevel[enemyTypeIndex]);
         enemyTypeIndex++;
-        if (enemyTypeIndex >= amountInLevel) {
+
+        // level up
+        if (enemyTypeIndex >= currentLevel.length) {
             enemyTypeIndex = 0;
-            level.setIndexLevelNumber(indexLevelNumber + 1);
-            level.setPlayerLevelNumber(level.getPlayerLevelNumber() + 1);
+            level.advanceLevel();
             updateLevelText();
-            //gameScreen.pauseGame();
-            //gameScreen.resume();
-
-
+            gameScreen.pause();
         }
-        if (indexLevelNumber >= amountOfLevels) {
+
+        // continuously increase difficulty
+        if (indexLevelNumber >= levelData.length) {
             level.setIndexLevelNumber(1);
+            for (int lvl = 0; lvl < levelData.length; lvl++) {
+                for (int enemy = levelData[lvl].length - 1; enemy >= 0; enemy--) {
+                    levelData[lvl][enemy]++;
+                }
+            }
         }
     }
 

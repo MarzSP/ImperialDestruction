@@ -73,6 +73,8 @@ import javafx.scene.text.FontWeight;
         DifficultyButton easyButton = new DifficultyButton(button1Location, 0, app);
         DifficultyButton mediumButton = new DifficultyButton(button2Location, 1, app);
         DifficultyButton hardButton = new DifficultyButton(button3Location, 2, app);
+        // default difficulty is Medium
+        app.setDifficulty(1);
 
         addEntity(easyButton);
         addEntity(mediumButton);
