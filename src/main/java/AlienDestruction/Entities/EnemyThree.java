@@ -17,6 +17,10 @@ public class EnemyThree extends GameEntities{
 
     private final Player player;
 
+    private double direction;
+
+    private double speedIncrease;
+
     /**
      * Constructor:
      * EnemyThree(Coordinate2D location, Player player, double speedIncrease):
@@ -35,11 +39,37 @@ public class EnemyThree extends GameEntities{
         super("sprites/lambdaShuttleV1.png", location, new Size(Helper.Size.LARGE,Helper.Size.MEDIUM), player);
         this.player = player;
 
-        setMotion(Helper.Speed.LOW + speedIncrease, Helper.Direction.DOWN);
+        this.speedIncrease = speedIncrease;
+        deterDirection();
+        setMotion(Helper.Speed.LOW + speedIncrease, getDirection());
         setPoints(100);
         setPenaltyPoints(120);
         setHitPoints(4);
         setCanShoot(false);
+    }
+
+    @Override
+    public double getDirection() {
+        return direction;
+    }
+
+    @Override
+    public void setDirection(double direction) {
+        this.direction = direction;
+    }
+
+    @Override
+    public void notifyBoundaryTouching(SceneBorder sceneBorder) {
+        switch (sceneBorder){
+            case RIGHT:
+                setDirection(290);
+                setMotion(Helper.Speed.LOW + speedIncrease, getDirection());
+                break;
+            case LEFT:
+                setDirection(70);
+                setMotion(Helper.Speed.LOW + speedIncrease, getDirection());
+                break;
+        }
     }
 
     /**
@@ -53,5 +83,20 @@ public class EnemyThree extends GameEntities{
         //gameScreen.getScoreText().setText("Score: " + player.getScore());
         player.setScore(player.getScore() - this.getPenaltyPoints());
         this.remove();
+    }
+
+    public void deterDirection () {
+        int dir = Helper.getRandomInt(1, 3);
+        switch (dir) {
+            case 1:
+                setDirection(70);
+                break;
+            case 2:
+                setDirection(290);
+                break;
+            default:
+                setDirection(0);
+                break;
+        }
     }
 }
