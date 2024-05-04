@@ -71,7 +71,6 @@ public class EnemySpawner extends EntitySpawner {
      *  Werk de leveltekst bij die op het scherm wordt weergegeven.
      *  Als het einde van alle levels is bereikt, wordt het huidige levelnummer opnieuw ingesteld op 1.
  *      */
-
     @Override
     protected void spawnEntities() {
 
@@ -152,13 +151,5 @@ public class EnemySpawner extends EntitySpawner {
         double increase = level.getPlayerLevelNumber() * 0.1;
         return increase;
     }
-
-//    public void changeLevel(){
-//        gameScreen.pause();
-//
-//        gameScreen.resume();
-//    }
-
-
 }
 

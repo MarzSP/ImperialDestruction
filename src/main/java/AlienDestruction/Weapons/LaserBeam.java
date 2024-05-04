@@ -46,6 +46,10 @@ public class LaserBeam extends WeaponType {
     public void onCollision(List<Collider> collidingObject) {
     }
 
+    /**
+     * Wordt aangeroepen wanneer het object een grens van de scène overschrijdt.
+     * @param sceneBorder de grens van de scène die is overschreden
+     */
     @Override
     public void notifyBoundaryCrossing(SceneBorder sceneBorder) {
         this.remove();
