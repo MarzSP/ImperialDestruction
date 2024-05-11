@@ -202,8 +202,26 @@ public class GameEntities extends DynamicSpriteEntity implements TimerContainer,
     public void notifyBoundaryCrossing(SceneBorder sceneBorder) {
     }
 
-    public void test(){
+    public int getHitGridT(WeaponType collider){
+        double obstWidth = this.getWidth();
+        double obstHeight = this.getHeight();
+        double obstacleX = getLocationInScene().getX();
+        double obstacleY = getLocationInScene().getY();
+        double laserX = collider.getAnchorLocation().getX();
+        double laserY = collider.getAnchorLocation().getY();
+        boolean isLeftSide = laserX < obstacleX + (obstWidth / 2);
+        boolean isTopSide = laserY < obstacleY + (obstHeight / 2);
 
+        if (isLeftSide && isTopSide) {
+            return  1;
+        } else if (!isLeftSide && isTopSide){
+            return  2;
+        } else if (!isLeftSide && !isTopSide){
+            return  3;
+        } else if (isLeftSide && !isTopSide){
+            return  4;
+        }
+        return 0;
     }
 
 }

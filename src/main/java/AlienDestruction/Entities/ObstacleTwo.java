@@ -57,7 +57,7 @@ public class ObstacleTwo extends GameEntities{
      */
     public void bounceOff(WeaponType collider){
         double randomBounce = Helper.getRandomDouble(-8.0, 8.0);
-        switch (getHitGrid(collider)) {
+        switch (getHitGridT(collider)) {
             case 1:
                 setNewColliderDirection(collider, 90 + randomBounce, 270 + randomBounce);
                 break;
