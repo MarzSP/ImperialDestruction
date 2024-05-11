@@ -47,27 +47,14 @@ public class ObstacleOne extends GameEntities {
         for (Collider collider : collidingObject){
             if (collider instanceof LaserBeam){
                 bounceOffT((WeaponType) collider);
-                //((WeaponType) collider).remove();   // remove Laser / Weapon
             }
         }
-    }
-
-    /**
-     * setNewColliderDirection(WeaponType collider, double rotate, double direction): Wijzigt de rotatie en richting van de laserstraal zodat deze wegkaatst.
-     * @param collider is een referentie naar het object dat met de laserstraal botst.
-     * @param rotate De nieuwe rotatiehoek in graden van de laserstraal
-     * @param direction De nieuwe bewegingsrichting in graden van de laserstraal
-     */
-    public void setNewColliderDirection(WeaponType collider, double rotate, double direction){
-        (collider).setRotate(rotate);
-        (collider).setDirection(direction);
     }
 
 /**
  * Deze methode implementeert de `notifyBoundaryCrossing`-methode van de `GameEntity`-klasse.
  * Wordt aangeroepen wanneer de laserstraal de grens van het scherm overschrijdt.
  **/
-
     @Override
     public void notifyBoundaryCrossing(SceneBorder sceneBorder) {
         remove();

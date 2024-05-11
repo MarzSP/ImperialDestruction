@@ -36,20 +36,6 @@ public class ObstacleTwo extends GameEntities{
         setMotion(Helper.Speed.LOW, getCourse(this.getAnchorLocation().getX()));
         this.setRotationSpeed(Helper.getRandomDouble(-0.6, 0.6));
     }
-    /**
-     * onCollision(List<Collider> collidingObject) (Override): Deze methode wordt aangeroepen wanneer de obstakel met een ander object collideert.
-     * De methode controlleert of het collidende object een laserstraal (LaserBeam) is. Zo ja, dan roept de methode bounceOff(WeaponType) aan om van richting te veranderen.
-     * @param collidingObject a {@link List} of all instances of {@link Collider} with, during the last Game World Update.
-     */
-    @Override
-    public void onCollision(List<Collider> collidingObject) {
-        for (Collider collider : collidingObject){
-            if (collider instanceof LaserBeam){
-                bounceOffT((WeaponType) collider);
-                //((WeaponType) collider).remove();   // remove Laser / Weapon
-            }
-        }
-    }
 
 /**
  * setNewColliderDirection(WeaponType collider, double rotate, double direction): Wijzigt de rotatie en richting van de laserstraal zodat deze wegkaatst.
