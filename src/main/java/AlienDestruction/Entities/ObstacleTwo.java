@@ -47,6 +47,17 @@ public class ObstacleTwo extends GameEntities{
         (collider).setRotate(rotate);
         (collider).setDirection(direction);
     }
+
+    @Override
+    public void onCollision(List<Collider> collidingObject) {
+        for (Collider collider : collidingObject){
+            if (collider instanceof LaserBeam){
+                bounceOffT((WeaponType) collider);
+            }
+        }
+    }
+
+
     /**
      * Deze methode implementeert de `notifyBoundaryCrossing`-methode van de `GameEntity`-klasse.
      * Wordt aangeroepen wanneer de laserstraal de grens van het scherm overschrijdt.
