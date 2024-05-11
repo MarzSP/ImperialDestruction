@@ -202,4 +202,8 @@ public class GameEntities extends DynamicSpriteEntity implements TimerContainer,
     public void notifyBoundaryCrossing(SceneBorder sceneBorder) {
     }
 
+    public void test(){
+
+    }
+
 }
