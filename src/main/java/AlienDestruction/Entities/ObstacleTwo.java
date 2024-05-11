@@ -45,68 +45,18 @@ public class ObstacleTwo extends GameEntities{
     public void onCollision(List<Collider> collidingObject) {
         for (Collider collider : collidingObject){
             if (collider instanceof LaserBeam){
-                bounceOff((WeaponType) collider);
+                bounceOffT((WeaponType) collider);
                 //((WeaponType) collider).remove();   // remove Laser / Weapon
             }
         }
     }
-    /**
-     * bounceOff(WeaponType) collider): Bepaalt op basis van het geraakte regio van de obstakel in welke richting de laserstraal moet worden teruggekaatst.
-     * De methode gebruikt getHitGrid(WeaponType) om te bepalen welk gedeelte geraakt is.
-     * @param collider is een referentie naar het object dat met de laserstraal botst.
-     */
-    public void bounceOff(WeaponType collider){
-        double randomBounce = Helper.getRandomDouble(-8.0, 8.0);
-        switch (getHitGridT(collider)) {
-            case 1:
-                setNewColliderDirection(collider, 90 + randomBounce, 270 + randomBounce);
-                break;
-            case 2:
-                setNewColliderDirection(collider, 90 + randomBounce, 90 + randomBounce);
-                break;
-            case 3:
-                setNewColliderDirection(collider, 90 + randomBounce, 90+ randomBounce);
-                break;
-            case 4:
-                setNewColliderDirection(collider, 90 + randomBounce, 270 + randomBounce);
-                break;
-            default:
-                break;
-        }
-    }
-    /**
-     * getHitGrid(WeaponType) collider): Berekent op basis van de locatie van de obstakel en de laserstraal op welk gedeelte van de obstakel de laserstraal is geraakt.
-     * @param collider is een referentie naar het object dat met de laserstraal botst.
-     * @return terug naar 0
-     */
-    int getHitGrid(WeaponType collider){
-        double obstWidth = this.getWidth();
-        double obstHeight = this.getHeight();
-        double obstacleX = getLocationInScene().getX();
-        double obstacleY = getLocationInScene().getY();
-        double laserX = collider.getAnchorLocation().getX();
-        double laserY = collider.getAnchorLocation().getY();
-        boolean isLeftSide = laserX < obstacleX + (obstWidth / 2);
-        boolean isTopSide = laserY < obstacleY + (obstHeight / 2);
 
-        if (isLeftSide && isTopSide) {
-            return  1;
-        } else if (!isLeftSide && isTopSide){
-            return  2;
-        } else if (!isLeftSide && !isTopSide){
-            return  3;
-        } else if (isLeftSide && !isTopSide){
-            return  4;
-        }
-        return 0;
-    }
 /**
  * setNewColliderDirection(WeaponType collider, double rotate, double direction): Wijzigt de rotatie en richting van de laserstraal zodat deze wegkaatst.
  * @param collider is een referentie naar het object dat met de laserstraal botst.
  * @param rotate De nieuwe rotatiehoek in graden van de laserstraal
  * @param direction De nieuwe bewegingsrichting in graden van de laserstraal
  **/
-
     public void setNewColliderDirection(WeaponType collider, double rotate, double direction){
         (collider).setRotate(rotate);
         (collider).setDirection(direction);

@@ -202,7 +202,32 @@ public class GameEntities extends DynamicSpriteEntity implements TimerContainer,
     public void notifyBoundaryCrossing(SceneBorder sceneBorder) {
     }
 
-    public int getHitGridT(WeaponType collider){
+    public void bounceOffT(WeaponType collider){
+        double randomBounce = Helper.getRandomDouble(-8.0, 8.0);
+        switch (getHitGrid(collider)) {
+            case 1:
+                setNewColliderDirection(collider, 90 + randomBounce, 270 + randomBounce);
+                break;
+            case 2:
+                setNewColliderDirection(collider, 90 + randomBounce, 90 + randomBounce);
+                break;
+            case 3:
+                setNewColliderDirection(collider, 90 + randomBounce, 90+ randomBounce);
+                break;
+            case 4:
+                setNewColliderDirection(collider, 90 + randomBounce, 270 + randomBounce);
+                break;
+            default:
+                break;
+        }
+    }
+
+    public void setNewColliderDirection(WeaponType collider, double rotate, double direction){
+        (collider).setRotate(rotate);
+        (collider).setDirection(direction);
+    }
+
+    public int getHitGrid(WeaponType collider){
         double obstWidth = this.getWidth();
         double obstHeight = this.getHeight();
         double obstacleX = getLocationInScene().getX();
