@@ -18,7 +18,7 @@ import javafx.scene.text.FontWeight;
  * Het toont het "GAME OVER" scherm. Deze bevat een achtergrond image, de tekst "Game Over", de score, de optie om opnieuw te spelen, en een 'Quit Game' button.
  * DynamicScene: De inhoud van de FinalScoreText veranderd per keer dat het spel is gespeeld.
  */
-public class EndScreen extends DynamicScene implements YaegerScene{
+public class EndScreen extends MenuManager {
 
     private final App app;
 

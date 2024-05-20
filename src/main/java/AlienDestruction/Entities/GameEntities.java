@@ -1,6 +1,7 @@
 package AlienDestruction.Entities;
 
 import AlienDestruction.Helper;
+import AlienDestruction.Scenes.GameMenu;
 import AlienDestruction.Weapons.LaserBeam;
 import AlienDestruction.Weapons.WeaponType;
 import com.github.hanyaeger.api.Coordinate2D;
@@ -81,10 +82,16 @@ public class GameEntities extends DynamicSpriteEntity implements TimerContainer,
      * De laserstraal wordt afgevuurd vanaf het bovenste midden van het spelerobject.
      */
     public void shoot() {
-        double x = getLocationInScene().getX() + (this.size.height() / 2);
+        boolean isSD = false;
+        double x = getLocationInScene().getX() + (this.size.width() / 2);
         double y = getLocationInScene().getY();
-
-        player.getGun().shoot(new LaserBeam(false, new Coordinate2D(x, y), this));
+        if (this instanceof EnemyFour) {
+            isSD = true;
+            player.getGun().shoot(new LaserBeam(false, new Coordinate2D(x - 40, y), this, isSD));
+            player.getGun().shoot(new LaserBeam(false, new Coordinate2D(x + 30, y), this, isSD));
+        } else {
+            player.getGun().shoot(new LaserBeam(false, new Coordinate2D(x, y), this, isSD));
+        }
     }
 
     public int getPoints() {
@@ -200,6 +207,53 @@ public class GameEntities extends DynamicSpriteEntity implements TimerContainer,
      */
     @Override
     public void notifyBoundaryCrossing(SceneBorder sceneBorder) {
+    }
+
+    public void bounceOffT(WeaponType collider){
+        double randomBounce = Helper.getRandomDouble(-8.0, 8.0);
+        switch (getHitGrid(collider)) {
+            case 1:
+                setNewColliderDirection(collider, 90 + randomBounce, 270 + randomBounce);
+                break;
+            case 2:
+                setNewColliderDirection(collider, 90 + randomBounce, 90 + randomBounce);
+                break;
+            case 3:
+                setNewColliderDirection(collider, 90 + randomBounce, 90+ randomBounce);
+                break;
+            case 4:
+                setNewColliderDirection(collider, 90 + randomBounce, 270 + randomBounce);
+                break;
+            default:
+                break;
+        }
+    }
+
+    public void setNewColliderDirection(WeaponType collider, double rotate, double direction){
+        (collider).setRotate(rotate);
+        (collider).setDirection(direction);
+    }
+
+    public int getHitGrid(WeaponType collider){
+        double obstWidth = this.getWidth();
+        double obstHeight = this.getHeight();
+        double obstacleX = getLocationInScene().getX();
+        double obstacleY = getLocationInScene().getY();
+        double laserX = collider.getAnchorLocation().getX();
+        double laserY = collider.getAnchorLocation().getY();
+        boolean isLeftSide = laserX < obstacleX + (obstWidth / 2);
+        boolean isTopSide = laserY < obstacleY + (obstHeight / 2);
+
+        if (isLeftSide && isTopSide) {
+            return  1;
+        } else if (!isLeftSide && isTopSide){
+            return  2;
+        } else if (!isLeftSide && !isTopSide){
+            return  3;
+        } else if (isLeftSide && !isTopSide){
+            return  4;
+        }
+        return 0;
     }
 
 }
