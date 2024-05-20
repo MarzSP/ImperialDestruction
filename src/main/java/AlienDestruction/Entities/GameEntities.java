@@ -1,6 +1,7 @@
 package AlienDestruction.Entities;
 
 import AlienDestruction.Helper;
+import AlienDestruction.Scenes.GameMenu;
 import AlienDestruction.Weapons.LaserBeam;
 import AlienDestruction.Weapons.WeaponType;
 import com.github.hanyaeger.api.Coordinate2D;
@@ -81,10 +82,16 @@ public class GameEntities extends DynamicSpriteEntity implements TimerContainer,
      * De laserstraal wordt afgevuurd vanaf het bovenste midden van het spelerobject.
      */
     public void shoot() {
-        double x = getLocationInScene().getX() + (this.size.height() / 2);
+        boolean isSD = false;
+        double x = getLocationInScene().getX() + (this.size.width() / 2);
         double y = getLocationInScene().getY();
-
-        player.getGun().shoot(new LaserBeam(false, new Coordinate2D(x, y), this));
+        if (this instanceof EnemyFour) {
+            isSD = true;
+            player.getGun().shoot(new LaserBeam(false, new Coordinate2D(x - 40, y), this, isSD));
+            player.getGun().shoot(new LaserBeam(false, new Coordinate2D(x + 30, y), this, isSD));
+        } else {
+            player.getGun().shoot(new LaserBeam(false, new Coordinate2D(x, y), this, isSD));
+        }
     }
 
     public int getPoints() {

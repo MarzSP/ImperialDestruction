@@ -1,5 +1,6 @@
 package AlienDestruction.Weapons;
 
+import AlienDestruction.Entities.EnemyFour;
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.Size;
 import com.github.hanyaeger.api.entities.Collider;
@@ -25,7 +26,7 @@ public class LaserBeam extends WeaponType {
      owner: De entiteit die eigenaar is van de laserstraal (bijv. de speler of een vijand).
      */
     //isUp ? expression is true/false
-    public LaserBeam(boolean isUp, Coordinate2D initialLocation, DynamicSpriteEntity owner) {
+    public LaserBeam(boolean isUp, Coordinate2D initialLocation, DynamicSpriteEntity owner, boolean isSD) {
         super(
                 isUp ? "sprites/laserup.png" : "sprites/laserdown.png",
                 initialLocation,

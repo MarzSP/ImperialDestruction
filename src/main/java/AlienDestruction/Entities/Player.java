@@ -207,6 +207,10 @@ public class Player extends DynamicSpriteEntity implements KeyListener, SceneBor
                 ((PowerUpLaser) collider).remove(); // verwijderd sprite uit het scherm
                 break;
             } else if (collider instanceof GameEntities) {
+                setAnchorLocation(new Coordinate2D((getSceneWidth() - getWidth()) / 2, 550));
+                lives = lives - 1;
+                updateLives();
+                checkLives();
                 ((GameEntities) collider).remove();
                 increaseScore(((GameEntities) collider).getPoints());
                 break;
@@ -215,18 +219,18 @@ public class Player extends DynamicSpriteEntity implements KeyListener, SceneBor
 
                 // Dont get hit by your own laser beams
                 if (weaponType.isOwnedBy(this)) {
-                    powerUpCollision = true;;
+                    powerUpCollision = true;
                 } else {
                     weaponType.remove();
                 }
             }
 
-            if(!powerUpCollision) {
-                setAnchorLocation(new Coordinate2D((getSceneWidth() - getWidth()) / 2, 550));
-                lives = lives - 1;
-                updateLives();
-                checkLives();
-            }
+//            if(!powerUpCollision) {
+//                setAnchorLocation(new Coordinate2D((getSceneWidth() - getWidth()) / 2, 550));
+//                lives = lives - 1;
+//                updateLives();
+//                checkLives();
+//            }
         }
 
 
@@ -266,8 +270,8 @@ public class Player extends DynamicSpriteEntity implements KeyListener, SceneBor
     public void shoot(){
         double x = getLocationInScene().getX();
         double y = getLocationInScene().getY();
-        shootable.shoot(new LaserBeam(true, new Coordinate2D(x + 5, y), this));
-        shootable.shoot(new LaserBeam(true, new Coordinate2D(x + 70, y),this));
+        shootable.shoot(new LaserBeam(true, new Coordinate2D(x + 5, y), this, false));
+        shootable.shoot(new LaserBeam(true, new Coordinate2D(x + 70, y),this, false));
         soundLaser();
     }
 
